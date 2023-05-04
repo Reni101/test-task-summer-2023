@@ -1,0 +1,19 @@
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.flexContainer {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+@media screen and (max-width: 767px){
+  .flexContainer{
+    flex-direction: column;
+  }
+}
+
+.pagination {
+  padding: 40px;
+  justify-content: center;
+}

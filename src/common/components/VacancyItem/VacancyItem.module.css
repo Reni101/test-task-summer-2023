@@ -1,0 +1,28 @@
+.container {
+  max-width: 773px;
+  width: 100%;
+  background-color: #fff;
+  margin-top: 16px;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.title {
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #5e96fc;
+}
+.payment {
+  margin: 12px 0;
+}
+.location {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
