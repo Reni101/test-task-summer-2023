@@ -10,7 +10,6 @@ export const authAndRefresh = createAppAsyncThunk(
     try {
       const accessData = getState().auth
       if (!accessData.access_token) {
-        debugger
         const res = await authApi.authByPassword()
         localStorage.setItem(localStorageKeys.ACCESS_DATA, JSON.stringify(res.data))
         return res.data
