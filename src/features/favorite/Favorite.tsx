@@ -6,6 +6,7 @@ import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
 
 export const Favorite = () => {
   const { data, handlePageChange, total } = useVacanciesLS(localStorageKeys.VACANCIES_LS)
+
   return (
     <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
       {data.length ? (

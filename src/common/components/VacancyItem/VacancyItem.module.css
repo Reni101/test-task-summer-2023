@@ -18,7 +18,7 @@
   color: #5e96fc;
 }
 
-.titleCurrent{
+.titleCurrent {
   pointer-events: none;
   color: #000;
 }
@@ -26,6 +26,24 @@
 .payment {
   margin: 12px 0;
 }
+.currency {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  margin-right: 5px;
+}
+.dot {
+  margin-right: 12px;
+  margin-left: 7px;
+  color: #7b7c88;
+}
+
+.workTitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+
 .location {
   margin-top: 10px;
   display: flex;

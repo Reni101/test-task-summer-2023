@@ -10,6 +10,7 @@ export const useVacanciesLS = (key: string, itemsPerPage: number = 4) => {
     const storedData = (JSON.parse(localStorage.getItem(key)!) || []) as IVacancy[]
     const start = (page - 1) * itemsPerPage
     const end = start + itemsPerPage
+
     setData(storedData.slice(start, end))
     setTotal(Math.ceil(storedData.length / itemsPerPage))
   }, [key, page, itemsPerPage])

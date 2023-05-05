@@ -21,9 +21,13 @@ export const VacanciesForRender = () => {
 
   return (
     <div className={styles.vacancies}>
-      {data.objects.map(vacancy => {
-        return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
-      })}
+      {data.objects.length ? (
+        data.objects.map(vacancy => {
+          return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
+        })
+      ) : (
+        <div>loaading</div>
+      )}
     </div>
   )
 }

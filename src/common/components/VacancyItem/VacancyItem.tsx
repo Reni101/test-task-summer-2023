@@ -1,10 +1,10 @@
 import { IVacancy } from 'features/searchVacancies/searchVacancies.api'
 import { FC, memo } from 'react'
 import { paymentResult } from 'common/utils/payment'
-import { MapPin, Star } from 'tabler-icons-react'
+import { MapPin } from 'tabler-icons-react'
 import { useNavigate } from 'react-router-dom'
-import { toggleVacancyInLS } from 'common/utils/toggleVacancyInLS'
-import { localStorageKeys } from 'common/enums/localStorageKeys'
+import classNames from 'classnames'
+import { StarIcon } from 'common/components/StarIcon/StarIcon'
 import styles from './VacancyItem.module.css'
 
 interface PropsType {
@@ -22,28 +22,28 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
   return (
     <div className={styles.container}>
       <div className={styles.flexbox}>
-        <div onClick={navigateToVacancy} className={styles.title}>
+        <div
+          onClick={navigateToVacancy}
+          className={classNames(styles.title, { [styles.titleCurrent]: isCurrentVacancy })}
+        >
           {vacancy.profession}
         </div>
         <div className={styles.payment}>
-          {paymentResult(vacancy.payment_from, vacancy.payment_to, vacancy.currency)}
-          {' • '}
-          {vacancy.type_of_work?.title}
+          {vacancy.payment_from !== 0 && vacancy.payment_to !== 0 && (
+            <span className={styles.currency}>
+              {paymentResult(vacancy.payment_from, vacancy.payment_to, vacancy.currency)}
+            </span>
+          )}
+          <span className={styles.dot}>•</span>
+          <span className={styles.workTitle}>{vacancy.type_of_work?.title}</span>
         </div>
-        {vacancy.firm_name}
 
         <div className={styles.location}>
           <MapPin size={20} color={'#000000'} style={{ opacity: 0.5 }} /> {vacancy.town.title}
         </div>
       </div>
 
-      <div
-        onClick={() => {
-          toggleVacancyInLS(localStorageKeys.VACANCIES_LS, vacancy)
-        }}
-      >
-        <Star color={'#ACADB9'} />
-      </div>
+      <StarIcon vacancy={vacancy} />
     </div>
   )
 })
