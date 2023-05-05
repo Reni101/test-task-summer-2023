@@ -23,8 +23,7 @@
 @media screen and (max-width: 867px) {
   .logo {
     position: relative;
-    left: auto;
-    padding-right: 10px;
+    left: -5vh;
   }
   .text {
     display: none;

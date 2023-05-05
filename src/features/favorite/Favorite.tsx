@@ -10,7 +10,7 @@ export const Favorite = () => {
     <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
       {data.length ? (
         data.map(vacancy => {
-          return <VacancyItem vacancy={vacancy} key={vacancy.id} />
+          return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
         })
       ) : (
         <div>empty</div>

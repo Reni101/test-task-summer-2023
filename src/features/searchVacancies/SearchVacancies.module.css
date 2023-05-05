@@ -6,11 +6,17 @@
   display: flex;
   justify-content: center;
   gap: 28px;
+  padding-top: 40px;
 }
-@media screen and (max-width: 767px){
-  .flexContainer{
+@media screen and (max-width: 767px) {
+  .flexContainer {
     flex-direction: column;
   }
+}
+
+.searchContainer{
+  max-width: 773px;
+  width: 100%;
 }
 
 .pagination {

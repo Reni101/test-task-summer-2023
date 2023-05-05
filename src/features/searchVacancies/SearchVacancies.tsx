@@ -1,13 +1,10 @@
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
-import {
-  changeCurrentPage,
-  clearState,
-  getVacancies
-} from 'features/searchVacancies/searchVacancies.slice'
+import { changeCurrentPage, getVacancies } from 'features/searchVacancies/searchVacancies.slice'
 import { useEffect } from 'react'
 import { Pagination } from '@mantine/core'
 import { Filters } from 'features/searchVacancies/Filters/Filters'
 import { VacanciesForRender } from 'features/searchVacancies/VacanciesForRender/VacanciesForRender'
+import { SearchInput } from 'features/searchVacancies/VacanciesForRender/SearchInput/SearchInput'
 import styles from './SearchVacancies.module.css'
 
 export const SearchVacancies = () => {
@@ -26,17 +23,16 @@ export const SearchVacancies = () => {
 
   useEffect(() => {
     dispatch(getVacancies())
-
-    return () => {
-      dispatch(clearState())
-    }
   }, [currentPage, filters, dispatch])
 
   return (
     <div className={styles.container}>
       <div className={styles.flexContainer}>
         <Filters />
-        <VacanciesForRender />
+        <div className={styles.searchContainer}>
+          <SearchInput />
+          <VacanciesForRender />
+        </div>
       </div>
 
       <Pagination

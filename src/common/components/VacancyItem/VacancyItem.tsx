@@ -9,9 +9,10 @@ import styles from './VacancyItem.module.css'
 
 interface PropsType {
   vacancy: IVacancy
+  isCurrentVacancy: boolean
 }
 
-export const VacancyItem: FC<PropsType> = memo(({ vacancy }) => {
+export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) => {
   const navigate = useNavigate()
 
   const navigateToVacancy = () => {
@@ -24,7 +25,6 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy }) => {
         <div onClick={navigateToVacancy} className={styles.title}>
           {vacancy.profession}
         </div>
-        {/*<div>{catalogues[0].title}</div>*/}
         <div className={styles.payment}>
           {paymentResult(vacancy.payment_from, vacancy.payment_to, vacancy.currency)}
           {' • '}

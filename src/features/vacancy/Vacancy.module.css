@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: calc(100vh - 80px);
+}
+.descriptionContainer{
+
+    max-width: 773px;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 24px;
+    margin: 20px;
+    border-radius: 12px;
+}
