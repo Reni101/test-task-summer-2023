@@ -7,7 +7,9 @@ export const Favorite = () => {
   const { currentData, handlePageChange, currentPage, total } = usePagination()
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+    <div
+      style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', paddingTop: '40px' }}
+    >
       {currentData.length ? (
         currentData.map(vacancy => {
           return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
@@ -17,6 +19,7 @@ export const Favorite = () => {
       )}
 
       <Pagination
+        style={{ margin: '20px' }}
         value={currentPage + 1}
         onChange={page => {
           handlePageChange(page)

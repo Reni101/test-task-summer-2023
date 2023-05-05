@@ -26,7 +26,7 @@ export const usePagination = (itemsPerPage: number = 4) => {
   }
 
   const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage)
+    setCurrentPage(newPage - 1)
   }
 
   return { currentData, handlePageChange, currentPage, total }
