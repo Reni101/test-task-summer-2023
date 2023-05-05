@@ -1,16 +1,15 @@
 import React from 'react'
-import { useVacanciesLS } from 'common/hooks/useVacanciesLS'
-import { localStorageKeys } from 'common/enums/localStorageKeys'
 import { Pagination } from '@mantine/core'
 import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
+import { usePagination } from 'common/hooks/usePagination'
 
 export const Favorite = () => {
-  const { data, handlePageChange, total } = useVacanciesLS(localStorageKeys.VACANCIES_LS)
+  const { currentData, handlePageChange, currentPage, total } = usePagination()
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-      {data.length ? (
-        data.map(vacancy => {
+      {currentData.length ? (
+        currentData.map(vacancy => {
           return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
         })
       ) : (
@@ -18,7 +17,7 @@ export const Favorite = () => {
       )}
 
       <Pagination
-        defaultValue={1}
+        value={currentPage + 1}
         onChange={page => {
           handlePageChange(page)
         }}

@@ -3,6 +3,7 @@ import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
 import { Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { clearState } from 'features/searchVacancies/searchVacancies.slice'
+import { Loader } from '@mantine/core'
 import styles from './VacanciesForRender.module.css'
 
 export const VacanciesForRender = () => {
@@ -26,7 +27,7 @@ export const VacanciesForRender = () => {
           return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
         })
       ) : (
-        <div>loaading</div>
+        <Loader />
       )}
     </div>
   )

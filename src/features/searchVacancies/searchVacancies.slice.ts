@@ -9,7 +9,7 @@ export interface IFiltersAndPagination {
   filters: IFilters
 }
 export interface IFilters {
-  published: number
+  published: number | null
   keyword: string | null
   payment_from: number | ''
   payment_to: number | ''
@@ -23,7 +23,7 @@ const initialState: IResponse & IFiltersAndPagination = {
   page: 0,
   count: 4,
   filters: {
-    published: 1,
+    published: null,
     no_agreement: null,
 
     keyword: null,
@@ -38,12 +38,14 @@ export const getVacancies = createAppAsyncThunk<IResponse, void>(
   async (_, { rejectWithValue, getState }) => {
     try {
       const { page, count } = getState().searchVacancies
+
       let { no_agreement, payment_to, payment_from, catalogues, keyword, published } =
         getState().searchVacancies.filters
 
       if (payment_from || payment_to) {
         no_agreement = 1
       }
+
       const res = await vacanciesApi.getVacancies({
         count,
         page,
@@ -78,6 +80,7 @@ export const searchVacanciesSlice = createSlice({
       state.filters.payment_from = ''
       state.filters.payment_from = ''
       state.filters.catalogues = null
+      state.page = 0
     }
   },
   extraReducers: builder => {

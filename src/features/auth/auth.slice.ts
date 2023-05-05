@@ -1,17 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { createAppAsyncThunk } from 'common/utils/create-app-async-thunk'
-import { authApi } from 'features/auth/auth.api'
+import { authApi, AuthResponseType } from 'features/auth/auth.api'
 import { setInitialized } from 'app/app.slice'
-import { getAuthInitStateFromLS } from 'common/utils/getAuthInitStateFromLS'
 import { localStorageKeys } from 'common/enums/localStorageKeys'
-
-export interface IAuthState {
-  access_token: string
-  refresh_token: string
-  ttl: number
-  token_type: string
-  expires_in: number
-}
 
 export const authAndRefresh = createAppAsyncThunk(
   'auth/authAndRefresh',
@@ -26,6 +17,8 @@ export const authAndRefresh = createAppAsyncThunk(
         const res = await authApi.refreshToken(accessData.refresh_token)
         localStorage.setItem(localStorageKeys.ACCESS_DATA, JSON.stringify(res.data))
         return res.data
+      } else {
+        return
       }
     } catch (e) {
       return rejectWithValue(e)
@@ -34,10 +27,17 @@ export const authAndRefresh = createAppAsyncThunk(
     }
   }
 )
+const initState: AuthResponseType = {
+  access_token: '',
+  refresh_token: '',
+  ttl: 0,
+  token_type: '',
+  expires_in: 0
+}
 
 const authSlice = createSlice({
   name: 'auth',
-  initialState: getAuthInitStateFromLS(localStorageKeys.ACCESS_DATA),
+  initialState: initState,
   reducers: {},
   extraReducers: builder => {
     builder.addCase(authAndRefresh.fulfilled, (state, action) => {
@@ -45,4 +45,6 @@ const authSlice = createSlice({
     })
   }
 })
+
+//getAuthInitStateFromLS(localStorageKeys.ACCESS_DATA, initState)
 export const authReducer = authSlice.reducer

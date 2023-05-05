@@ -1,19 +1,10 @@
-import { IAuthState } from 'features/auth/auth.slice'
+import { AuthResponseType } from 'features/auth/auth.api'
 
-//accessData
-export const getAuthInitStateFromLS = (key: string) => {
-  const initState: IAuthState = {
-    access_token: '',
-    refresh_token: '',
-    ttl: 0,
-    token_type: '',
-    expires_in: 0
-  }
-
+export const getAuthInitStateFromLS = (key: string, initState: AuthResponseType) => {
   try {
     const accessData = localStorage.getItem(key)
     if (accessData) {
-      return JSON.parse(accessData) as IAuthState
+      return JSON.parse(accessData) as AuthResponseType
     } else {
       return initState
     }

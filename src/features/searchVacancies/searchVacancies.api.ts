@@ -3,7 +3,9 @@ import { IFilters } from 'features/searchVacancies/searchVacancies.slice'
 
 export const vacanciesApi = {
   getVacancies(params: { count: number; page: number } & Partial<IFilters>) {
-    return instance.get<IResponse>('/vacancies', { params })
+    return instance.get<IResponse>('/vacancies', {
+      params
+    })
   }
 }
 export interface Positions {
