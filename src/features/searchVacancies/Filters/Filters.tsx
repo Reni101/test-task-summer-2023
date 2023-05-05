@@ -9,12 +9,13 @@ export const Filters = () => {
   const dispatch = useAppDispatch()
   const catalogs = useAppSelector(state => state.catalogs)
 
-  const [category, setCategory] = useState<null | string>(null)
+  const [category, setCategory] = useState<string | null>(null)
   const [payment_from, setPayment_from] = useState<number | ''>('')
   const [payment_to, setPayment_to] = useState<number | ''>('')
 
   const searchHandler = () => {
     dispatch(setSearchParams({ catalogues: category, payment_from, payment_to }))
+    dispatch(changeCurrentPage(0))
   }
 
   const resetAllHandler = () => {
@@ -27,7 +28,7 @@ export const Filters = () => {
 
   useEffect(() => {
     dispatch(getCatalogs())
-  }, [])
+  }, [dispatch])
 
   return (
     <div className={styles.container}>
@@ -74,7 +75,7 @@ export const Filters = () => {
         }}
       />
       <Button onClick={searchHandler} fullWidth={true}>
-        Принять
+        Применить
       </Button>
     </div>
   )

@@ -2,14 +2,10 @@ import { Button, Input, TextInputProps } from '@mantine/core'
 import { Search } from 'tabler-icons-react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { KeyboardEvent, useEffect, useState } from 'react'
-import {
-  changeCurrentPage,
-  searchByKeyWord,
-  setSearchParams
-} from 'features/searchVacancies/searchVacancies.slice'
+import { changeCurrentPage, setSearchParams } from 'features/searchVacancies/searchVacancies.slice'
 
 export const SearchInput = (props: TextInputProps) => {
-  const keywordState = useAppSelector(state => state.searchVacancies.filters.keyword) as string
+  const keywordState = useAppSelector(state => state.searchVacancies.filters.keyword)
   const dispatch = useAppDispatch()
   const [keyWord, setKeyWord] = useState('')
 
@@ -22,7 +18,9 @@ export const SearchInput = (props: TextInputProps) => {
   }
 
   useEffect(() => {
-    setKeyWord(keywordState)
+    if (keywordState) {
+      setKeyWord(keywordState)
+    }
   }, [keywordState])
 
   return (

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { AuthResponseType } from 'features/auth/auth.api'
+import { localStorageKeys } from 'common/enums/localStorageKeys'
 
 export const instance = axios.create({
   baseURL: 'https://startup-summer-2023-proxy.onrender.com/2.0/',
@@ -10,16 +11,15 @@ export const instance = axios.create({
   }
 })
 
-instance.interceptors.request.use(
-  request => {
-    const accessData = localStorage.getItem('accessData')
+instance.interceptors.request.use(request => {
+  try {
+    const accessData = localStorage.getItem(localStorageKeys.ACCESS_DATA)
     if (accessData) {
       const data = JSON.parse(accessData) as AuthResponseType
       request.headers.Authorization = `${data.token_type} ${data.access_token}`
     }
     return request
-  },
-  error => {
-    return Promise.reject(error)
+  } catch (e) {
+    return request
   }
-)
+})

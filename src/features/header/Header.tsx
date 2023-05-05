@@ -7,12 +7,9 @@ import styles from './Header.module.css'
 
 export const Header = () => {
   const status = useAppSelector(state => state.app.status)
-  const error = useAppSelector(state => state.app.error)
-  console.log()
   return (
     <div className={styles.container}>
       {status === 'loading' && <Loader className={styles.loader} variant='dots' />}
-      {/*{error && <div>{error}</div>}*/}
       <div className={styles.logo}>
         <img src={logo} alt='alt' />
         <img className={styles.text} src={Jobored} alt='alt' />

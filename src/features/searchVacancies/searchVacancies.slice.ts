@@ -4,29 +4,28 @@ import { IResponse, vacanciesApi } from 'features/searchVacancies/searchVacancie
 
 export interface IFiltersAndPagination {
   page: number
-  maxItems: number
   count: number
 
   filters: IFilters
 }
 export interface IFilters {
-  published?: number
-  keyword?: string | null
-  payment_from?: number | ''
-  payment_to?: number | ''
-  catalogues?: string | null
-  no_agreement?: null | number
+  published: number
+  keyword: string | null
+  payment_from: number | ''
+  payment_to: number | ''
+  catalogues: string | null
+  no_agreement: null | number
 }
 
 const initialState: IResponse & IFiltersAndPagination = {
   objects: [],
-  total: 0,
+  total: null,
   page: 0,
-  maxItems: 500,
   count: 4,
   filters: {
     published: 1,
     no_agreement: null,
+
     keyword: null,
     payment_from: '',
     payment_to: '',
@@ -39,20 +38,21 @@ export const getVacancies = createAppAsyncThunk<IResponse, void>(
   async (_, { rejectWithValue, getState }) => {
     try {
       const { page, count } = getState().searchVacancies
-      let { no_agreement, payment_to, payment_from, ...filters } =
+      let { no_agreement, payment_to, payment_from, catalogues, keyword, published } =
         getState().searchVacancies.filters
 
       if (payment_from || payment_to) {
         no_agreement = 1
       }
-
       const res = await vacanciesApi.getVacancies({
         count,
         page,
         payment_from,
         payment_to,
         no_agreement,
-        ...filters
+        catalogues,
+        keyword,
+        published
       })
       return res.data
     } catch (e) {
@@ -69,14 +69,15 @@ export const searchVacanciesSlice = createSlice({
     changeCurrentPage(state, action: PayloadAction<number>) {
       state.page = action.payload
     },
-    searchByKeyWord(state, action: PayloadAction<string>) {
-      state.filters.keyword = action.payload
+    setSearchParams(state, action: PayloadAction<Partial<IFilters>>) {
+      state.filters = { ...state.filters, ...action.payload }
     },
-    setSearchParams(state, action: PayloadAction<IFilters>) {
-      state.filters.catalogues = action.payload.catalogues
-      state.filters.payment_from = action.payload.payment_from
-      state.filters.payment_to = action.payload.payment_to
-      state.filters.keyword = action.payload.keyword
+    clearState(state) {
+      state.total = null
+      state.filters.keyword = null
+      state.filters.payment_from = ''
+      state.filters.payment_from = ''
+      state.filters.catalogues = null
     }
   },
   extraReducers: builder => {
@@ -86,5 +87,5 @@ export const searchVacanciesSlice = createSlice({
     })
   }
 })
-export const { changeCurrentPage, searchByKeyWord, setSearchParams } = searchVacanciesSlice.actions
+export const { changeCurrentPage, setSearchParams, clearState } = searchVacanciesSlice.actions
 export const searchVacanciesReducer = searchVacanciesSlice.reducer

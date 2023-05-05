@@ -3,6 +3,8 @@ import { FC, memo } from 'react'
 import { paymentResult } from 'common/utils/payment'
 import { MapPin, Star } from 'tabler-icons-react'
 import { useNavigate } from 'react-router-dom'
+import { toggleVacancyInLS } from 'common/utils/toggleVacancyInLS'
+import { localStorageKeys } from 'common/enums/localStorageKeys'
 import styles from './VacancyItem.module.css'
 
 interface PropsType {
@@ -13,7 +15,7 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy }) => {
   const navigate = useNavigate()
 
   const navigateToVacancy = () => {
-    navigate(`vacancy/${vacancy.id}`, { state: vacancy })
+    navigate(`/vacancy/${vacancy.id}`, { state: vacancy })
   }
 
   return (
@@ -34,7 +36,14 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy }) => {
           <MapPin size={20} color={'#000000'} style={{ opacity: 0.5 }} /> {vacancy.town.title}
         </div>
       </div>
-      <Star color={'#ACADB9'} />
+
+      <div
+        onClick={() => {
+          toggleVacancyInLS(localStorageKeys.VACANCIES_LS, vacancy)
+        }}
+      >
+        <Star color={'#ACADB9'} />
+      </div>
     </div>
   )
 })

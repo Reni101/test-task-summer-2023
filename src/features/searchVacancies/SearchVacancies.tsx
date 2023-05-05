@@ -1,5 +1,9 @@
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
-import { changeCurrentPage, getVacancies } from 'features/searchVacancies/searchVacancies.slice'
+import {
+  changeCurrentPage,
+  clearState,
+  getVacancies
+} from 'features/searchVacancies/searchVacancies.slice'
 import { useEffect } from 'react'
 import { Pagination } from '@mantine/core'
 import { Filters } from 'features/searchVacancies/Filters/Filters'
@@ -11,9 +15,8 @@ export const SearchVacancies = () => {
   const status = useAppSelector(state => state.app.status)
   const total = useAppSelector(state => state.searchVacancies.total)
   const pageCount = useAppSelector(state => state.searchVacancies.count)
-  const maxItems = useAppSelector(state => state.searchVacancies.maxItems)
+  const maxItems = 500
   const currentPage = useAppSelector(state => state.searchVacancies.page)
-  const searchByKeyWord = useAppSelector(state => state.searchVacancies.filters.keyword)
   const filters = useAppSelector(state => state.searchVacancies.filters)
 
   const setPage = (page: number) => {
@@ -23,7 +26,11 @@ export const SearchVacancies = () => {
 
   useEffect(() => {
     dispatch(getVacancies())
-  }, [currentPage, searchByKeyWord, filters])
+
+    return () => {
+      dispatch(clearState())
+    }
+  }, [currentPage, filters, dispatch])
 
   return (
     <div className={styles.container}>
@@ -36,7 +43,7 @@ export const SearchVacancies = () => {
         value={currentPage + 1}
         className={styles.pagination}
         onChange={setPage}
-        total={Math.ceil(total > maxItems ? maxItems / pageCount : total / pageCount)}
+        total={Math.ceil(total ?? 1 > maxItems ? maxItems / pageCount : total ?? 1 / pageCount)}
         disabled={status === 'loading'}
       />
     </div>

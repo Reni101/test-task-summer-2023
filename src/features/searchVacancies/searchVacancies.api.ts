@@ -2,7 +2,7 @@ import { instance } from 'common/api/instance'
 import { IFilters } from 'features/searchVacancies/searchVacancies.slice'
 
 export const vacanciesApi = {
-  getVacancies(params: { count: number; page?: number } & IFilters) {
+  getVacancies(params: { count: number; page: number } & Partial<IFilters>) {
     return instance.get<IResponse>('/vacancies', { params })
   }
 }
@@ -46,5 +46,5 @@ export interface IVacancy {
 
 export interface IResponse {
   objects: IVacancy[]
-  total: number
+  total: number | null
 }

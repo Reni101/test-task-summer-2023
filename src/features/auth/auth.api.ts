@@ -14,7 +14,7 @@ export const authApi = {
     })
   },
   refreshToken(token: string) {
-    return instanceAuth.get<Omit<AuthResponseType, 'reg_user_resumes_count'>>('refresh_token', {
+    return instanceAuth.get<AuthResponseType>('refresh_token', {
       params: {
         client_id: '2356',
         client_secret:
@@ -31,5 +31,4 @@ export type AuthResponseType = {
   ttl: number
   token_type: string
   expires_in: number
-  reg_user_resumes_count: number
 }

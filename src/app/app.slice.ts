@@ -34,10 +34,8 @@ const slice = createSlice({
         action => action.type.endsWith('/rejected'),
         (state, action) => {
           if (action.payload.response) {
-            debugger
             state.error = action.payload.response.data.error.message
           } else {
-            debugger
             state.error = action.payload.message
           }
           state.status = 'failed'
