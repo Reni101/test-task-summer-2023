@@ -31,7 +31,7 @@ export const App = () => {
           <Route path='/vacancy/:id' element={<Vacancy />} />
           <Route
             path='/404'
-            element={<div style={{ textAlign: 'center' }}>Упс, здесь еще ничего нет!</div>}
+            element={<div style={{ textAlign: 'center' }}>Упс, здесь еще ничего111 нет!</div>}
           />
         </Routes>
       </div>
