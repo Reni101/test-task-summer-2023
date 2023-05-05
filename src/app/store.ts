@@ -20,7 +20,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  blacklist: ['searchVacancies', 'app', 'catalogs', 'auth']
+  blacklist: ['searchVacancies', 'app', 'catalogs', ]
 }
 const rootReducer = combineReducers({
   app: appReducer,
