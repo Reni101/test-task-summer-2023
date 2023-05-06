@@ -1,10 +1,10 @@
-import { AuthResponseType } from 'features/auth/auth.api'
+import { AuthType } from 'features/auth/auth.api'
 
-export const getAuthInitStateFromLS = (key: string, initState: AuthResponseType) => {
+export const getAuthInitStateFromLS = (key: string, initState: AuthType) => {
   try {
     const accessData = localStorage.getItem(key)
     if (accessData) {
-      return JSON.parse(accessData) as AuthResponseType
+      return JSON.parse(accessData) as AuthType
     } else {
       return initState
     }

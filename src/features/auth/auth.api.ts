@@ -2,7 +2,7 @@ import { instanceAuth } from 'common/api/instance.auth'
 
 export const authApi = {
   authByPassword() {
-    return instanceAuth.get<AuthResponseType>('password', {
+    return instanceAuth.get<AuthType>('password', {
       params: {
         login: 'sergei.stralenia@gmail.com',
         password: 'paralect123',
@@ -14,7 +14,7 @@ export const authApi = {
     })
   },
   refreshToken(token: string) {
-    return instanceAuth.get<AuthResponseType>('refresh_token', {
+    return instanceAuth.get<AuthType>('refresh_token', {
       params: {
         client_id: '2356',
         client_secret:
@@ -25,7 +25,7 @@ export const authApi = {
   }
 }
 
-export type AuthResponseType = {
+export type AuthType = {
   access_token: string
   refresh_token: string
   ttl: number

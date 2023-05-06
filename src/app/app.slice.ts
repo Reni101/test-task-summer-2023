@@ -18,14 +18,20 @@ const slice = createSlice({
     builder
       .addMatcher(
         action => {
-          return action.type.endsWith('/pending')
+          return action.type.endsWith('getVacancies/pending')
         },
         state => {
           state.status = 'loading'
         }
       )
       .addMatcher(
-        action => action.type.endsWith('/fulfilled'),
+        action => {
+          if (action.type.endsWith('authAndRefresh/fulfilled')) {
+            return false
+          } else {
+            return action.type.endsWith('/fulfilled')
+          }
+        },
         state => {
           state.status = 'succeeded'
         }

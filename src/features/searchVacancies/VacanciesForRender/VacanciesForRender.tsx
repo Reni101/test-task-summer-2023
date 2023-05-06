@@ -3,7 +3,6 @@ import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
 import { Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { clearState } from 'features/searchVacancies/searchVacancies.slice'
-import { Loader } from '@mantine/core'
 import styles from './VacanciesForRender.module.css'
 
 export const VacanciesForRender = () => {
@@ -22,13 +21,9 @@ export const VacanciesForRender = () => {
 
   return (
     <div className={styles.vacancies}>
-      {data.objects.length ? (
-        data.objects.map(vacancy => {
-          return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
-        })
-      ) : (
-        <Loader />
-      )}
+      {data.objects?.map(vacancy => {
+        return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
+      })}
     </div>
   )
 }

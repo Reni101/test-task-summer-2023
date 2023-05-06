@@ -4,7 +4,7 @@ import { paymentResult } from 'common/utils/payment'
 import { MapPin } from 'tabler-icons-react'
 import { useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
-import { StarIcon } from 'common/components/StarIcon/StarIcon'
+import { StarIcon } from 'common/components/VacancyItem/StarIcon/StarIcon'
 import styles from './VacancyItem.module.css'
 
 interface PropsType {
@@ -43,7 +43,7 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
         </div>
       </div>
 
-      <StarIcon vacancy={vacancy} />
+      <StarIcon  vacancy={vacancy} />
     </div>
   )
 })

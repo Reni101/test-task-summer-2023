@@ -20,7 +20,6 @@ export const App = () => {
   if (!isInitialized) {
     return <Loader className={styles.loader} />
   }
-
   return (
     <>
       <Header />
