@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { getCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
 import { changeCurrentPage, setSearchParams } from 'features/searchVacancies/searchVacancies.slice'
+import { ChevronDown, X } from 'tabler-icons-react'
 import styles from './Filters.module.css'
 
 export const Filters = () => {
@@ -33,10 +34,15 @@ export const Filters = () => {
   return (
     <div className={styles.container}>
       <div className={styles.filterHead}>
-        <span>Фильтры</span>
-
-        <Button onClick={resetAllHandler} variant='default'>
-          сбросить всё
+        <span className={styles.title}>Фильтры</span>
+        <Button
+          variant='white'
+          radius='md'
+          compact
+          rightIcon={<X size={15} strokeWidth={1.5} />}
+          onClick={resetAllHandler}
+        >
+          Сбросить всё
         </Button>
       </div>
 
@@ -44,6 +50,7 @@ export const Filters = () => {
 
       <Select
         placeholder='Выберете отрасль'
+        rightSection={<ChevronDown size={25} strokeWidth={1} color={'#D5D6DC'} />}
         onChange={key => {
           setCategory(key)
         }}
@@ -74,7 +81,7 @@ export const Filters = () => {
           control: { border: 'none', opacity: 0.5 }
         }}
       />
-      <Button onClick={searchHandler} fullWidth={true}>
+      <Button style={{ marginTop: '20px' }} onClick={searchHandler} fullWidth={true}>
         Применить
       </Button>
     </div>

@@ -18,9 +18,11 @@
 
 @media screen and (max-width: 867px) {
   .logo {
-    position: relative;
-    left: -5vh;
+    left: 5vw;
   }
+}
+
+@media screen and (max-width: 562px){
   .text {
     display: none;
   }
@@ -31,6 +33,12 @@
   justify-content: center;
   gap: 60px;
   font-weight: 400;
+}
+@media screen and (max-width: 867px){
+  .navigation{
+    gap: 30px;
+  }
+
 }
 
 .navigation .active {

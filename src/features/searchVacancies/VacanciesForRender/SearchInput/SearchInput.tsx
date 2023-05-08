@@ -18,7 +18,7 @@ export const SearchInput = (props: TextInputProps) => {
   }
 
   useEffect(() => {
-    if (keywordState) {
+    if (keywordState === '') {
       setKeyWord(keywordState)
     }
   }, [keywordState])

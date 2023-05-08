@@ -2,6 +2,7 @@
   max-width: 1320px;
   margin: 0 auto;
 }
+
 .flexContainer {
   display: flex;
   justify-content: center;

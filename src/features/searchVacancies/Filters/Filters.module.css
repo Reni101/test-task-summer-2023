@@ -9,8 +9,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    margin-bottom: 32px;
 }
-.inputNumber {
-    padding: 10px 0;
+.filterHead .title {
+    font-weight: 700;
+    font-size: 20px;
+}
+.filterHead button {
+    color: #ACADB9;
+    font-size: 14px;
+    font-weight: 500;
+}
+.filterHead button :hover{
+    color: #5e96fc;
 }
