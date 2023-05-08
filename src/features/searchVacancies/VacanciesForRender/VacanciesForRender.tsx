@@ -2,7 +2,7 @@ import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
 import { Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { clearState } from 'features/searchVacancies/searchVacancies.slice'
+import { resetAll } from 'features/searchVacancies/searchVacancies.slice'
 import styles from './VacanciesForRender.module.css'
 
 export const VacanciesForRender = () => {
@@ -11,7 +11,7 @@ export const VacanciesForRender = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(clearState())
+      dispatch(resetAll())
     }
   }, [dispatch])
 

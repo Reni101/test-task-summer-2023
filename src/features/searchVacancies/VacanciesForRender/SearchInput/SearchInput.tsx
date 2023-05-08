@@ -18,8 +18,8 @@ export const SearchInput = (props: TextInputProps) => {
   }
 
   useEffect(() => {
-    if (keywordState === '') {
-      setKeyWord(keywordState)
+    if (keywordState === null) {
+      setKeyWord('')
     }
   }, [keywordState])
 

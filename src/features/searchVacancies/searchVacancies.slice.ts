@@ -23,7 +23,7 @@ const initialState: IResponse & IFiltersAndPagination = {
   page: 0,
   count: 4,
   filters: {
-    published: null,
+    published: 1,
     no_agreement: null,
 
     keyword: null,
@@ -47,16 +47,19 @@ export const getVacancies = createAppAsyncThunk<IResponse, void>(
         no_agreement = 1
       }
 
-      const res = await vacanciesApi.getVacancies({
-        count,
-        page,
-        payment_from,
-        payment_to,
-        no_agreement,
-        catalogues,
-        keyword,
-        published
-      },accessData)
+      const res = await vacanciesApi.getVacancies(
+        {
+          count,
+          page,
+          payment_from,
+          payment_to,
+          no_agreement,
+          catalogues,
+          keyword,
+          published
+        },
+        accessData
+      )
       return res.data
     } catch (e) {
       return rejectWithValue(e)
@@ -75,13 +78,13 @@ export const searchVacanciesSlice = createSlice({
     setSearchParams(state, action: PayloadAction<Partial<IFilters>>) {
       state.filters = { ...state.filters, ...action.payload }
     },
-    clearState(state) {
-      state.total = null
+    resetAll(state) {
       state.filters.keyword = null
       state.filters.payment_from = ''
       state.filters.payment_from = ''
       state.filters.catalogues = null
       state.page = 0
+      state.total = null
     }
   },
   extraReducers: builder => {
@@ -91,5 +94,5 @@ export const searchVacanciesSlice = createSlice({
     })
   }
 })
-export const { changeCurrentPage, setSearchParams, clearState } = searchVacanciesSlice.actions
+export const { changeCurrentPage, setSearchParams, resetAll } = searchVacanciesSlice.actions
 export const searchVacanciesReducer = searchVacanciesSlice.reducer

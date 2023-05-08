@@ -2,7 +2,11 @@ import { Button, NumberInput, Select } from '@mantine/core'
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { getCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
-import { changeCurrentPage, setSearchParams } from 'features/searchVacancies/searchVacancies.slice'
+import {
+  changeCurrentPage,
+  resetAll,
+  setSearchParams
+} from 'features/searchVacancies/searchVacancies.slice'
 import { ChevronDown, X } from 'tabler-icons-react'
 import styles from './Filters.module.css'
 
@@ -20,11 +24,10 @@ export const Filters = () => {
   }
 
   const resetAllHandler = () => {
+    dispatch(resetAll())
     setPayment_from('')
     setPayment_to('')
     setCategory(null)
-    dispatch(setSearchParams({ catalogues: null, payment_to: '', payment_from: '', keyword: '' }))
-    dispatch(changeCurrentPage(0))
   }
 
   useEffect(() => {
