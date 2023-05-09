@@ -2,14 +2,13 @@ import React from 'react'
 import { Pagination } from '@mantine/core'
 import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
 import { usePagination } from 'common/hooks/usePagination'
+import style from './Favorite.module.css'
 
 export const Favorite = () => {
   const { currentData, handlePageChange, currentPage, total } = usePagination()
 
   return (
-    <div
-      style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', paddingTop: '40px' }}
-    >
+    <div className={style.container}>
       {currentData.length ? (
         currentData.map(vacancy => {
           return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />

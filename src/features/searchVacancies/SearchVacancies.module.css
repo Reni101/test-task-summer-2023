@@ -6,8 +6,9 @@
 .flexContainer {
   display: flex;
   justify-content: center;
-  gap: 28px;
   padding-top: 40px;
+  gap: 28px;
+
 }
 @media screen and (max-width: 767px) {
   .flexContainer {
