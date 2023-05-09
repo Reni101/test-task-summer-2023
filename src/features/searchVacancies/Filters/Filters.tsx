@@ -1,5 +1,5 @@
 import { Button, NumberInput, Select } from '@mantine/core'
-import { useEffect, useState } from 'react'
+import { KeyboardEvent, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { getCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
 import {
@@ -13,7 +13,8 @@ import styles from './Filters.module.css'
 export const Filters = () => {
   const dispatch = useAppDispatch()
   const catalogs = useAppSelector(state => state.catalogs)
-
+  const status = useAppSelector(state => state.app.status)
+  const isLoading = status === 'loading'
   const [category, setCategory] = useState<string | null>(null)
   const [payment_from, setPayment_from] = useState<number | ''>('')
   const [payment_to, setPayment_to] = useState<number | ''>('')
@@ -21,6 +22,10 @@ export const Filters = () => {
   const searchHandler = () => {
     dispatch(setSearchParams({ catalogues: category, payment_from, payment_to }))
     dispatch(changeCurrentPage(0))
+  }
+
+  const pressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
+    e.key === 'Enter' && searchHandler()
   }
 
   const resetAllHandler = () => {
@@ -39,6 +44,7 @@ export const Filters = () => {
       <div className={styles.filterHead}>
         <span className={styles.title}>Фильтры</span>
         <Button
+          disabled={isLoading}
           variant='white'
           radius='md'
           compact
@@ -71,6 +77,8 @@ export const Filters = () => {
             label: catalog.title
           }
         })}
+        onKeyDown={pressEnter}
+        disabled={isLoading}
       />
       <div className={styles.title}>Оклад</div>
       <NumberInput
@@ -84,6 +92,8 @@ export const Filters = () => {
           input: { height: '42px' },
           control: { border: 'none', opacity: 0.2 }
         }}
+        onKeyDown={pressEnter}
+        disabled={isLoading}
       />
       <NumberInput
         data-elem='salary-to-input'
@@ -96,12 +106,15 @@ export const Filters = () => {
           input: { height: '42px' },
           control: { border: 'none', opacity: 0.2 }
         }}
+        onKeyDown={pressEnter}
+        disabled={isLoading}
       />
       <Button
         data-elem='search-button'
         className={styles.buttonAccept}
         onClick={searchHandler}
         fullWidth={true}
+        disabled={isLoading}
       >
         Применить
       </Button>

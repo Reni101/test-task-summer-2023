@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { Pagination } from '@mantine/core'
 import { Filters } from 'features/searchVacancies/Filters/Filters'
 
-import { SearchInput } from 'features/searchVacancies/Vacancies/SearchInput/SearchInput'
+import { SearchInput } from 'features/searchVacancies/SearchInput/SearchInput'
 import { Vacancies } from 'features/searchVacancies/Vacancies/Vacancies'
 import styles from './SearchVacancies.module.css'
 

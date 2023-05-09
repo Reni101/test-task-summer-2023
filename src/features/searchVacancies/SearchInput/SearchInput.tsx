@@ -6,6 +6,8 @@ import { changeCurrentPage, setSearchParams } from 'features/searchVacancies/sea
 
 export const SearchInput = (props: TextInputProps) => {
   const keywordState = useAppSelector(state => state.searchVacancies.filters.keyword)
+  const status = useAppSelector(state => state.app.status)
+  const isLoading = status === 'loading'
   const dispatch = useAppDispatch()
   const [keyWord, setKeyWord] = useState('')
 
@@ -36,12 +38,19 @@ export const SearchInput = (props: TextInputProps) => {
       icon={<Search size='1.1rem' strokeWidth={1.5} />}
       radius='md'
       rightSection={
-        <Button data-elem='search-button' onClick={searchByKeyWordHandler} radius='md' size='xs'>
+        <Button
+          data-elem='search-button'
+          disabled={isLoading}
+          onClick={searchByKeyWordHandler}
+          radius='md'
+          size='xs'
+        >
           Поиск
         </Button>
       }
       placeholder='Введите название вакансии'
       rightSectionWidth={90}
+      disabled={isLoading}
       {...props}
     />
   )
