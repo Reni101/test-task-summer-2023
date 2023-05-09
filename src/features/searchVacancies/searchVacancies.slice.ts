@@ -81,7 +81,7 @@ export const searchVacanciesSlice = createSlice({
     resetAll(state) {
       state.filters.keyword = null
       state.filters.payment_from = ''
-      state.filters.payment_from = ''
+      state.filters.payment_to = ''
       state.filters.catalogues = null
       state.page = 0
       state.total = null

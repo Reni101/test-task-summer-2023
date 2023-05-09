@@ -15,9 +15,15 @@ export const Filters = () => {
   const catalogs = useAppSelector(state => state.catalogs)
   const status = useAppSelector(state => state.app.status)
   const isLoading = status === 'loading'
+
   const [category, setCategory] = useState<string | null>(null)
   const [payment_from, setPayment_from] = useState<number | ''>('')
   const [payment_to, setPayment_to] = useState<number | ''>('')
+
+  const inputStyles = {
+    input: { height: '42px' },
+    control: { border: 'none', opacity: 0.2 }
+  }
 
   const searchHandler = () => {
     dispatch(setSearchParams({ catalogues: category, payment_from, payment_to }))
@@ -28,11 +34,11 @@ export const Filters = () => {
     e.key === 'Enter' && searchHandler()
   }
 
-  const resetAllHandler = () => {
+  const resetAllHandler = async () => {
+    await setPayment_from('')
+    await setPayment_to('')
+    await setCategory(null)
     dispatch(resetAll())
-    setPayment_from('')
-    setPayment_to('')
-    setCategory(null)
   }
 
   useEffect(() => {
@@ -77,8 +83,8 @@ export const Filters = () => {
             label: catalog.title
           }
         })}
-        onKeyDown={pressEnter}
         disabled={isLoading}
+        onKeyDown={pressEnter}
       />
       <div className={styles.title}>Оклад</div>
       <NumberInput
@@ -88,10 +94,7 @@ export const Filters = () => {
         onChange={value => setPayment_from(value as number)}
         placeholder='От'
         rightSectionWidth={40}
-        styles={{
-          input: { height: '42px' },
-          control: { border: 'none', opacity: 0.2 }
-        }}
+        styles={inputStyles}
         onKeyDown={pressEnter}
         disabled={isLoading}
       />
@@ -102,10 +105,7 @@ export const Filters = () => {
         onChange={value => setPayment_to(value as number)}
         placeholder='До'
         rightSectionWidth={40}
-        styles={{
-          input: { height: '42px' },
-          control: { border: 'none', opacity: 0.2 }
-        }}
+        styles={inputStyles}
         onKeyDown={pressEnter}
         disabled={isLoading}
       />
