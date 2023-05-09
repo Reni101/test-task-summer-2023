@@ -8,7 +8,7 @@ const favoriteSlice = createSlice({
     toggleFavorite(state, action: PayloadAction<IVacancy>) {
       const index = state.findIndex(el => el.id === action.payload.id)
       if (index > -1) {
-        state.splice(index, 2)
+        state.splice(index, 1)
       } else {
         state.push(action.payload)
       }
