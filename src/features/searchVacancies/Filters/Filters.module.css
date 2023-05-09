@@ -1,25 +1,38 @@
-.container{
-    min-width: 315px;
-    height: 100%;
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 20px;
+.container {
+  min-width: 315px;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
 }
-.filterHead{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 32px;
+.filterHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
 }
 .filterHead .title {
-    font-weight: 700;
-    font-size: 20px;
+  font-weight: 700;
+  font-size: 20px;
 }
 .filterHead button {
-    color: #ACADB9;
-    font-size: 14px;
-    font-weight: 500;
+  color: #acadb9;
+  font-size: 14px;
+  font-weight: 500;
 }
-.filterHead button :hover{
-    color: #5e96fc;
+.filterHead button :hover {
+  color: #5e96fc;
+}
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  margin-bottom: 8px;
+}
+.inputNumber{
+  border-radius: 8px;
+  margin: 8px 0 8px;
+}
+.container .buttonAccept {
+  margin-top: 20px;
 }

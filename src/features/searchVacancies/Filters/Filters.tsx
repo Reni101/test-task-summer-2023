@@ -49,14 +49,21 @@ export const Filters = () => {
         </Button>
       </div>
 
-      <div>Отрасль</div>
+      <div className={styles.title}>Отрасль</div>
 
       <Select
+        data-elem='industry-select'
         placeholder='Выберете отрасль'
+        searchable
+        styles={{
+          rightSection: { pointerEvents: 'none' },
+          input: { height: '42px', borderRadius: '8px', marginBottom: '20px' }
+        }}
         rightSection={<ChevronDown size={25} strokeWidth={1} color={'#D5D6DC'} />}
         onChange={key => {
           setCategory(key)
         }}
+        rightSectionWidth={40}
         value={category}
         data={catalogs.map(catalog => {
           return {
@@ -65,26 +72,37 @@ export const Filters = () => {
           }
         })}
       />
-      <div>Оклад</div>
+      <div className={styles.title}>Оклад</div>
       <NumberInput
+        data-elem='salary-from-input'
         className={styles.inputNumber}
         value={payment_from}
         onChange={value => setPayment_from(value as number)}
         placeholder='От'
-        styles={{ input: { height: '42px' }, control: { border: 'none', opacity: 0.5 } }}
-      />
-      <NumberInput
-        className={styles.inputNumber}
-        value={payment_to}
-        data-elem='salary-to-input'
-        onChange={value => setPayment_to(value as number)}
-        placeholder='До'
+        rightSectionWidth={40}
         styles={{
           input: { height: '42px' },
-          control: { border: 'none', opacity: 0.5 }
+          control: { border: 'none', opacity: 0.2 }
         }}
       />
-      <Button style={{ marginTop: '20px' }} onClick={searchHandler} fullWidth={true}>
+      <NumberInput
+        data-elem='salary-to-input'
+        className={styles.inputNumber}
+        value={payment_to}
+        onChange={value => setPayment_to(value as number)}
+        placeholder='До'
+        rightSectionWidth={40}
+        styles={{
+          input: { height: '42px' },
+          control: { border: 'none', opacity: 0.2 }
+        }}
+      />
+      <Button
+        data-elem='search-button'
+        className={styles.buttonAccept}
+        onClick={searchHandler}
+        fullWidth={true}
+      >
         Применить
       </Button>
     </div>

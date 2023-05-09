@@ -25,6 +25,7 @@ export const SearchInput = (props: TextInputProps) => {
 
   return (
     <Input
+      data-elem='search-input'
       onKeyDown={pressEnter}
       styles={{ input: { height: '48px' } }}
       value={keyWord}

@@ -20,7 +20,7 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
   }
 
   return (
-    <div className={styles.container}>
+    <div data-elem={`vacancy-${vacancy.id}`} className={styles.container}>
       <div className={styles.flexbox}>
         <div
           onClick={navigateToVacancy}
@@ -43,7 +43,7 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
         </div>
       </div>
 
-      <StarIcon  vacancy={vacancy} />
+      <StarIcon vacancy={vacancy} />
     </div>
   )
 })
