@@ -3,8 +3,9 @@ import { changeCurrentPage, getVacancies } from 'features/searchVacancies/search
 import { useEffect } from 'react'
 import { Pagination } from '@mantine/core'
 import { Filters } from 'features/searchVacancies/Filters/Filters'
-import { VacanciesForRender } from 'features/searchVacancies/VacanciesForRender/VacanciesForRender'
-import { SearchInput } from 'features/searchVacancies/VacanciesForRender/SearchInput/SearchInput'
+
+import { SearchInput } from 'features/searchVacancies/Vacancies/SearchInput/SearchInput'
+import { Vacancies } from 'features/searchVacancies/Vacancies/Vacancies'
 import styles from './SearchVacancies.module.css'
 
 export const SearchVacancies = () => {
@@ -12,9 +13,9 @@ export const SearchVacancies = () => {
   const status = useAppSelector(state => state.app.status)
   const total = useAppSelector(state => state.searchVacancies.total)
   const pageCount = useAppSelector(state => state.searchVacancies.count)
-  const maxItems = 500
   const currentPage = useAppSelector(state => state.searchVacancies.page)
   const filters = useAppSelector(state => state.searchVacancies.filters)
+  const maxItems = 500
 
   const setPage = (page: number) => {
     const currentPage = page - 1
@@ -31,7 +32,7 @@ export const SearchVacancies = () => {
         <Filters />
         <div className={styles.searchContainer}>
           <SearchInput />
-          <VacanciesForRender />
+          <Vacancies />
         </div>
       </div>
 

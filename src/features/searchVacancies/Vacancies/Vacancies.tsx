@@ -3,9 +3,9 @@ import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
 import { Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { resetAll } from 'features/searchVacancies/searchVacancies.slice'
-import styles from './VacanciesForRender.module.css'
+import styles from 'features/searchVacancies/Vacancies/Vacancies.module.css'
 
-export const VacanciesForRender = () => {
+export const Vacancies = () => {
   const dispatch = useAppDispatch()
   const data = useAppSelector(state => state.searchVacancies)
 
