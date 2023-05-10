@@ -4,7 +4,7 @@ import { paymentResult } from 'common/utils/payment'
 import { MapPin } from 'tabler-icons-react'
 import { useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
-import { AddToFavorite } from 'common/components/VacancyItem/AddToFavorite/AddToFavorite'
+import { ToggleFavorite } from 'common/components/VacancyItem/toggleFavorite/ToggleFavorite'
 import styles from './VacancyItem.module.css'
 
 interface PropsType {
@@ -54,7 +54,7 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
         </div>
       </div>
 
-      <AddToFavorite vacancy={vacancy} />
+      <ToggleFavorite vacancy={vacancy} />
     </div>
   )
 })

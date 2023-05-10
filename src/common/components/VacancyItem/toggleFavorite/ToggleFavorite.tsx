@@ -9,7 +9,7 @@ interface PropsType {
   vacancy: IVacancy
 }
 
-export const AddToFavorite: FC<PropsType> = memo(({ vacancy }) => {
+export const ToggleFavorite: FC<PropsType> = memo(({ vacancy }) => {
   const dispatch = useAppDispatch()
   const status = useAppSelector(state => state.app.status)
   const favVacancies = useAppSelector(state => state.favorite)
