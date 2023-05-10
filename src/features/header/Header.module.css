@@ -18,7 +18,7 @@
 
 @media screen and (max-width: 867px) {
   .logo {
-    left: 5vw;
+    left: 3vw;
   }
 }
 
@@ -36,9 +36,8 @@
 }
 @media screen and (max-width: 867px){
   .navigation{
-    gap: 30px;
+    gap: 20px;
   }
-
 }
 
 .navigation .active {

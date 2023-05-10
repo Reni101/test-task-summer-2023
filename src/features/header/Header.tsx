@@ -31,7 +31,7 @@ export const Header = () => {
           to={PATH.SEARCH_VACANCIES}
           className={({ isActive }) => (isActive ? styles.active : '')}
         >
-          Поиск вакансий
+          Поиск Вакансий
         </NavLink>
         <NavLink to={PATH.FAVORITE} className={({ isActive }) => (isActive ? styles.active : '')}>
           Избранное

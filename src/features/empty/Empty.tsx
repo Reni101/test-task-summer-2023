@@ -17,7 +17,7 @@ export const Empty = () => {
       <img src={notFound} alt='not found' />
       <div>Упс, здесь еще ничего нет! Поиск Вакансий</div>
       <Button variant='light' onClick={goSearchJobPageHandler}>
-        Поиск вакансий
+        Поиск Вакансий
       </Button>
     </div>
   )

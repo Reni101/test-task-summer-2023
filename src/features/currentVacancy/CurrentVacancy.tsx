@@ -23,7 +23,7 @@ export const CurrentVacancy = () => {
 
   return (
     <div className={styles.container}>
-      {!!Object.keys(vacancy).length && isLoading && (
+      {!!Object.keys(vacancy).length && !isLoading && (
         <>
           <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={true} />
 
