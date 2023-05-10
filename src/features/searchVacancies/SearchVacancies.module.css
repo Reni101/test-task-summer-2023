@@ -1,21 +1,19 @@
 .container {
   max-width: 1320px;
   margin: 0 auto;
-}
-
-.flexContainer {
   display: flex;
   justify-content: center;
   padding-top: 40px;
   gap: 28px;
 }
+
 @media screen and (max-width: 1135px) {
-  .flexContainer {
+  .container {
     margin: auto 10px;
   }
 }
 @media screen and (max-width: 767px) {
-  .flexContainer {
+  .container {
     flex-direction: column;
   }
 }

@@ -26,20 +26,17 @@ export const SearchVacancies = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.flexContainer}>
-        <Filters />
-        <div className={styles.searchContainer}>
-          <SearchInput />
-          <Vacancies />
-        </div>
+      <Filters />
+      <div className={styles.searchContainer}>
+        <SearchInput />
+        <Vacancies />
+        <Pagination
+          value={currentPage + 1}
+          className={styles.pagination}
+          onChange={setPage}
+          total={totalPage}
+        />
       </div>
-
-      <Pagination
-        value={currentPage + 1}
-        className={styles.pagination}
-        onChange={setPage}
-        total={totalPage}
-      />
     </div>
   )
 }
