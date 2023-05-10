@@ -13,8 +13,6 @@ import styles from './Filters.module.css'
 export const Filters = () => {
   const dispatch = useAppDispatch()
   const catalogs = useAppSelector(state => state.catalogs)
-  const status = useAppSelector(state => state.app.status)
-  const isLoading = status === 'loading'
 
   const [category, setCategory] = useState<string | null>(null)
   const [payment_from, setPayment_from] = useState<number | ''>('')
@@ -50,7 +48,6 @@ export const Filters = () => {
       <div className={styles.filterHead}>
         <span className={styles.title}>Фильтры</span>
         <Button
-          disabled={isLoading}
           variant='white'
           radius='md'
           compact
@@ -83,7 +80,6 @@ export const Filters = () => {
             label: catalog.title
           }
         })}
-        disabled={isLoading}
         onKeyDown={pressEnter}
       />
       <div className={styles.title}>Оклад</div>
@@ -96,7 +92,6 @@ export const Filters = () => {
         rightSectionWidth={40}
         styles={inputStyles}
         onKeyDown={pressEnter}
-        disabled={isLoading}
       />
       <NumberInput
         data-elem='salary-to-input'
@@ -107,14 +102,12 @@ export const Filters = () => {
         rightSectionWidth={40}
         styles={inputStyles}
         onKeyDown={pressEnter}
-        disabled={isLoading}
       />
       <Button
         data-elem='search-button'
         className={styles.buttonAccept}
         onClick={searchHandler}
         fullWidth={true}
-        disabled={isLoading}
       >
         Применить
       </Button>

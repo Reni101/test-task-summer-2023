@@ -11,10 +11,9 @@ import styles from './SearchVacancies.module.css'
 
 export const SearchVacancies = () => {
   const dispatch = useAppDispatch()
-  const status = useAppSelector(state => state.app.status)
   const currentPage = useAppSelector(state => state.searchVacancies.page)
   const filters = useAppSelector(state => state.searchVacancies.filters)
-  const total = useAppSelector(selectTotalPage)
+  const totalPage = useAppSelector(selectTotalPage)
 
   const setPage = (page: number) => {
     const currentPage = page - 1
@@ -39,8 +38,7 @@ export const SearchVacancies = () => {
         value={currentPage + 1}
         className={styles.pagination}
         onChange={setPage}
-        total={total}
-        disabled={status === 'loading'}
+        total={totalPage}
       />
     </div>
   )
