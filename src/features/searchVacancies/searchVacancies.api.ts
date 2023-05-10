@@ -3,7 +3,7 @@ import { IFilters } from 'features/searchVacancies/searchVacancies.slice'
 import { AuthType } from 'features/auth/auth.api'
 
 export const vacanciesApi = {
-  getVacancies(params: { count: number; page: number } & Partial<IFilters>, data: AuthType) {
+  getVacancies(params: { count: number; page: number | null } & Partial<IFilters>, data: AuthType) {
     return instance.get<IResponse>('vacancies', {
       params,
       headers: {

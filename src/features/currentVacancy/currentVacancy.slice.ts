@@ -7,7 +7,8 @@ export const getCurrentVacancy = createAppAsyncThunk<IVacancy, string>(
   'currentVacancySlice/getCurrentVacancy',
   async (id, { rejectWithValue }) => {
     try {
-      return await currentVacanciesApi.getVacancy(id)
+      const res = await currentVacanciesApi.getVacancy(id)
+      return res.data
     } catch (e) {
       return rejectWithValue(e)
     }

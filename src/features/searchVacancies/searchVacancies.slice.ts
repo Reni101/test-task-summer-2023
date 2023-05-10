@@ -1,9 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { createAppAsyncThunk } from 'common/utils/create-app-async-thunk'
 import { IResponse, vacanciesApi } from 'features/searchVacancies/searchVacancies.api'
+import { RootState } from 'app/store'
 
 export interface IFiltersAndPagination {
-  page: number
+  page: number | null
   count: number
 
   filters: IFilters
@@ -11,8 +12,8 @@ export interface IFiltersAndPagination {
 export interface IFilters {
   published: number | null
   keyword: string | null
-  payment_from: number | ''
-  payment_to: number | ''
+  payment_from: number | '' | null
+  payment_to: number | '' | null
   catalogues: string | null
   no_agreement: null | number
 }
@@ -37,7 +38,7 @@ export const getVacancies = createAppAsyncThunk<IResponse, void>(
   'searchVacancies/getVacancies',
   async (_, { rejectWithValue, getState }) => {
     try {
-      const { page, count } = getState().searchVacancies
+      let { page, count } = getState().searchVacancies
       const accessData = getState().auth
 
       let { no_agreement, payment_to, payment_from, catalogues, keyword, published } =
@@ -46,6 +47,9 @@ export const getVacancies = createAppAsyncThunk<IResponse, void>(
       if (payment_from || payment_to) {
         no_agreement = 1
       }
+      if (payment_from === '') payment_from = null
+      if (payment_to === '') payment_to = null
+      if (page === 0) page = null
 
       const res = await vacanciesApi.getVacancies(
         {
@@ -73,7 +77,7 @@ export const searchVacanciesSlice = createSlice({
 
   reducers: {
     changeCurrentPage(state, action: PayloadAction<number>) {
-      state.page = action.payload
+      state.page = action.payload - 1
     },
     setSearchParams(state, action: PayloadAction<Partial<IFilters>>) {
       state.filters = { ...state.filters, ...action.payload }
@@ -96,3 +100,9 @@ export const searchVacanciesSlice = createSlice({
 })
 export const { changeCurrentPage, setSearchParams, resetAll } = searchVacanciesSlice.actions
 export const searchVacanciesReducer = searchVacanciesSlice.reducer
+
+const currentPage = (state: RootState) => state.searchVacancies.page
+
+export const selectCurrentPage = createSelector(currentPage, currentPage => {
+  return (currentPage ?? 0) + 1
+})

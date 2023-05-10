@@ -1,5 +1,9 @@
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
-import { changeCurrentPage, getVacancies } from 'features/searchVacancies/searchVacancies.slice'
+import {
+  changeCurrentPage,
+  getVacancies,
+  selectCurrentPage
+} from 'features/searchVacancies/searchVacancies.slice'
 import { useEffect } from 'react'
 import { Pagination } from '@mantine/core'
 import { Filters } from 'features/searchVacancies/Filters/Filters'
@@ -11,13 +15,12 @@ import styles from './SearchVacancies.module.css'
 
 export const SearchVacancies = () => {
   const dispatch = useAppDispatch()
-  const currentPage = useAppSelector(state => state.searchVacancies.page)
+  const currentPage = useAppSelector(selectCurrentPage)
   const filters = useAppSelector(state => state.searchVacancies.filters)
   const totalPage = useAppSelector(selectTotalPage)
 
   const setPageHandle = (page: number) => {
-    const currentPage = page - 1
-    dispatch(changeCurrentPage(currentPage))
+    dispatch(changeCurrentPage(page))
   }
 
   useEffect(() => {
@@ -31,7 +34,7 @@ export const SearchVacancies = () => {
         <SearchInput />
         <Vacancies />
         <Pagination
-          value={currentPage + 1}
+          value={currentPage}
           className={styles.pagination}
           onChange={setPageHandle}
           total={totalPage}
