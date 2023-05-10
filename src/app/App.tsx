@@ -8,7 +8,8 @@ import { Vacancy } from 'features/vacancy/Vacancy'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { authAndRefresh } from 'features/auth/auth.slice'
 import { Loader } from '@mantine/core'
-import { NotFound } from 'features/notFound/NotFound'
+import { Empty } from 'features/empty/Empty'
+import { PATH } from 'common/enums/PATH'
 
 export const App = () => {
   const dispatch = useAppDispatch()
@@ -26,10 +27,10 @@ export const App = () => {
       <Header />
       <div className={styles.container}>
         <Routes>
-          <Route path='/' element={<SearchVacancies />} />
-          <Route path='/favorite' element={<Favorite />} />
-          <Route path='/vacancy/:id' element={<Vacancy />} />
-          <Route path='/404' element={<NotFound />} />
+          <Route path={PATH.SEARCH_VACANCIES} element={<SearchVacancies />} />
+          <Route path={PATH.FAVORITE} element={<Favorite />} />
+          <Route path={`${PATH.VACANCY}:id`} element={<Vacancy />} />
+          <Route path={PATH.EMPTY} element={<Empty />} />
         </Routes>
       </div>
     </>

@@ -4,7 +4,7 @@ import { paymentResult } from 'common/utils/payment'
 import { MapPin } from 'tabler-icons-react'
 import { useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
-import { StarIcon } from 'common/components/VacancyItem/StarIcon/StarIcon'
+import { AddToFavorite } from 'common/components/VacancyItem/AddToFavorite/AddToFavorite'
 import styles from './VacancyItem.module.css'
 
 interface PropsType {
@@ -28,14 +28,25 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
         >
           {vacancy.profession}
         </div>
-        <div className={styles.payment}>
+
+        <div className={classNames(styles.payment, { [styles.paymentCurrent]: isCurrentVacancy })}>
           {vacancy.payment_from !== 0 && vacancy.payment_to !== 0 && (
-            <span className={styles.currency}>
+            <span
+              className={classNames(styles.currency, {
+                [styles.currencyCurrent]: isCurrentVacancy
+              })}
+            >
               {paymentResult(vacancy.payment_from, vacancy.payment_to, vacancy.currency)}
             </span>
           )}
           <span className={styles.dot}>•</span>
-          <span className={styles.workTitle}>{vacancy.type_of_work?.title}</span>
+          <span
+            className={classNames(styles.workTitle, {
+              [styles.workTitleCurrent]: isCurrentVacancy
+            })}
+          >
+            {vacancy.type_of_work?.title}
+          </span>
         </div>
 
         <div className={styles.location}>
@@ -43,7 +54,7 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
         </div>
       </div>
 
-      <StarIcon vacancy={vacancy} />
+      <AddToFavorite vacancy={vacancy} />
     </div>
   )
 })

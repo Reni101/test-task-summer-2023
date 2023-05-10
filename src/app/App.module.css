@@ -3,3 +3,9 @@
   width: 100vw;
   background-color: #f5f5f5;
 }
+.loader {
+  position: fixed;
+  top: 30%;
+  text-align: center;
+  width: 100%;
+}

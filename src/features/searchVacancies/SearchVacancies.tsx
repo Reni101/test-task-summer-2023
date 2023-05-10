@@ -6,16 +6,15 @@ import { Filters } from 'features/searchVacancies/Filters/Filters'
 
 import { SearchInput } from 'features/searchVacancies/SearchInput/SearchInput'
 import { Vacancies } from 'features/searchVacancies/Vacancies/Vacancies'
+import { selectTotalPage } from 'app/app.slice'
 import styles from './SearchVacancies.module.css'
 
 export const SearchVacancies = () => {
   const dispatch = useAppDispatch()
   const status = useAppSelector(state => state.app.status)
-  const total = useAppSelector(state => state.searchVacancies.total)
-  const pageCount = useAppSelector(state => state.searchVacancies.count)
   const currentPage = useAppSelector(state => state.searchVacancies.page)
   const filters = useAppSelector(state => state.searchVacancies.filters)
-  const maxItems = 500
+  const total = useAppSelector(selectTotalPage)
 
   const setPage = (page: number) => {
     const currentPage = page - 1
@@ -40,7 +39,7 @@ export const SearchVacancies = () => {
         value={currentPage + 1}
         className={styles.pagination}
         onChange={setPage}
-        total={Math.ceil(total ?? 1 > maxItems ? maxItems / pageCount : total ?? 1 / pageCount)}
+        total={total}
         disabled={status === 'loading'}
       />
     </div>

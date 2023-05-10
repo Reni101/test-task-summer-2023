@@ -2,27 +2,29 @@ import React from 'react'
 import { Pagination } from '@mantine/core'
 import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
 import { usePagination } from 'common/hooks/usePagination'
-import style from './Favorite.module.css'
+import { useNavigate } from 'react-router-dom'
+import { PATH } from 'common/enums/PATH'
+import styles from './Favorite.module.css'
 
 export const Favorite = () => {
-  const { currentData, handlePageChange, currentPage, total } = usePagination()
+  const navigate = useNavigate()
+  const { currentData, handlePageChange, currentPage, total, dataLength } = usePagination()
+
+  if (!dataLength) {
+    navigate(PATH.EMPTY)
+  }
 
   return (
-    <div className={style.container}>
-      {currentData.length ? (
+    <div className={styles.container}>
+      {currentData.length &&
         currentData.map(vacancy => {
           return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
-        })
-      ) : (
-        <div>empty</div>
-      )}
+        })}
 
       <Pagination
-        style={{ margin: '20px' }}
+        className={styles.pagination}
         value={currentPage + 1}
-        onChange={page => {
-          handlePageChange(page)
-        }}
+        onChange={handlePageChange}
         total={total}
       />
     </div>

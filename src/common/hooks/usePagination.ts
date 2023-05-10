@@ -1,11 +1,8 @@
 import { useLayoutEffect, useState } from 'react'
 import { IVacancy } from 'features/searchVacancies/searchVacancies.api'
 import { useAppSelector } from 'common/hooks/hooks'
-import { useNavigate } from 'react-router-dom'
 
 export const usePagination = (itemsPerPage: number = 4) => {
-  const navigate = useNavigate()
-
   const data = useAppSelector(state => state.favorite)
   const [currentPage, setCurrentPage] = useState(0)
   const [currentData, setCurrentData] = useState<IVacancy[]>([])
@@ -21,13 +18,9 @@ export const usePagination = (itemsPerPage: number = 4) => {
     }
   }, [currentPage, itemsPerPage, data])
 
-  if (!data.length) {
-    navigate('/404')
-  }
-
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage - 1)
   }
 
-  return { currentData, handlePageChange, currentPage, total }
+  return { currentData, handlePageChange, currentPage, total, dataLength: data.length }
 }

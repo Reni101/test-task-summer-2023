@@ -1,14 +1,15 @@
 import React from 'react'
 import { Button } from '@mantine/core'
 import { useNavigate } from 'react-router-dom'
+import styles from 'features/empty/Empty.module.css'
+import { PATH } from 'common/enums/PATH'
 import notFound from '../../common/assets/Frame.svg'
-import styles from './NotFound.module.css'
 
-export const NotFound = () => {
+export const Empty = () => {
   const navigate = useNavigate()
 
   const goSearchJobPageHandler = () => {
-    navigate('/')
+    navigate(PATH.SEARCH_VACANCIES)
   }
   return (
     <div className={styles.container}>

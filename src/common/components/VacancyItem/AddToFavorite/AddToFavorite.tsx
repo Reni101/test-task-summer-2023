@@ -9,11 +9,12 @@ interface PropsType {
   vacancy: IVacancy
 }
 
-export const StarIcon: FC<PropsType> = memo(({ vacancy }) => {
+export const AddToFavorite: FC<PropsType> = memo(({ vacancy }) => {
   const dispatch = useAppDispatch()
+  const status = useAppSelector(state => state.app.status)
   const favVacancies = useAppSelector(state => state.favorite)
   const isFavorite = favVacancies.some(el => el.id === vacancy.id)
-  const status = useAppSelector(state => state.app.status)
+
   return (
     <ActionIcon
       onClick={() => {

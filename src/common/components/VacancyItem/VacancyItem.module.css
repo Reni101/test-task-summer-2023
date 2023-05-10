@@ -8,6 +8,8 @@
   display: flex;
   justify-content: space-between;
   gap: 10px;
+
+  font-size: 16px;
 }
 .title {
   cursor: pointer;
@@ -20,18 +22,28 @@
 
 .titleCurrent {
   pointer-events: none;
+  font-weight: 700;
+  font-size: 28px;
   color: #000;
 }
 
 .payment {
   margin: 12px 0;
 }
+.paymentCurrent {
+  margin: 16px 0;
+}
+
 .currency {
   font-weight: 600;
-  font-size: 16px;
   line-height: 20px;
   margin-right: 5px;
 }
+.currencyCurrent {
+  font-weight: 700;
+  font-size: 20px;
+}
+
 .dot {
   margin-right: 12px;
   margin-left: 7px;
@@ -40,8 +52,11 @@
 
 .workTitle {
   font-weight: 400;
-  font-size: 16px;
   line-height: 19px;
+}
+
+.workTitleCurrent {
+  font-size: 20px;
 }
 
 .location {

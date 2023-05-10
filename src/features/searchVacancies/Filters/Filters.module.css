@@ -5,6 +5,12 @@
   border-radius: 12px;
   padding: 20px;
 }
+
+@media screen and (max-width: 480px) {
+  .container {
+    min-width: 300px;
+  }
+}
 .filterHead {
   display: flex;
   justify-content: space-between;
@@ -29,7 +35,7 @@
   line-height: 19px;
   margin-bottom: 8px;
 }
-.inputNumber{
+.inputNumber {
   border-radius: 8px;
   margin: 8px 0 8px;
 }
