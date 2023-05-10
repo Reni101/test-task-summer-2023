@@ -8,7 +8,7 @@ import styles from './Favorite.module.css'
 
 export const Favorite = () => {
   const navigate = useNavigate()
-  const { currentData, handlePageChange, currentPage, total, dataLength } = usePagination()
+  const { currentData, setPageHandler, currentPage, totalPage, dataLength } = usePagination()
 
   if (!dataLength) {
     navigate(PATH.EMPTY)
@@ -23,9 +23,9 @@ export const Favorite = () => {
 
       <Pagination
         className={styles.pagination}
-        value={currentPage + 1}
-        onChange={handlePageChange}
-        total={total}
+        value={currentPage}
+        onChange={setPageHandler}
+        total={totalPage}
       />
     </div>
   )

@@ -2,9 +2,9 @@ import { IVacancy } from 'features/searchVacancies/searchVacancies.api'
 import { FC, memo } from 'react'
 import { paymentResult } from 'common/utils/payment'
 import { MapPin } from 'tabler-icons-react'
-import { useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
-import { ToggleFavorite } from 'common/components/VacancyItem/toggleFavorite/ToggleFavorite'
+import { ToggleFavorite } from 'common/components/VacancyItem/ToggleFavorite/ToggleFavorite'
+import { TitleVacancy } from 'common/components/VacancyItem/Title/TitleVacancy'
 import styles from './VacancyItem.module.css'
 
 interface PropsType {
@@ -13,21 +13,10 @@ interface PropsType {
 }
 
 export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) => {
-  const navigate = useNavigate()
-
-  const navigateToVacancy = () => {
-    navigate(`/vacancy/${vacancy.id}`, { state: vacancy })
-  }
-
   return (
     <div data-elem={`vacancy-${vacancy.id}`} className={styles.container}>
-      <div className={styles.flexbox}>
-        <div
-          onClick={navigateToVacancy}
-          className={classNames(styles.title, { [styles.titleCurrent]: isCurrentVacancy })}
-        >
-          {vacancy.profession}
-        </div>
+      <div className={styles.vacancyContainer}>
+        <TitleVacancy vacancy={vacancy} isCurrentVacancy={isCurrentVacancy} />
 
         <div className={classNames(styles.payment, { [styles.paymentCurrent]: isCurrentVacancy })}>
           {vacancy.payment_from !== 0 && vacancy.payment_to !== 0 && (
@@ -50,7 +39,7 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
         </div>
 
         <div className={styles.location}>
-          <MapPin size={20} color={'#000000'} style={{ opacity: 0.5 }} /> {vacancy.town.title}
+          <MapPin size={20} color={'#000000'} /> {vacancy.town.title}
         </div>
       </div>
 

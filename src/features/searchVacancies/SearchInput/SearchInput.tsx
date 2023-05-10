@@ -1,14 +1,16 @@
-import { Button, Input, TextInputProps } from '@mantine/core'
+import { Button, Input } from '@mantine/core'
 import { Search } from 'tabler-icons-react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { KeyboardEvent, useEffect, useState } from 'react'
 import { changeCurrentPage, setSearchParams } from 'features/searchVacancies/searchVacancies.slice'
 
-export const SearchInput = (props: TextInputProps) => {
+export const SearchInput = () => {
+  const dispatch = useAppDispatch()
+
   const keywordState = useAppSelector(state => state.searchVacancies.filters.keyword)
   const status = useAppSelector(state => state.app.status)
   const isLoading = status === 'loading'
-  const dispatch = useAppDispatch()
+
   const [keyWord, setKeyWord] = useState('')
 
   const searchByKeyWordHandler = () => {
@@ -50,8 +52,6 @@ export const SearchInput = (props: TextInputProps) => {
       }
       placeholder='Введите название вакансии'
       rightSectionWidth={90}
-      disabled={isLoading}
-      {...props}
     />
   )
 }

@@ -15,7 +15,7 @@ export const Header = () => {
         <LoadingBar
           height={5}
           progress={100}
-          transitionTime={6000000}
+          transitionTime={600000}
           color={'#5E96FC'}
           loaderSpeed={1000}
         />

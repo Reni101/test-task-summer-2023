@@ -6,7 +6,7 @@ export const usePagination = (itemsPerPage: number = 4) => {
   const data = useAppSelector(state => state.favorite)
   const [currentPage, setCurrentPage] = useState(0)
   const [currentData, setCurrentData] = useState<IVacancy[]>([])
-  const total = Math.ceil(data.length / 4)
+  const totalPage = Math.ceil(data.length / 4)
 
   useLayoutEffect(() => {
     const start = currentPage * itemsPerPage
@@ -18,9 +18,16 @@ export const usePagination = (itemsPerPage: number = 4) => {
     }
   }, [currentPage, itemsPerPage, data])
 
-  const handlePageChange = (newPage: number) => {
+  const setPageHandler = (newPage: number) => {
     setCurrentPage(newPage - 1)
   }
 
-  return { currentData, handlePageChange, currentPage, total, dataLength: data.length }
+  return {
+    currentData,
+    setPageHandler,
+    currentPage: currentPage + 1,
+    totalPage,
+    dataLength: data.length
+  }
 }
+// +1 / -1 page need to synchronized pagination

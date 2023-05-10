@@ -15,7 +15,7 @@ export const SearchVacancies = () => {
   const filters = useAppSelector(state => state.searchVacancies.filters)
   const totalPage = useAppSelector(selectTotalPage)
 
-  const setPage = (page: number) => {
+  const setPageHandle = (page: number) => {
     const currentPage = page - 1
     dispatch(changeCurrentPage(currentPage))
   }
@@ -33,7 +33,7 @@ export const SearchVacancies = () => {
         <Pagination
           value={currentPage + 1}
           className={styles.pagination}
-          onChange={setPage}
+          onChange={setPageHandle}
           total={totalPage}
         />
       </div>
