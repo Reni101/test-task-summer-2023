@@ -2,16 +2,17 @@ import { useAppSelector } from 'common/hooks/hooks'
 import { NavLink } from 'react-router-dom'
 import LoadingBar from 'react-top-loading-bar'
 import { PATH } from 'common/enums/PATH'
+import { selectIsLoading } from 'app/app.selectors'
 import logo from '../../common/assets/union.svg'
 import Jobored from '../../common/assets/jobored.svg'
 import styles from './Header.module.css'
 
 export const Header = () => {
-  const status = useAppSelector(state => state.app.status)
+  const isLoading = useAppSelector(selectIsLoading)
 
   return (
     <div className={styles.container}>
-      {status === 'loading' && (
+      {isLoading && (
         <LoadingBar
           height={5}
           progress={100}

@@ -38,15 +38,12 @@ export const getVacancies = createAppAsyncThunk<IResponse, void>(
   'searchVacancies/getVacancies',
   async (_, { rejectWithValue, getState }) => {
     try {
-      let { page, count } = getState().searchVacancies
       const accessData = getState().auth
-
+      let { page, count } = getState().searchVacancies
       let { no_agreement, payment_to, payment_from, catalogues, keyword, published } =
         getState().searchVacancies.filters
 
-      if (payment_from || payment_to) {
-        no_agreement = 1
-      }
+      if (payment_from || payment_to) no_agreement = 1
       if (payment_from === '') payment_from = null
       if (payment_to === '') payment_to = null
       if (page === 0) page = null

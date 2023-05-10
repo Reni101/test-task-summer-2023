@@ -11,6 +11,7 @@ export const Empty = () => {
   const goSearchJobPageHandler = () => {
     navigate(PATH.SEARCH_VACANCIES)
   }
+
   return (
     <div className={styles.container}>
       <img src={notFound} alt='not found' />

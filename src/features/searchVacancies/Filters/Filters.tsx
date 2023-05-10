@@ -1,7 +1,7 @@
 import { Button, NumberInput, Select } from '@mantine/core'
 import { KeyboardEvent, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
-import { getCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
+import { catalogsSelector, getCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
 import {
   changeCurrentPage,
   resetAll,
@@ -12,7 +12,7 @@ import styles from './Filters.module.css'
 
 export const Filters = () => {
   const dispatch = useAppDispatch()
-  const catalogs = useAppSelector(state => state.catalogs)
+  const catalogs = useAppSelector(catalogsSelector)
 
   const [category, setCategory] = useState<string | null>(null)
   const [payment_from, setPayment_from] = useState<number | ''>('')
@@ -25,7 +25,7 @@ export const Filters = () => {
 
   const searchHandler = () => {
     dispatch(setSearchParams({ catalogues: category, payment_from, payment_to }))
-    dispatch(changeCurrentPage(0))
+    dispatch(changeCurrentPage(1))
   }
 
   const pressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -87,7 +87,7 @@ export const Filters = () => {
         data-elem='salary-from-input'
         className={styles.inputNumber}
         value={payment_from}
-        onChange={value => setPayment_from(value as number)}
+        onChange={value => setPayment_from(value)}
         placeholder='От'
         rightSectionWidth={40}
         styles={inputStyles}
@@ -97,7 +97,7 @@ export const Filters = () => {
         data-elem='salary-to-input'
         className={styles.inputNumber}
         value={payment_to}
-        onChange={value => setPayment_to(value as number)}
+        onChange={value => setPayment_to(value)}
         placeholder='До'
         rightSectionWidth={40}
         styles={inputStyles}

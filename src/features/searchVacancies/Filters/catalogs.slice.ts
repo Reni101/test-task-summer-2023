@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { createAppAsyncThunk } from 'common/utils/create-app-async-thunk'
 import { catalogsApi, CatalogType } from 'features/searchVacancies/Filters/catalogs.api'
+import { RootState } from 'app/store'
 
 export const getCatalogs = createAppAsyncThunk(
   'catalogs/getCatalogs',
@@ -26,3 +27,5 @@ const catalogsSlice = createSlice({
 })
 
 export const catalogsReducer = catalogsSlice.reducer
+
+export const catalogsSelector = (state: RootState) => state.catalogs

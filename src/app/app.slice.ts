@@ -1,5 +1,4 @@
-import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { RootState } from 'app/store'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
@@ -50,11 +49,3 @@ const slice = createSlice({
 
 export const { setInitialized } = slice.actions
 export const appReducer = slice.reducer
-
-const total = (state: RootState) => state.searchVacancies.total
-const pageCount = (state: RootState) => state.searchVacancies.count
-
-export const selectTotalPage = createSelector(total, pageCount, (total, pageCount) => {
-  const maxItems = 500
-  return Math.ceil(total ?? 0 > maxItems ? maxItems / pageCount : total ?? 0 / pageCount)
-})

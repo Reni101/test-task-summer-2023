@@ -3,18 +3,19 @@ import { Search } from 'tabler-icons-react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { KeyboardEvent, useEffect, useState } from 'react'
 import { changeCurrentPage, setSearchParams } from 'features/searchVacancies/searchVacancies.slice'
+import { selectKeyWord } from 'features/searchVacancies/searchVacancies.selectors'
 import styles from './SearchInput.module.css'
 
 export const SearchInput = () => {
   const dispatch = useAppDispatch()
 
-  const keywordState = useAppSelector(state => state.searchVacancies.filters.keyword)
+  const keywordState = useAppSelector(selectKeyWord)
 
   const [keyWord, setKeyWord] = useState('')
 
   const searchByKeyWordHandler = () => {
     dispatch(setSearchParams({ keyword: keyWord }))
-    dispatch(changeCurrentPage(0))
+    dispatch(changeCurrentPage(1))
   }
   const pressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     e.key === 'Enter' && searchByKeyWordHandler()

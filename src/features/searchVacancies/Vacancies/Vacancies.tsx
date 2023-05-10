@@ -4,10 +4,12 @@ import { Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import { resetAll } from 'features/searchVacancies/searchVacancies.slice'
 import styles from 'features/searchVacancies/Vacancies/Vacancies.module.css'
+import { selectTotal, selectVacancies } from 'features/searchVacancies/searchVacancies.selectors'
 
 export const Vacancies = () => {
   const dispatch = useAppDispatch()
-  const data = useAppSelector(state => state.searchVacancies)
+  const vacancies = useAppSelector(selectVacancies)
+  const total = useAppSelector(selectTotal)
 
   useEffect(() => {
     return () => {
@@ -15,13 +17,13 @@ export const Vacancies = () => {
     }
   }, [dispatch])
 
-  if (data.total === 0) {
+  if (total === 0) {
     return <Navigate to='/404' />
   }
 
   return (
     <div className={styles.vacancies}>
-      {data.objects?.map(vacancy => {
+      {vacancies?.map(vacancy => {
         return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
       })}
     </div>
