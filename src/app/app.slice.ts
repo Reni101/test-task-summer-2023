@@ -17,7 +17,12 @@ const slice = createSlice({
   extraReducers: builder =>
     builder
       .addMatcher(
-        action => action.type.endsWith('/pending'),
+        action => {
+          if (action.type.endsWith('authAndRefresh/pending')) {
+            return false
+          }
+          return action.type.endsWith('/pending')
+        },
         state => {
           state.status = 'loading'
         }
