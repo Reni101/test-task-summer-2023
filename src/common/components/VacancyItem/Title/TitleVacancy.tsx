@@ -2,19 +2,19 @@ import React, { FC } from 'react'
 import classNames from 'classnames'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from 'common/enums/PATH'
-import { IVacancy } from 'features/searchVacancies/searchVacancies.api'
 import styles from './TitleVacancy.module.css'
 
 interface PropsType {
-  vacancy: IVacancy
+  id: number
+  profession: string
   isCurrentVacancy: boolean
 }
 
-export const TitleVacancy: FC<PropsType> = ({ vacancy, isCurrentVacancy }) => {
+export const TitleVacancy: FC<PropsType> = ({ id, profession, isCurrentVacancy }) => {
   const navigate = useNavigate()
 
   const navigateToVacancy = () => {
-    navigate(`${PATH.CURRENT_VACANCY}${vacancy.id}`)
+    navigate(`${PATH.CURRENT_VACANCY}${id}`)
   }
 
   return (
@@ -22,7 +22,7 @@ export const TitleVacancy: FC<PropsType> = ({ vacancy, isCurrentVacancy }) => {
       onClick={navigateToVacancy}
       className={classNames(styles.title, { [styles.titleCurrent]: isCurrentVacancy })}
     >
-      {vacancy.profession}
+      {profession}
     </div>
   )
 }

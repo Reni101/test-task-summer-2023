@@ -11,11 +11,13 @@ interface PropsType {
 }
 
 export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) => {
+  const { id, profession, ...restProps } = vacancy
+
   return (
     <div data-elem={`vacancy-${vacancy.id}`} className={styles.container}>
       <div className={styles.vacancyContainer}>
-        <TitleVacancy vacancy={vacancy} isCurrentVacancy={isCurrentVacancy} />
-        <Description isCurrentVacancy={isCurrentVacancy} {...vacancy} />
+        <TitleVacancy id={id} profession={profession} isCurrentVacancy={isCurrentVacancy} />
+        <Description isCurrentVacancy={isCurrentVacancy} {...restProps} />
       </div>
 
       <ToggleFavorite vacancy={vacancy} />
