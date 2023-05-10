@@ -2,7 +2,10 @@ import { Button, Input } from '@mantine/core'
 import { Search } from 'tabler-icons-react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { KeyboardEvent, useEffect, useState } from 'react'
-import { changeCurrentPage, setSearchParams } from 'features/searchVacancies/searchVacancies.slice'
+import {
+  changeCurrentPage,
+  setSearchQueryParams
+} from 'features/searchVacancies/searchVacancies.slice'
 import { selectKeyWord } from 'features/searchVacancies/searchVacancies.selectors'
 import styles from './SearchInput.module.css'
 
@@ -14,7 +17,7 @@ export const SearchInput = () => {
   const [keyWord, setKeyWord] = useState('')
 
   const searchByKeyWordHandler = () => {
-    dispatch(setSearchParams({ keyword: keyWord }))
+    dispatch(setSearchQueryParams({ keyword: keyWord }))
     dispatch(changeCurrentPage(1))
   }
   const pressEnter = (e: KeyboardEvent<HTMLInputElement>) => {

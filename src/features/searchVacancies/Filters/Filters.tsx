@@ -5,7 +5,7 @@ import { catalogsSelector, getCatalogs } from 'features/searchVacancies/Filters/
 import {
   changeCurrentPage,
   resetAll,
-  setSearchParams
+  setSearchQueryParams
 } from 'features/searchVacancies/searchVacancies.slice'
 import { ChevronDown, X } from 'tabler-icons-react'
 import styles from './Filters.module.css'
@@ -24,7 +24,7 @@ export const Filters = () => {
   }
 
   const searchHandler = () => {
-    dispatch(setSearchParams({ catalogues: category, payment_from, payment_to }))
+    dispatch(setSearchQueryParams({ catalogues: category, payment_from, payment_to }))
     dispatch(changeCurrentPage(1))
   }
 

@@ -76,7 +76,7 @@ export const searchVacanciesSlice = createSlice({
     changeCurrentPage(state, action: PayloadAction<number>) {
       state.page = action.payload - 1
     },
-    setSearchParams(state, action: PayloadAction<Partial<IFilters>>) {
+    setSearchQueryParams(state, action: PayloadAction<Partial<IFilters>>) {
       state.filters = { ...state.filters, ...action.payload }
     },
     resetAll(state) {
@@ -95,7 +95,7 @@ export const searchVacanciesSlice = createSlice({
     })
   }
 })
-export const { changeCurrentPage, setSearchParams, resetAll } = searchVacanciesSlice.actions
+export const { changeCurrentPage, setSearchQueryParams, resetAll } = searchVacanciesSlice.actions
 export const searchVacanciesReducer = searchVacanciesSlice.reducer
 
 const currentPage = (state: RootState) => state.searchVacancies.page

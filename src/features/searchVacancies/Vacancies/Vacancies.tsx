@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { resetAll } from 'features/searchVacancies/searchVacancies.slice'
 import styles from 'features/searchVacancies/Vacancies/Vacancies.module.css'
 import { selectTotal, selectVacancies } from 'features/searchVacancies/searchVacancies.selectors'
+import { PATH } from 'common/enums/PATH'
 
 export const Vacancies = () => {
   const dispatch = useAppDispatch()
@@ -18,7 +19,7 @@ export const Vacancies = () => {
   }, [dispatch])
 
   if (total === 0) {
-    return <Navigate to='/404' />
+    return <Navigate to={PATH.EMPTY} />
   }
 
   return (
