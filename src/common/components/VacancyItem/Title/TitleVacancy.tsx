@@ -14,7 +14,7 @@ export const TitleVacancy: FC<PropsType> = ({ vacancy, isCurrentVacancy }) => {
   const navigate = useNavigate()
 
   const navigateToVacancy = () => {
-    navigate(`${PATH.VACANCY}${vacancy.id}`, { state: vacancy })
+    navigate(`${PATH.CURRENT_VACANCY}${vacancy.id}`)
   }
 
   return (

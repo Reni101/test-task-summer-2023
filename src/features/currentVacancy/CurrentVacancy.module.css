@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: calc(100vh - 80px);
+  padding-top: 40px;
+}
+.descriptionContainer {
+  max-width: 773px;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 24px;
+  margin: 4px auto 40px;
+  border-radius: 12px;
+}
+@media screen and (max-width: 1135px) {
+  .container {
+    margin: auto 10px;
+  }
+}

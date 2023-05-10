@@ -3,13 +3,12 @@ import { Search } from 'tabler-icons-react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { KeyboardEvent, useEffect, useState } from 'react'
 import { changeCurrentPage, setSearchParams } from 'features/searchVacancies/searchVacancies.slice'
+import styles from './SearchInput.module.css'
 
 export const SearchInput = () => {
   const dispatch = useAppDispatch()
 
   const keywordState = useAppSelector(state => state.searchVacancies.filters.keyword)
-  const status = useAppSelector(state => state.app.status)
-  const isLoading = status === 'loading'
 
   const [keyWord, setKeyWord] = useState('')
 
@@ -29,6 +28,7 @@ export const SearchInput = () => {
 
   return (
     <Input
+      className={styles.container}
       data-elem='search-input'
       onKeyDown={pressEnter}
       styles={{ input: { height: '48px' } }}
@@ -40,13 +40,7 @@ export const SearchInput = () => {
       icon={<Search size='1.1rem' strokeWidth={1.5} />}
       radius='md'
       rightSection={
-        <Button
-          data-elem='search-button'
-          disabled={isLoading}
-          onClick={searchByKeyWordHandler}
-          radius='md'
-          size='xs'
-        >
+        <Button data-elem='search-button' onClick={searchByKeyWordHandler} radius='md' size='xs'>
           Поиск
         </Button>
       }

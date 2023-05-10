@@ -15,19 +15,21 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { favoriteReducer } from 'features/favorite/favorite.slice'
+import { currentVacancyReducer } from 'features/currentVacancy/currentVacancy.slice'
 
 const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  blacklist: ['searchVacancies', 'app', 'catalogs', ]
+  whitelist: ['auth', 'favorite']
 }
 const rootReducer = combineReducers({
   app: appReducer,
   auth: authReducer,
   searchVacancies: searchVacanciesReducer,
   catalogs: catalogsReducer,
-  favorite: favoriteReducer
+  favorite: favoriteReducer,
+  currentVacancy: currentVacancyReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

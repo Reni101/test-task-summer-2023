@@ -18,9 +18,7 @@ const slice = createSlice({
   extraReducers: builder =>
     builder
       .addMatcher(
-        action => {
-          return action.type.endsWith('getVacancies/pending')
-        },
+        action => action.type.endsWith('/pending'),
         state => {
           state.status = 'loading'
         }
