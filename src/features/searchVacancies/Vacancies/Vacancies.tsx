@@ -29,10 +29,12 @@ export const Vacancies = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(resetAllFilters())
-      dispatch(setTotal(null))
+      if (total === 0) {
+        dispatch(resetAllFilters())
+        dispatch(setTotal(null))
+      }
     }
-  }, [])
+  }, [total])
 
   if (total === 0) {
     return <Navigate to={PATH.EMPTY} />

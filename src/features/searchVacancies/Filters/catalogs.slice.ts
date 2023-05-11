@@ -28,4 +28,4 @@ const catalogsSlice = createSlice({
 
 export const catalogsReducer = catalogsSlice.reducer
 
-export const catalogsSelector = (state: RootState) => state.catalogs
+export const selectCatalogs = (state: RootState) => state.catalogs

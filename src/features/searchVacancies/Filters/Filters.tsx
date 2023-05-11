@@ -1,22 +1,30 @@
 import { Button, NumberInput, Select } from '@mantine/core'
 import { KeyboardEvent, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
-import { catalogsSelector, getCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
+import { getCatalogs, selectCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
 import {
   changeCurrentPage,
   resetAllFilters,
   setSearchQueryParams
 } from 'features/searchVacancies/searchVacancies.slice'
 import { ChevronDown, X } from 'tabler-icons-react'
+import {
+  selectCatalog,
+  selectPaymentFrom,
+  selectPaymentTo
+} from 'features/searchVacancies/searchVacancies.selectors'
 import styles from './Filters.module.css'
 
 export const Filters = () => {
   const dispatch = useAppDispatch()
-  const catalogs = useAppSelector(catalogsSelector)
+  const catalogs = useAppSelector(selectCatalogs)
+  const payment_fromState = useAppSelector(selectPaymentFrom)
+  const payment_toState = useAppSelector(selectPaymentTo)
+  const catalogState = useAppSelector(selectCatalog)
 
-  const [category, setCategory] = useState<string | null>(null)
-  const [payment_fromInput, setPayment_fromInput] = useState<number | ''>('')
-  const [payment_toInput, setPayment_toInput] = useState<number | ''>('')
+  const [category, setCategory] = useState<string | null>(catalogState)
+  const [payment_fromInput, setPayment_fromInput] = useState<number | ''>(payment_fromState ?? '')
+  const [payment_toInput, setPayment_toInput] = useState<number | ''>(payment_toState ?? '')
 
   const searchHandler = () => {
     const payment_from = payment_fromInput === '' ? null : payment_fromInput
@@ -58,7 +66,7 @@ export const Filters = () => {
           rightIcon={<X size={15} strokeWidth={1.5} />}
           onClick={resetAllHandler}
         >
-          Сбросить всё
+          Сбросить все
         </Button>
       </div>
 
