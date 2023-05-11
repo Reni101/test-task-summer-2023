@@ -15,6 +15,7 @@ export const authAndRefresh = createAppAsyncThunk(
         const res = await authApi.refreshToken(accessData.refresh_token)
         dispatch(setAuthData(res.data))
       }
+      return
     } catch (e) {
       return rejectWithValue(e)
     } finally {

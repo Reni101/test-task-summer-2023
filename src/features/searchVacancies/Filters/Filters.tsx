@@ -36,6 +36,7 @@ export const Filters = () => {
     await setPayment_from('')
     await setPayment_to('')
     await setCategory(null)
+    dispatch(changeCurrentPage(1))
     dispatch(resetAll())
   }
 

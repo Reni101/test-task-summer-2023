@@ -16,6 +16,7 @@ export const SearchVacancies = () => {
   const dispatch = useAppDispatch()
   const currentPage = useAppSelector(selectCurrentPage)
   const filters = useAppSelector(selectFilters)
+
   const totalPage = useAppSelector(selectTotalPage)
 
   const setPageHandle = (page: number) => {

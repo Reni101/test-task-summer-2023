@@ -85,6 +85,8 @@ export const searchVacanciesSlice = createSlice({
       state.filters.payment_to = ''
       state.filters.catalogues = null
       state.page = 0
+    },
+    setTotal(state) {
       state.total = null
     }
   },
@@ -95,7 +97,8 @@ export const searchVacanciesSlice = createSlice({
     })
   }
 })
-export const { changeCurrentPage, setSearchQueryParams, resetAll } = searchVacanciesSlice.actions
+export const { changeCurrentPage, setSearchQueryParams, resetAll, setTotal } =
+  searchVacanciesSlice.actions
 export const searchVacanciesReducer = searchVacanciesSlice.reducer
 
 const currentPage = (state: RootState) => state.searchVacancies.page
