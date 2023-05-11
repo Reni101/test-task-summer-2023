@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { catalogsSelector, getCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
 import {
   changeCurrentPage,
-  resetAll,
+  resetAllFilters,
   setSearchQueryParams
 } from 'features/searchVacancies/searchVacancies.slice'
 import { ChevronDown, X } from 'tabler-icons-react'
@@ -15,15 +15,13 @@ export const Filters = () => {
   const catalogs = useAppSelector(catalogsSelector)
 
   const [category, setCategory] = useState<string | null>(null)
-  const [payment_from, setPayment_from] = useState<number | ''>('')
-  const [payment_to, setPayment_to] = useState<number | ''>('')
-
-  const inputStyles = {
-    input: { height: '42px' },
-    control: { border: 'none', opacity: 0.2 }
-  }
+  const [payment_fromInput, setPayment_fromInput] = useState<number | ''>('')
+  const [payment_toInput, setPayment_toInput] = useState<number | ''>('')
 
   const searchHandler = () => {
+    const payment_from = payment_fromInput === '' ? null : payment_fromInput
+    const payment_to = payment_toInput === '' ? null : payment_toInput
+
     dispatch(setSearchQueryParams({ catalogues: category, payment_from, payment_to }))
     dispatch(changeCurrentPage(1))
   }
@@ -32,17 +30,22 @@ export const Filters = () => {
     e.key === 'Enter' && searchHandler()
   }
 
-  const resetAllHandler = async () => {
-    await setPayment_from('')
-    await setPayment_to('')
-    await setCategory(null)
+  const resetAllHandler = () => {
+    setPayment_fromInput('')
+    setPayment_toInput('')
+    setCategory(null)
     dispatch(changeCurrentPage(1))
-    dispatch(resetAll())
+    dispatch(resetAllFilters())
   }
 
   useEffect(() => {
     dispatch(getCatalogs())
   }, [dispatch])
+
+  const inputStyles = {
+    input: { height: '42px' },
+    control: { border: 'none', opacity: 0.2 }
+  }
 
   return (
     <div className={styles.container}>
@@ -87,8 +90,8 @@ export const Filters = () => {
       <NumberInput
         data-elem='salary-from-input'
         className={styles.inputNumber}
-        value={payment_from}
-        onChange={value => setPayment_from(value)}
+        value={payment_fromInput}
+        onChange={value => setPayment_fromInput(value)}
         placeholder='От'
         rightSectionWidth={40}
         styles={inputStyles}
@@ -97,8 +100,8 @@ export const Filters = () => {
       <NumberInput
         data-elem='salary-to-input'
         className={styles.inputNumber}
-        value={payment_to}
-        onChange={value => setPayment_to(value)}
+        value={payment_toInput}
+        onChange={value => setPayment_toInput(value)}
         placeholder='До'
         rightSectionWidth={40}
         styles={inputStyles}

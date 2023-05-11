@@ -1,7 +1,6 @@
-import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { createAppAsyncThunk } from 'common/utils/create-app-async-thunk'
 import { IResponse, vacanciesApi } from 'features/searchVacancies/searchVacancies.api'
-import { RootState } from 'app/store'
 
 export interface IFiltersAndPagination {
   page: number | null
@@ -12,8 +11,8 @@ export interface IFiltersAndPagination {
 export interface IFilters {
   published: number | null
   keyword: string | null
-  payment_from: number | '' | null
-  payment_to: number | '' | null
+  payment_from: number | null
+  payment_to: number | null
   catalogues: string | null
   no_agreement: null | number
 }
@@ -28,8 +27,8 @@ const initialState: IResponse & IFiltersAndPagination = {
     no_agreement: null,
 
     keyword: null,
-    payment_from: '',
-    payment_to: '',
+    payment_from: null,
+    payment_to: null,
     catalogues: null
   }
 }
@@ -44,8 +43,6 @@ export const getVacancies = createAppAsyncThunk<IResponse, void>(
         getState().searchVacancies.filters
 
       if (payment_from || payment_to) no_agreement = 1
-      if (payment_from === '') payment_from = null
-      if (payment_to === '') payment_to = null
       if (page === 0) page = null
 
       const res = await vacanciesApi.getVacancies(
@@ -79,15 +76,15 @@ export const searchVacanciesSlice = createSlice({
     setSearchQueryParams(state, action: PayloadAction<Partial<IFilters>>) {
       state.filters = { ...state.filters, ...action.payload }
     },
-    resetAll(state) {
+    resetAllFilters(state) {
       state.filters.keyword = null
-      state.filters.payment_from = ''
-      state.filters.payment_to = ''
+      state.filters.payment_from = null
+      state.filters.payment_to = null
       state.filters.catalogues = null
       state.page = 0
     },
-    setTotal(state) {
-      state.total = null
+    setTotal(state, action: PayloadAction<number | null>) {
+      state.total = action.payload
     }
   },
   extraReducers: builder => {
@@ -97,12 +94,7 @@ export const searchVacanciesSlice = createSlice({
     })
   }
 })
-export const { changeCurrentPage, setSearchQueryParams, resetAll, setTotal } =
+
+export const { changeCurrentPage, setSearchQueryParams, resetAllFilters, setTotal } =
   searchVacanciesSlice.actions
 export const searchVacanciesReducer = searchVacanciesSlice.reducer
-
-const currentPage = (state: RootState) => state.searchVacancies.page
-
-export const selectCurrentPage = createSelector(currentPage, currentPage => {
-  return (currentPage ?? 0) + 1
-})

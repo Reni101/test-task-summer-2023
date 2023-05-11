@@ -15,3 +15,9 @@ export const selectTotalPage = createSelector(selectTotal, pageCount, (total, pa
   const maxItems = 500
   return Math.ceil(total ?? 0 > maxItems ? maxItems / pageCount : total ?? 0 / pageCount)
 })
+
+const selectPage = (state: RootState) => state.searchVacancies.page
+
+export const selectCurrentPage = createSelector(selectPage, currentPage => {
+  return (currentPage ?? 0) + 1
+})

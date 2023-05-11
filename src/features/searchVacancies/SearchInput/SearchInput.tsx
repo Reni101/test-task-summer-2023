@@ -14,7 +14,7 @@ export const SearchInput = () => {
 
   const keywordState = useAppSelector(selectKeyWord)
 
-  const [keyWord, setKeyWord] = useState(keywordState ?? '')
+  const [keyWord, setKeyWord] = useState('')
 
   const searchByKeyWordHandler = () => {
     dispatch(setSearchQueryParams({ keyword: keyWord }))
