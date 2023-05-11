@@ -97,7 +97,7 @@ export const Filters = () => {
         data-elem='salary-from-input'
         className={styles.inputNumber}
         value={payment_fromInput}
-        onChange={value => setPayment_fromInput(value)}
+        onChange={setPayment_fromInput}
         placeholder='От'
         rightSectionWidth={40}
         styles={inputStyles}
@@ -107,7 +107,7 @@ export const Filters = () => {
         data-elem='salary-to-input'
         className={styles.inputNumber}
         value={payment_toInput}
-        onChange={value => setPayment_toInput(value)}
+        onChange={setPayment_toInput}
         placeholder='До'
         rightSectionWidth={40}
         styles={inputStyles}

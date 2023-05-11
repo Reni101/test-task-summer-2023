@@ -9,14 +9,14 @@ export const usePagination = (itemsPerPage: number = 4) => {
   const [currentPage, setCurrentPage] = useState(0)
   const [currentData, setCurrentData] = useState<IVacancy[]>([])
 
-  const totalPage = Math.ceil(favoriteVacancies.length / 4)
+  const totalPage = Math.ceil(favoriteVacancies.length / itemsPerPage)
 
   useLayoutEffect(() => {
     const start = currentPage * itemsPerPage
     const end = start + itemsPerPage
     setCurrentData(favoriteVacancies.slice(start, end))
 
-    if (currentPage + 1 > Math.ceil(favoriteVacancies.length / 4)) {
+    if (currentPage + 1 > Math.ceil(favoriteVacancies.length / itemsPerPage)) {
       setCurrentPage(prevState => prevState - 1)
     }
   }, [currentPage, itemsPerPage, favoriteVacancies])

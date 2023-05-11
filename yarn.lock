@@ -1681,6 +1681,13 @@
   resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-6.0.9.tgz#6a98b678b8131d25364cb83270d1209beb1c27f9"
   integrity sha512-01FvXnXed0Hni4WvmtTs0HMulyd7sibEG52uS+oy4ziYumKb8eMMTnvs4Ov7meKAvtA9/pmW+Yif1pm2GB4bnw==
 
+"@mantine/nprogress@^6.0.10":
+  version "6.0.10"
+  resolved "https://registry.yarnpkg.com/@mantine/nprogress/-/nprogress-6.0.10.tgz#d3a10dcc1dbb5e18f5f575f03d2ee570ba521c4b"
+  integrity sha512-n5KPJOKh0MNEPRC21LA/RogbU3Z9Wwhrfa4yUrZdJLfASFqwu2d2e+5hySKLsC2vzhGaQtt96TyhJd+5TXnAuw==
+  dependencies:
+    "@mantine/utils" "6.0.10"
+
 "@mantine/styles@6.0.9":
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/@mantine/styles/-/styles-6.0.9.tgz#9971eefaef2ef4d38a976ca641507732a80263e6"
@@ -1688,6 +1695,11 @@
   dependencies:
     clsx "1.1.1"
     csstype "3.0.9"
+
+"@mantine/utils@6.0.10":
+  version "6.0.10"
+  resolved "https://registry.yarnpkg.com/@mantine/utils/-/utils-6.0.10.tgz#a7e99d4d7368912696f40fe56e444ef4f5befeae"
+  integrity sha512-Lo4VUn3+/kqhdjSoPzUFbxXEjMxj5vS4pqRjKRGtJsTwHiMFNcm8u4cIESzMBAEsoaBrI1dGE4WttwOJhjUaSw==
 
 "@mantine/utils@6.0.9":
   version "6.0.9"
