@@ -1,10 +1,12 @@
-import React, { FC, memo } from 'react'
+import { FC, memo } from 'react'
 import { Star } from 'tabler-icons-react'
 import { IVacancy } from 'features/searchVacancies/searchVacancies.api'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { toggleFavorite } from 'features/favorite/favorite.slice'
 import { ActionIcon } from '@mantine/core'
 import { selectIsLoading } from 'app/app.selectors'
+import { selectFavoriteVacancies } from 'features/favorite/favorite.selectors'
+import { blueColor, greyColor, whiteColor } from 'common/constant/color'
 
 interface PropsType {
   vacancy: IVacancy
@@ -13,7 +15,7 @@ interface PropsType {
 export const ToggleFavorite: FC<PropsType> = memo(({ vacancy }) => {
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(selectIsLoading)
-  const favVacancies = useAppSelector(state => state.favorite)
+  const favVacancies = useAppSelector(selectFavoriteVacancies)
 
   const isFavorite = favVacancies.some(el => el.id === vacancy.id)
 
@@ -31,8 +33,8 @@ export const ToggleFavorite: FC<PropsType> = memo(({ vacancy }) => {
     >
       <Star
         style={{ cursor: 'pointer' }}
-        color={isFavorite ? '#5E96FC' : '#ACADB9'}
-        fill={isFavorite ? '#5E96FC' : '#fff'}
+        color={isFavorite ? blueColor : greyColor}
+        fill={isFavorite ? blueColor : whiteColor}
       />
     </ActionIcon>
   )

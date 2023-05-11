@@ -9,14 +9,13 @@ import styles from './Favorite.module.css'
 export const Favorite = () => {
   const navigate = useNavigate()
   const { currentData, setPageHandler, currentPage, totalPage, dataLength } = usePagination()
-
   if (!dataLength) {
     navigate(PATH.EMPTY)
   }
 
   return (
     <div className={styles.container}>
-      {currentData.length &&
+      {!!currentData.length &&
         currentData.map(vacancy => {
           return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
         })}

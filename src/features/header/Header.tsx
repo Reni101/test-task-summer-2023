@@ -4,6 +4,7 @@ import { PATH } from 'common/enums/PATH'
 import { selectIsLoading } from 'app/app.selectors'
 import { NavigationProgress, nprogress } from '@mantine/nprogress'
 import { useEffect } from 'react'
+import { blueColor } from 'common/constant/color'
 import logo from '../../common/assets/union.svg'
 import Jobored from '../../common/assets/jobored.svg'
 import styles from './Header.module.css'
@@ -23,7 +24,7 @@ export const Header = () => {
         <NavigationProgress
           stepInterval={5}
           transitionDuration={25}
-          color={'#5E96FC'}
+          color={blueColor}
           size={5}
           exitTimeout={1000}
         />
