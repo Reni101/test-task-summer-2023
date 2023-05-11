@@ -15,7 +15,7 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
 
   return (
     <div data-elem={`vacancy-${vacancy.id}`} className={styles.container}>
-      <div className={styles.vacancyContainer}>
+      <div>
         <TitleVacancy id={id} profession={profession} isCurrentVacancy={isCurrentVacancy} />
         <Description isCurrentVacancy={isCurrentVacancy} {...restProps} />
       </div>

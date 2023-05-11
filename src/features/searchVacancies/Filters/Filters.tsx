@@ -13,10 +13,12 @@ import {
   selectPaymentFrom,
   selectPaymentTo
 } from 'features/searchVacancies/searchVacancies.selectors'
+import { selectIsLoading } from 'app/app.selectors'
 import styles from './Filters.module.css'
 
 export const Filters = () => {
   const dispatch = useAppDispatch()
+  const isLoading = useAppSelector(selectIsLoading)
   const catalogs = useAppSelector(selectCatalogs)
   const payment_fromState = useAppSelector(selectPaymentFrom)
   const payment_toState = useAppSelector(selectPaymentTo)
@@ -56,7 +58,10 @@ export const Filters = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div
+      style={isLoading ? { pointerEvents: 'none', opacity: '0.7' } : {}}
+      className={styles.container}
+    >
       <div className={styles.filterHead}>
         <span className={styles.title}>Фильтры</span>
         <Button

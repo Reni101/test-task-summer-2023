@@ -22,7 +22,7 @@
   }
 }
 
-@media screen and (max-width: 562px){
+@media screen and (max-width: 562px) {
   .text {
     display: none;
   }
@@ -34,8 +34,8 @@
   gap: 60px;
   font-weight: 400;
 }
-@media screen and (max-width: 867px){
-  .navigation{
+@media screen and (max-width: 867px) {
+  .navigation {
     gap: 20px;
   }
 }

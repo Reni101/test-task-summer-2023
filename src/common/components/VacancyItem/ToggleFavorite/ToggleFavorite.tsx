@@ -19,16 +19,16 @@ export const ToggleFavorite: FC<PropsType> = memo(({ vacancy }) => {
 
   const isFavorite = favVacancies.some(el => el.id === vacancy.id)
 
+  const toggleFavoriteHandler = () => {
+    dispatch(toggleFavorite(vacancy))
+  }
+
   return (
     <ActionIcon
-      onClick={() => {
-        dispatch(toggleFavorite(vacancy))
-      }}
+      onClick={toggleFavoriteHandler}
       data-elem={`vacancy-${vacancy.id}-shortlist-button`}
       variant='transparent'
-      sx={{
-        '&[data-disabled]': { opacity: 0.5 }
-      }}
+      sx={{ '&[data-disabled]': { opacity: 0.5 } }}
       disabled={isLoading}
     >
       <Star

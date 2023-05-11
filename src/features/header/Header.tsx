@@ -15,6 +15,9 @@ export const Header = () => {
   useEffect(() => {
     if (isLoading) {
       nprogress.start()
+    } else {
+      nprogress.complete()
+      nprogress.reset()
     }
   }, [isLoading])
 
@@ -23,7 +26,7 @@ export const Header = () => {
       {isLoading && (
         <NavigationProgress
           stepInterval={5}
-          transitionDuration={25}
+          transitionDuration={1000}
           color={blueColor}
           size={5}
           exitTimeout={1000}

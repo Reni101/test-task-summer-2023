@@ -43,7 +43,7 @@ const slice = createSlice({
         action => action.type.endsWith('/rejected'),
         (state, action) => {
           debugger
-          if (action.payload.response) {
+          if (action.payload.response.data.error.message) {
             state.error = action.payload.response.data.error.message
           } else {
             state.error = action.payload.message

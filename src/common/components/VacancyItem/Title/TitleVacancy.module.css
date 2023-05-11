@@ -1,15 +1,15 @@
 .title {
-    cursor: pointer;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
-    color: #5e96fc;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #5e96fc;
 }
 
 .titleCurrent {
-    pointer-events: none;
-    font-weight: 700;
-    font-size: 28px;
-    color: #000;
+  pointer-events: none;
+  font-weight: 700;
+  font-size: 28px;
+  color: #000;
 }

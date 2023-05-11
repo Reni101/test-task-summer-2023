@@ -2,12 +2,11 @@
   max-width: 773px;
   width: 100%;
   background-color: #fff;
-  margin-bottom: 16px;
-  padding: 20px;
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
   gap: 10px;
   font-size: 16px;
+  margin-bottom: 16px;
+  padding: 20px;
 }
-

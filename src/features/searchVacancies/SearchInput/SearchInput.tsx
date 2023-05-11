@@ -19,6 +19,7 @@ export const SearchInput = () => {
     dispatch(setSearchQueryParams({ keyword: keyWord }))
     dispatch(changeCurrentPage(1))
   }
+
   const pressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     e.key === 'Enter' && searchByKeyWordHandler()
   }
