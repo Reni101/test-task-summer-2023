@@ -73,9 +73,7 @@ export const Filters = () => {
           input: { height: '42px', borderRadius: '8px', marginBottom: '20px' }
         }}
         rightSection={<ChevronDown size={25} strokeWidth={1} color={'#D5D6DC'} />}
-        onChange={key => {
-          setCategory(key)
-        }}
+        onChange={setCategory}
         rightSectionWidth={40}
         value={category}
         data={catalogs.map(catalog => {

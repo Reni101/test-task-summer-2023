@@ -11,7 +11,6 @@ import styles from './SearchInput.module.css'
 
 export const SearchInput = () => {
   const dispatch = useAppDispatch()
-
   const keywordState = useAppSelector(selectKeyWord)
 
   const [keyWord, setKeyWord] = useState('')
