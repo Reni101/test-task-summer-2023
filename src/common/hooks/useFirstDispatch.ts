@@ -12,7 +12,7 @@ import {
 } from 'features/searchVacancies/searchVacancies.selectors'
 import { useSearchParams } from 'react-router-dom'
 
-export const useFirstRender = () => {
+export const useFirstDispatch = () => {
   const dispatch = useAppDispatch()
   const filters = useAppSelector(selectFilters)
   const currentPage = useAppSelector(selectCurrentPage)
@@ -30,11 +30,11 @@ export const useFirstRender = () => {
 
   useEffect(() => {
     if (isFirstRender.current) {
-      const keyWordQuery = searchParams.get(SEARCH_PARAMS.KEYWORD) ?? null
-      const cataloguesQuery = searchParams.get(SEARCH_PARAMS.CATALOGUES) ?? null
-      const payment_fromQuery = searchParams.get(SEARCH_PARAMS.PAYMENT_FROM)
-      const payment_toQuery = searchParams.get(SEARCH_PARAMS.PAYMENT_TO)
-      const pageQuery = searchParams.get(SEARCH_PARAMS.PAGE) ?? 1
+      const keyWordQuery = searchParams.get(SEARCH_PARAMS.KEYWORD) ?? null // string
+      const cataloguesQuery = searchParams.get(SEARCH_PARAMS.CATALOGUES) ?? null // string
+      const payment_fromQuery = searchParams.get(SEARCH_PARAMS.PAYMENT_FROM) //+
+      const payment_toQuery = searchParams.get(SEARCH_PARAMS.PAYMENT_TO) // +
+      const pageQuery = searchParams.get(SEARCH_PARAMS.PAGE) ?? 1 // +
 
       const params: Partial<IFilters> = {
         keyword: keyWordQuery,

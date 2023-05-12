@@ -9,7 +9,7 @@ import {
 import { selectIsLoading } from 'app/app.selectors'
 import styles from 'features/searchVacancies/SearchInput/SearchInput.module.scss'
 import classNames from 'classnames'
-import { useSearchParams } from 'react-router-dom'
+import { useQueryParams } from 'common/hooks/useQueryParams'
 import { SEARCH_PARAMS } from 'common/enums/SEARCHPARAMS'
 
 interface PropsType {
@@ -20,16 +20,10 @@ interface PropsType {
 export const SearchInput: FC<PropsType> = ({ keyWord, setKeyWord }) => {
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(selectIsLoading)
-  const [searchParams, setSearchParams] = useSearchParams()
+  const { setQueryParams } = useQueryParams()
 
   const searchByKeyWordHandler = () => {
-    if (keyWord === '') {
-      searchParams.delete(SEARCH_PARAMS.KEYWORD)
-    } else {
-      searchParams.set(SEARCH_PARAMS.KEYWORD, keyWord)
-    }
-    searchParams.delete(SEARCH_PARAMS.PAGE)
-    setSearchParams(searchParams)
+    setQueryParams(keyWord, SEARCH_PARAMS.KEYWORD)
     dispatch(setSearchQueryParams({ keyword: keyWord ? keyWord : null }))
     dispatch(changeCurrentPage(1))
   }

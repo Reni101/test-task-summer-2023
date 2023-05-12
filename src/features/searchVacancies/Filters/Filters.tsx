@@ -8,15 +8,12 @@ import {
   setSearchQueryParams
 } from 'features/searchVacancies/searchVacancies.slice'
 import { ChevronDown, X } from 'tabler-icons-react'
-import {
-  selectCatalog,
-  selectPaymentFrom,
-  selectPaymentTo
-} from 'features/searchVacancies/searchVacancies.selectors'
+import { selectCatalog } from 'features/searchVacancies/searchVacancies.selectors'
 import { selectIsLoading } from 'app/app.selectors'
 import styles from 'features/searchVacancies/Filters/Filters.module.scss'
 import classNames from 'classnames'
-import { useSearchParams } from 'react-router-dom'
+import { useQueryParams } from 'common/hooks/useQueryParams'
+import { SEARCH_PARAMS } from 'common/enums/SEARCHPARAMS'
 
 interface PropsType {
   keyWord: string | null
@@ -27,22 +24,32 @@ export const Filters: FC<PropsType> = ({ keyWord, setKeyWord }) => {
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(selectIsLoading)
   const catalogs = useAppSelector(selectCatalogs)
-  const payment_fromState = useAppSelector(selectPaymentFrom)
-  const payment_toState = useAppSelector(selectPaymentTo)
-  const catalogState = useAppSelector(selectCatalog)
+  const categoryState = useAppSelector(selectCatalog)
+  const { getQueryParams, setQueryParams, setSearchParams } = useQueryParams()
 
-  const [category, setCategory] = useState<string | null>(catalogState)
-  const [payment_fromInput, setPayment_fromInput] = useState<number | ''>(payment_fromState ?? '')
-  const [payment_toInput, setPayment_toInput] = useState<number | ''>(payment_toState ?? '')
+  const payment_fromQuery = getQueryParams(SEARCH_PARAMS.PAYMENT_FROM) as '' | number
+  const payment_toQuery = getQueryParams(SEARCH_PARAMS.PAYMENT_TO) as '' | number
+  const catalogQuery = getQueryParams(SEARCH_PARAMS.CATALOGUES) as string | null
 
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [categoryInput, setCategoryInput] = useState(categoryState ?? catalogQuery)
+  const [payment_fromInput, setPayment_fromInput] = useState(payment_fromQuery)
+  const [payment_toInput, setPayment_toInput] = useState(payment_toQuery)
 
   const searchHandler = () => {
+    setQueryParams(payment_fromInput, SEARCH_PARAMS.PAYMENT_FROM)
+    setQueryParams(payment_toInput, SEARCH_PARAMS.PAYMENT_TO)
+    setQueryParams(categoryInput, SEARCH_PARAMS.CATALOGUES)
+    setQueryParams(keyWord, SEARCH_PARAMS.KEYWORD)
     const payment_from = payment_fromInput === '' ? null : payment_fromInput
     const payment_to = payment_toInput === '' ? null : payment_toInput
 
     dispatch(
-      setSearchQueryParams({ catalogues: category, payment_from, payment_to, keyword: keyWord })
+      setSearchQueryParams({
+        catalogues: categoryInput,
+        payment_from,
+        payment_to,
+        keyword: keyWord
+      })
     )
     dispatch(changeCurrentPage(1))
   }
@@ -55,10 +62,10 @@ export const Filters: FC<PropsType> = ({ keyWord, setKeyWord }) => {
     setKeyWord('')
     setPayment_fromInput('')
     setPayment_toInput('')
-    setCategory(null)
+    setCategoryInput(null)
     dispatch(changeCurrentPage(1))
-    setSearchParams({})
     dispatch(resetAllFilters())
+    setSearchParams(undefined)
   }
 
   useEffect(() => {
@@ -101,9 +108,9 @@ export const Filters: FC<PropsType> = ({ keyWord, setKeyWord }) => {
           input: { height: '42px', borderRadius: '8px', marginBottom: '20px' }
         }}
         rightSection={<ChevronDown size={25} strokeWidth={1} color={'#D5D6DC'} />}
-        onChange={setCategory}
+        onChange={setCategoryInput}
         rightSectionWidth={40}
-        value={category}
+        value={categoryInput}
         data={dataForSelect}
         onKeyDown={pressEnter}
       />

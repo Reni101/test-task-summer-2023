@@ -9,13 +9,13 @@ import {
   resetAllFilters,
   setTotal
 } from 'features/searchVacancies/searchVacancies.slice'
-import { useFirstRender } from 'common/hooks/useFirstRender'
+import { useFirstDispatch } from 'common/hooks/useFirstDispatch'
 
 export const Vacancies = () => {
   const dispatch = useAppDispatch()
   const vacancies = useAppSelector(selectVacancies)
   const total = useAppSelector(selectTotal)
-  const { isFirstDispatch, currentPage, filters } = useFirstRender()
+  const { isFirstDispatch, currentPage, filters } = useFirstDispatch()
 
   useEffect(() => {
     if (!isFirstDispatch.current) {

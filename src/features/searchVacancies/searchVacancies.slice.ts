@@ -45,7 +45,7 @@ export const getVacancies = createAppAsyncThunk<IResponse, void>(
 
       if (payment_from || payment_to) no_agreement = 1
       if (page === 0) page = null
-
+      if (keyword === '') keyword = null
       const res = await vacanciesApi.getVacancies(
         {
           count,
