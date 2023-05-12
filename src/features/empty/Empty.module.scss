@@ -5,10 +5,11 @@
   justify-content: center;
   gap: 32px;
   padding-top: 10vh;
-}
-.container button {
-  width: 164px;
-  height: 42px;
-  background-color: #deecff;
-  color: #3b7cd3;
+
+  button {
+    width: 164px;
+    height: 42px;
+    background-color: #deecff;
+    margin-bottom: 10px;
+  }
 }

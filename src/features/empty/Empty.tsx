@@ -1,6 +1,6 @@
 import { Button } from '@mantine/core'
 import { useNavigate } from 'react-router-dom'
-import styles from 'features/empty/Empty.module.css'
+import styles from 'features/empty/Empty.module.scss'
 import { PATH } from 'common/enums/PATH'
 import notFound from '../../common/assets/Frame.svg'
 

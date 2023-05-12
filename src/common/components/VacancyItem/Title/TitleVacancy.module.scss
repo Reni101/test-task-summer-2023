@@ -1,0 +1,16 @@
+@import 'src/common/styles/variables';
+@import 'src/common/styles/mixins';
+
+.title {
+  cursor: pointer;
+  font-style: normal;
+  line-height: 24px;
+  color: $blueColor;
+  @include currentVacancy(600, 20px);
+}
+
+.titleCurrent {
+  pointer-events: none;
+  color: $blackColor;
+  @include currentVacancy(700, 28px);
+}

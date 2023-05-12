@@ -3,7 +3,7 @@ import { FC, memo } from 'react'
 import { ToggleFavorite } from 'common/components/VacancyItem/ToggleFavorite/ToggleFavorite'
 import { TitleVacancy } from 'common/components/VacancyItem/Title/TitleVacancy'
 import { Description } from 'common/components/VacancyItem/Description/Description'
-import styles from './VacancyItem.module.css'
+import styles from 'common/components/VacancyItem/VacancyItem.module.scss'
 
 interface PropsType {
   vacancy: IVacancy

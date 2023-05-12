@@ -1,4 +1,5 @@
-@import '../../common/styles/variables';
+@import 'src/common/styles/variables';
+@import 'src/common/styles/mixins';
 
 .container {
   max-width: 1320px;
@@ -22,11 +23,13 @@
     }
   }
 
-  @media screen and (max-width: 1135px) {
-    margin: auto 10px;
-  }
+  @include mediaQueryMargin();
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
+}
+
+.disabled {
+  @include disabled();
 }

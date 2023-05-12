@@ -1,12 +1,13 @@
+@import 'src/common/styles/variables.scss';
+
 .container {
   max-width: 773px;
   width: 100%;
-
-  background-color: #fff;
-  border-radius: 12px;
+  background-color: $bgSecondColor;
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  border-radius: 12px;
   font-size: 16px;
   padding: 20px;
   margin-bottom: 16px;

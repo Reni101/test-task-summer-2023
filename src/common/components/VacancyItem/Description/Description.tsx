@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import classNames from 'classnames'
 import { paymentResult } from 'common/utils/payment'
 import { MapPin } from 'tabler-icons-react'
-import styles from './Descriptiom.module.css'
+import styles from 'common/components/VacancyItem/Description/Descriptiom.module.scss'
 
 interface PropsType {
   isCurrentVacancy: boolean

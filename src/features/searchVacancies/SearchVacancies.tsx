@@ -12,6 +12,7 @@ import {
 import { useState } from 'react'
 import { selectIsLoading } from 'app/app.selectors'
 import styles from 'features/searchVacancies/SearchVacancies.module.scss'
+import classNames from 'classnames'
 
 export const SearchVacancies = () => {
   const dispatch = useAppDispatch()
@@ -33,8 +34,7 @@ export const SearchVacancies = () => {
         <SearchInput keyWord={keyWord} setKeyWord={setKeyWord} />
         <Vacancies />
         <Pagination
-          disabled={isLoading}
-          className={styles.pagination}
+          className={classNames(styles.pagination, { [styles.disabled]: isLoading })}
           value={currentPage}
           onChange={setPageHandle}
           total={totalPage}

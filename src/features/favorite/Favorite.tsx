@@ -3,7 +3,7 @@ import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
 import { usePagination } from 'common/hooks/usePagination'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from 'common/enums/PATH'
-import styles from './Favorite.module.css'
+import styles from 'features/favorite/Favorite.module.scss'
 
 export const Favorite = () => {
   const navigate = useNavigate()

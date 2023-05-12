@@ -1,3 +1,5 @@
+@import 'src/common/styles/mixins';
+
 .payment {
   margin: 12px 0;
 }
@@ -6,14 +8,15 @@
 }
 
 .currency {
-  font-weight: 600;
   line-height: 20px;
   margin-right: 7px;
+  @include currentVacancy(600, 16px);
 }
 
 .currencyCurrent {
   font-weight: 700;
   font-size: 20px;
+  @include currentVacancy(700, 20px);
 }
 
 .dot {

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import classNames from 'classnames'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from 'common/enums/PATH'
-import styles from './TitleVacancy.module.css'
+import styles from 'common/components/VacancyItem/Title/TitleVacancy.module.scss'
 
 interface PropsType {
   id: number

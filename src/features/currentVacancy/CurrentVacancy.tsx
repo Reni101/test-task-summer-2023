@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import styles from 'features/currentVacancy/CurrentVacancy.module.css'
+import styles from 'features/currentVacancy/CurrentVacancy.module.scss'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { getCurrentVacancy } from 'features/currentVacancy/currentVacancy.slice'
 import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'

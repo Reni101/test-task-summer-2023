@@ -1,0 +1,18 @@
+@import 'src/common/styles/variables';
+@import 'src/common/styles/mixins';
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 40px;
+
+  @include mediaQueryMargin();
+}
+
+.pagination {
+  margin-top: 40px;
+  button[data-active] {
+    background-color: $blueColor;
+  }
+}
