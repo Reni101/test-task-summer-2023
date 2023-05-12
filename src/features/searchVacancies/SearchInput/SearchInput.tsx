@@ -1,19 +1,22 @@
 import { Button, Input } from '@mantine/core'
 import { Search } from 'tabler-icons-react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
-import { KeyboardEvent, useEffect, useState } from 'react'
+import { FC, KeyboardEvent } from 'react'
 import {
   changeCurrentPage,
   setSearchQueryParams
 } from 'features/searchVacancies/searchVacancies.slice'
-import { selectKeyWord } from 'features/searchVacancies/searchVacancies.selectors'
+import { selectIsLoading } from 'app/app.selectors'
 import styles from './SearchInput.module.css'
 
-export const SearchInput = () => {
-  const dispatch = useAppDispatch()
-  const keywordState = useAppSelector(selectKeyWord)
+interface PropsType {
+  keyWord: string
+  setKeyWord: (keyword: string) => void
+}
 
-  const [keyWord, setKeyWord] = useState(keywordState ?? '')
+export const SearchInput: FC<PropsType> = ({ keyWord, setKeyWord }) => {
+  const dispatch = useAppDispatch()
+  const isLoading = useAppSelector(selectIsLoading)
 
   const searchByKeyWordHandler = () => {
     dispatch(setSearchQueryParams({ keyword: keyWord }))
@@ -24,14 +27,9 @@ export const SearchInput = () => {
     e.key === 'Enter' && searchByKeyWordHandler()
   }
 
-  useEffect(() => {
-    if (keywordState === null) {
-      setKeyWord('')
-    }
-  }, [keywordState])
-
   return (
     <Input
+      style={isLoading ? { pointerEvents: 'none', opacity: '0.4' } : {}}
       className={styles.container}
       data-elem='search-input'
       onKeyDown={pressEnter}

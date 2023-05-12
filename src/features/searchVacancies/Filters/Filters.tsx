@@ -1,5 +1,5 @@
 import { Button, NumberInput, Select } from '@mantine/core'
-import { KeyboardEvent, useEffect, useState } from 'react'
+import { FC, KeyboardEvent, useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { getCatalogs, selectCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
 import {
@@ -16,7 +16,12 @@ import {
 import { selectIsLoading } from 'app/app.selectors'
 import styles from './Filters.module.css'
 
-export const Filters = () => {
+interface PropsType {
+  keyWord: string
+  setKeyWord: (keyword: string) => void
+}
+
+export const Filters: FC<PropsType> = ({ keyWord, setKeyWord }) => {
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(selectIsLoading)
   const catalogs = useAppSelector(selectCatalogs)
@@ -32,7 +37,9 @@ export const Filters = () => {
     const payment_from = payment_fromInput === '' ? null : payment_fromInput
     const payment_to = payment_toInput === '' ? null : payment_toInput
 
-    dispatch(setSearchQueryParams({ catalogues: category, payment_from, payment_to }))
+    dispatch(
+      setSearchQueryParams({ catalogues: category, payment_from, payment_to, keyword: keyWord })
+    )
     dispatch(changeCurrentPage(1))
   }
 
@@ -41,6 +48,7 @@ export const Filters = () => {
   }
 
   const resetAllHandler = () => {
+    setKeyWord('')
     setPayment_fromInput('')
     setPayment_toInput('')
     setCategory(null)
@@ -57,9 +65,14 @@ export const Filters = () => {
     control: { border: 'none', opacity: 0.2 }
   }
 
+  const dataForSelect = catalogs.map(catalog => ({
+    value: catalog.key.toString(),
+    label: catalog.title
+  }))
+
   return (
     <div
-      style={isLoading ? { pointerEvents: 'none', opacity: '0.7' } : {}}
+      style={isLoading ? { pointerEvents: 'none', opacity: '0.4' } : {}}
       className={styles.container}
     >
       <div className={styles.filterHead}>
@@ -89,15 +102,11 @@ export const Filters = () => {
         onChange={setCategory}
         rightSectionWidth={40}
         value={category}
-        data={catalogs.map(catalog => {
-          return {
-            value: catalog.key.toString(),
-            label: catalog.title
-          }
-        })}
+        data={dataForSelect}
         onKeyDown={pressEnter}
       />
       <div className={styles.title}>Оклад</div>
+
       <NumberInput
         data-elem='salary-from-input'
         className={styles.inputNumber}

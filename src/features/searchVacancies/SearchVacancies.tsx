@@ -6,14 +6,19 @@ import { SearchInput } from 'features/searchVacancies/SearchInput/SearchInput'
 import { Vacancies } from 'features/searchVacancies/Vacancies/Vacancies'
 import {
   selectCurrentPage,
+  selectKeyWord,
   selectTotalPage
 } from 'features/searchVacancies/searchVacancies.selectors'
+import { useState } from 'react'
 import styles from './SearchVacancies.module.css'
 
 export const SearchVacancies = () => {
   const dispatch = useAppDispatch()
   const currentPage = useAppSelector(selectCurrentPage)
   const totalPage = useAppSelector(selectTotalPage)
+  const keywordState = useAppSelector(selectKeyWord)
+
+  const [keyWord, setKeyWord] = useState(keywordState ?? '')
 
   const setPageHandle = (page: number) => {
     dispatch(changeCurrentPage(page))
@@ -21,9 +26,9 @@ export const SearchVacancies = () => {
 
   return (
     <div className={styles.container}>
-      <Filters />
+      <Filters keyWord={keyWord} setKeyWord={setKeyWord} />
       <div className={styles.searchContainer}>
-        <SearchInput />
+        <SearchInput keyWord={keyWord} setKeyWord={setKeyWord} />
         <Vacancies />
         <Pagination
           className={styles.pagination}

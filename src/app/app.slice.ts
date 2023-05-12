@@ -42,8 +42,7 @@ const slice = createSlice({
       .addMatcher(
         action => action.type.endsWith('/rejected'),
         (state, action) => {
-          debugger
-          if (action.payload.response.data.error.message) {
+          if (!!action.payload.response.error) {
             state.error = action.payload.response.data.error.message
           } else {
             state.error = action.payload.message

@@ -3,16 +3,7 @@ import { appReducer } from 'app/app.slice'
 import { searchVacanciesReducer } from 'features/searchVacancies/searchVacancies.slice'
 import { catalogsReducer } from 'features/searchVacancies/Filters/catalogs.slice'
 import { authReducer } from 'features/auth/auth.slice'
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  persistReducer,
-  persistStore,
-  PURGE,
-  REGISTER,
-  REHYDRATE
-} from 'redux-persist'
+import { persistReducer, persistStore } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { favoriteReducer } from 'features/favorite/favorite.slice'
 import { currentVacancyReducer } from 'features/currentVacancy/currentVacancy.slice'
@@ -38,9 +29,10 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-      }
+      serializableCheck: false
+      // serializableCheck: {
+      //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+      // }
     })
 })
 
