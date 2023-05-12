@@ -18,7 +18,7 @@ export const Description: FC<PropsType> = memo(
     return (
       <>
         <div className={classNames(styles.payment, { [styles.paymentCurrent]: isCurrentVacancy })}>
-          {payment_from !== 0 && payment_to !== 0 && (
+          {payment_from + payment_to !== 0 && (
             <span
               className={classNames(styles.currency, {
                 [styles.currencyCurrent]: isCurrentVacancy

@@ -15,13 +15,13 @@ export const Vacancies = () => {
   const dispatch = useAppDispatch()
   const vacancies = useAppSelector(selectVacancies)
   const total = useAppSelector(selectTotal)
-  const { isFirstDispatch, currentPage, filters } = useFirstDispatch()
+  const { isFirstRender } = useFirstDispatch()
 
   useEffect(() => {
-    if (!isFirstDispatch.current) {
+    if (!isFirstRender.current) {
       dispatch(getVacancies())
     }
-  }, [currentPage, filters])
+  }, [isFirstRender])
 
   useEffect(() => {
     return () => {

@@ -1,26 +1,17 @@
 import { useSearchParams } from 'react-router-dom'
-import { SEARCH_PARAMS } from 'common/enums/SEARCHPARAMS'
+import { emptyInput, firstPage } from 'common/constant/constant'
 
 export const useQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const getQueryParams = (key: SEARCH_PARAMS) => {
-    let queryParam
-    if (key === SEARCH_PARAMS.CATALOGUES || key === SEARCH_PARAMS.KEYWORD) {
-      queryParam = searchParams.get(key)
-    } else {
-      queryParam = searchParams.get(key) ? Number(searchParams.get(key)) : ''
-    }
-    return queryParam
-  }
-
   const setQueryParams = (value: string | number | null, key: string) => {
-    if (value !== null && value !== 1 && value !== '') {
+    if (value !== null && value !== firstPage && value !== emptyInput) {
       searchParams.set(key, value.toString())
     } else {
       searchParams.delete(key)
     }
     setSearchParams(searchParams)
   }
-  return { getQueryParams, setQueryParams, setSearchParams }
+  return { setQueryParams, setSearchParams }
 }
+//add/remove parameters from url
