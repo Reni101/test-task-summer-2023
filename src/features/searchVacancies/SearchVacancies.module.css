@@ -27,3 +27,6 @@
   padding: 40px;
   justify-content: center;
 }
+.pagination button[data-active] {
+  background-color:#5e96fc;
+}

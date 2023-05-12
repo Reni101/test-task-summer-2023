@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react'
+import { FC, memo } from 'react'
 import classNames from 'classnames'
 import { paymentResult } from 'common/utils/payment'
 import { MapPin } from 'tabler-icons-react'

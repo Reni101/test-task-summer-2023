@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import styles from 'features/currentVacancy/CurrentVacancy.module.css'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
@@ -16,16 +16,14 @@ export const CurrentVacancy = () => {
   const isLoading = useAppSelector(selectIsLoading)
 
   useEffect(() => {
-    if (id) {
-      dispatch(getCurrentVacancy(id))
-    }
+    !!id && dispatch(getCurrentVacancy(id))
   }, [dispatch, id])
 
   return (
     <div className={styles.container}>
       {!!Object.keys(vacancy).length && !isLoading && (
         <>
-          <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={true} />
+          <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy />
 
           <div
             className={styles.descriptionContainer}

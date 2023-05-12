@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button } from '@mantine/core'
 import { useNavigate } from 'react-router-dom'
 import styles from 'features/empty/Empty.module.css'

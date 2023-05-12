@@ -1,4 +1,3 @@
-import React from 'react'
 import { Pagination } from '@mantine/core'
 import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
 import { usePagination } from 'common/hooks/usePagination'

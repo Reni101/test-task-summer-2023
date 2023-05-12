@@ -61,7 +61,7 @@ export const Filters: FC<PropsType> = ({ keyWord, setKeyWord }) => {
   }, [dispatch])
 
   const inputStyles = {
-    input: { height: '42px' },
+    input: { height: '42px', borderRadius: '8px', margin: ' 8px 0 8px;' },
     control: { border: 'none', opacity: 0.2 }
   }
 

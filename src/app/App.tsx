@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import styles from 'app/App.module.css'
 import { Header } from 'features/header/Header'
 import { SearchVacancies } from 'features/searchVacancies/SearchVacancies'

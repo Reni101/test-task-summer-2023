@@ -34,7 +34,7 @@ export const Vacancies = () => {
         dispatch(setTotal(null))
       }
     }
-  }, [total])
+  }, [dispatch, total])
 
   if (total === 0) {
     return <Navigate to={PATH.EMPTY} />

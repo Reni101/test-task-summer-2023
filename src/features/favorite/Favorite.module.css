@@ -14,3 +14,6 @@
 .pagination {
   margin-top: 40px;
 }
+.pagination button[data-active] {
+  background-color:#5e96fc;
+}

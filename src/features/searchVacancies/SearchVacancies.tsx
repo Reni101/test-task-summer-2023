@@ -10,10 +10,12 @@ import {
   selectTotalPage
 } from 'features/searchVacancies/searchVacancies.selectors'
 import { useState } from 'react'
+import { selectIsLoading } from 'app/app.selectors'
 import styles from './SearchVacancies.module.css'
 
 export const SearchVacancies = () => {
   const dispatch = useAppDispatch()
+  const isLoading = useAppSelector(selectIsLoading)
   const currentPage = useAppSelector(selectCurrentPage)
   const totalPage = useAppSelector(selectTotalPage)
   const keywordState = useAppSelector(selectKeyWord)
@@ -31,6 +33,7 @@ export const SearchVacancies = () => {
         <SearchInput keyWord={keyWord} setKeyWord={setKeyWord} />
         <Vacancies />
         <Pagination
+          disabled={isLoading}
           className={styles.pagination}
           value={currentPage}
           onChange={setPageHandle}
