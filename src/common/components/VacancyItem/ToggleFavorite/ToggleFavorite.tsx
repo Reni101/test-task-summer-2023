@@ -6,7 +6,8 @@ import { toggleFavorite } from 'features/favorite/favorite.slice'
 import { ActionIcon } from '@mantine/core'
 import { selectIsLoading } from 'app/app.selectors'
 import { selectFavoriteVacancies } from 'features/favorite/favorite.selectors'
-import { blueColor, greyColor, whiteColor } from 'common/styles/constant/color'
+import classNames from 'classnames'
+import styles from './ToggleFavorite.module.scss'
 
 interface PropsType {
   vacancy: IVacancy
@@ -25,17 +26,12 @@ export const ToggleFavorite: FC<PropsType> = memo(({ vacancy }) => {
 
   return (
     <ActionIcon
+      className={isLoading ? styles.disabled : undefined}
       onClick={toggleFavoriteHandler}
       data-elem={`vacancy-${vacancy.id}-shortlist-button`}
       variant='transparent'
-      sx={{ '&[data-disabled]': { opacity: 0.5 } }}
-      disabled={isLoading}
     >
-      <Star
-        style={{ cursor: 'pointer' }}
-        color={isFavorite ? blueColor : greyColor}
-        fill={isFavorite ? blueColor : whiteColor}
-      />
+      <Star className={classNames(styles.star, { [styles.favorite]: isFavorite })} />
     </ActionIcon>
   )
 })

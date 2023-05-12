@@ -1,0 +1,14 @@
+@import 'src/common/styles/variables';
+@import 'src/common/styles/mixins';
+
+.star {
+  color: $greyColor;
+  fill: $bgSecondColor;
+}
+.favorite {
+  color: $blueColor;
+  fill: $blueColor;
+}
+.disabled {
+  @include disabled();
+}
