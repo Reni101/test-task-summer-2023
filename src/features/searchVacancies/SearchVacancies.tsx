@@ -11,7 +11,7 @@ import {
 } from 'features/searchVacancies/searchVacancies.selectors'
 import { useState } from 'react'
 import { selectIsLoading } from 'app/app.selectors'
-import styles from './SearchVacancies.module.css'
+import styles from 'features/searchVacancies/SearchVacancies.module.scss'
 
 export const SearchVacancies = () => {
   const dispatch = useAppDispatch()

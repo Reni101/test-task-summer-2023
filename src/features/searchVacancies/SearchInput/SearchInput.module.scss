@@ -1,0 +1,10 @@
+@import 'src/common/styles/mixins';
+.container {
+  margin-bottom: 16px;
+  button {
+    background-color: #5e96fc;
+  }
+}
+.disabled {
+  @include disabled();
+}

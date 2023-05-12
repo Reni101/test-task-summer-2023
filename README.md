@@ -28,5 +28,6 @@ The app includes the following features:
 - Axios
 - Mantine
 - Classnames
+- Node-sass
 - Gh-pages
 - Dompurify

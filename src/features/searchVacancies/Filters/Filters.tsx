@@ -14,7 +14,8 @@ import {
   selectPaymentTo
 } from 'features/searchVacancies/searchVacancies.selectors'
 import { selectIsLoading } from 'app/app.selectors'
-import styles from './Filters.module.css'
+import styles from 'features/searchVacancies/Filters/Filters.module.scss'
+import classNames from 'classnames'
 
 interface PropsType {
   keyWord: string
@@ -71,10 +72,7 @@ export const Filters: FC<PropsType> = ({ keyWord, setKeyWord }) => {
   }))
 
   return (
-    <div
-      style={isLoading ? { pointerEvents: 'none', opacity: '0.4' } : {}}
-      className={styles.container}
-    >
+    <div className={classNames(styles.container, { [styles.disabled]: isLoading })}>
       <div className={styles.filterHead}>
         <span className={styles.title}>Фильтры</span>
         <Button
@@ -109,17 +107,16 @@ export const Filters: FC<PropsType> = ({ keyWord, setKeyWord }) => {
 
       <NumberInput
         data-elem='salary-from-input'
-        className={styles.inputNumber}
         value={payment_fromInput}
         onChange={setPayment_fromInput}
         placeholder='От'
         rightSectionWidth={40}
         styles={inputStyles}
         onKeyDown={pressEnter}
+        min={0}
       />
       <NumberInput
         data-elem='salary-to-input'
-        className={styles.inputNumber}
         value={payment_toInput}
         onChange={setPayment_toInput}
         placeholder='До'

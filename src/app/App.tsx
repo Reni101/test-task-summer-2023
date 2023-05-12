@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import styles from 'app/App.module.css'
+import styles from 'app/App.module.scss'
 import { Header } from 'features/header/Header'
 import { SearchVacancies } from 'features/searchVacancies/SearchVacancies'
 import { Navigate, Route, Routes } from 'react-router-dom'

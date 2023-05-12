@@ -1,13 +1,14 @@
 import { Button, Input } from '@mantine/core'
 import { Search } from 'tabler-icons-react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
-import { FC, KeyboardEvent } from 'react'
+import { ChangeEvent, FC, KeyboardEvent } from 'react'
 import {
   changeCurrentPage,
   setSearchQueryParams
 } from 'features/searchVacancies/searchVacancies.slice'
 import { selectIsLoading } from 'app/app.selectors'
-import styles from './SearchInput.module.css'
+import styles from 'features/searchVacancies/SearchInput/SearchInput.module.scss'
+import classNames from 'classnames'
 
 interface PropsType {
   keyWord: string
@@ -23,21 +24,22 @@ export const SearchInput: FC<PropsType> = ({ keyWord, setKeyWord }) => {
     dispatch(changeCurrentPage(1))
   }
 
+  const changeTextHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setKeyWord(event.currentTarget.value)
+  }
+
   const pressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     e.key === 'Enter' && searchByKeyWordHandler()
   }
 
   return (
     <Input
-      style={isLoading ? { pointerEvents: 'none', opacity: '0.4' } : {}}
-      className={styles.container}
+      className={classNames(styles.container, { [styles.disabled]: isLoading })}
       data-elem='search-input'
       onKeyDown={pressEnter}
       styles={{ input: { height: '48px' } }}
       value={keyWord}
-      onChange={event => {
-        setKeyWord(event.currentTarget.value)
-      }}
+      onChange={changeTextHandler}
       size='md'
       icon={<Search size='1.1rem' strokeWidth={1.5} />}
       radius='md'

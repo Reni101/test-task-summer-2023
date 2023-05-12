@@ -6,7 +6,7 @@ import { toggleFavorite } from 'features/favorite/favorite.slice'
 import { ActionIcon } from '@mantine/core'
 import { selectIsLoading } from 'app/app.selectors'
 import { selectFavoriteVacancies } from 'features/favorite/favorite.selectors'
-import { blueColor, greyColor, whiteColor } from 'common/constant/color'
+import { blueColor, greyColor, whiteColor } from 'common/styles/constant/color'
 
 interface PropsType {
   vacancy: IVacancy

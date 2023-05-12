@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
-import styles from 'features/searchVacancies/Vacancies/Vacancies.module.css'
 import {
   selectCurrentPage,
   selectFilters,
@@ -23,6 +22,15 @@ export const Vacancies = () => {
   const filters = useAppSelector(selectFilters)
   const currentPage = useAppSelector(selectCurrentPage)
 
+  // const isFirst = useRef(true)
+  //
+  // useEffect(() => {
+  //   if (isFirst.current) {
+  //     debugger
+  //     isFirst.current = false
+  //   }
+  // }, [])
+
   useEffect(() => {
     dispatch(getVacancies())
   }, [currentPage, filters, dispatch])
@@ -41,10 +49,10 @@ export const Vacancies = () => {
   }
 
   return (
-    <div className={styles.vacancies}>
+    <>
       {vacancies?.map(vacancy => {
         return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
       })}
-    </div>
+    </>
   )
 }

@@ -1,0 +1,32 @@
+@import '../../common/styles/variables';
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  gap: 28px;
+
+  .searchContainer {
+    max-width: 773px;
+    width: 100%;
+
+    .pagination {
+      padding: 40px;
+      justify-content: center;
+
+      button[data-active] {
+        background-color: $blueColor;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1135px) {
+    margin: auto 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}

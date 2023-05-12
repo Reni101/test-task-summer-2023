@@ -4,10 +4,10 @@ import { PATH } from 'common/enums/PATH'
 import { selectIsLoading } from 'app/app.selectors'
 import { NavigationProgress, nprogress } from '@mantine/nprogress'
 import { useEffect } from 'react'
-import { blueColor } from 'common/constant/color'
+import { blueColor } from 'common/styles/constant/color'
+import styles from 'features/header/Header.module.scss'
 import logo from '../../common/assets/union.svg'
 import Jobored from '../../common/assets/jobored.svg'
-import styles from './Header.module.css'
 
 export const Header = () => {
   const isLoading = useAppSelector(selectIsLoading)
