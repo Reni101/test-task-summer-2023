@@ -10,11 +10,12 @@ export interface IFiltersAndPagination {
 }
 export interface IFilters {
   published: number | null
+  no_agreement: null | number
+
   keyword: string | null
   payment_from: number | null
   payment_to: number | null
   catalogues: string | null
-  no_agreement: null | number
 }
 
 const initialState: IResponse & IFiltersAndPagination = {

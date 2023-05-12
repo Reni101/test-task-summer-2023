@@ -16,9 +16,10 @@ import {
 import { selectIsLoading } from 'app/app.selectors'
 import styles from 'features/searchVacancies/Filters/Filters.module.scss'
 import classNames from 'classnames'
+import { useSearchParams } from 'react-router-dom'
 
 interface PropsType {
-  keyWord: string
+  keyWord: string | null
   setKeyWord: (keyword: string) => void
 }
 
@@ -33,6 +34,8 @@ export const Filters: FC<PropsType> = ({ keyWord, setKeyWord }) => {
   const [category, setCategory] = useState<string | null>(catalogState)
   const [payment_fromInput, setPayment_fromInput] = useState<number | ''>(payment_fromState ?? '')
   const [payment_toInput, setPayment_toInput] = useState<number | ''>(payment_toState ?? '')
+
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const searchHandler = () => {
     const payment_from = payment_fromInput === '' ? null : payment_fromInput
@@ -54,6 +57,7 @@ export const Filters: FC<PropsType> = ({ keyWord, setKeyWord }) => {
     setPayment_toInput('')
     setCategory(null)
     dispatch(changeCurrentPage(1))
+    setSearchParams({})
     dispatch(resetAllFilters())
   }
 

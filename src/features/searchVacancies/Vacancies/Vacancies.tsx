@@ -1,11 +1,6 @@
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
-import {
-  selectCurrentPage,
-  selectFilters,
-  selectTotal,
-  selectVacancies
-} from 'features/searchVacancies/searchVacancies.selectors'
+import { selectTotal, selectVacancies } from 'features/searchVacancies/searchVacancies.selectors'
 import { Navigate } from 'react-router-dom'
 import { PATH } from 'common/enums/PATH'
 import { useEffect } from 'react'
@@ -14,26 +9,19 @@ import {
   resetAllFilters,
   setTotal
 } from 'features/searchVacancies/searchVacancies.slice'
+import { useFirstRender } from 'common/hooks/useFirstRender'
 
 export const Vacancies = () => {
   const dispatch = useAppDispatch()
   const vacancies = useAppSelector(selectVacancies)
   const total = useAppSelector(selectTotal)
-  const filters = useAppSelector(selectFilters)
-  const currentPage = useAppSelector(selectCurrentPage)
-
-  // const isFirst = useRef(true)
-  //
-  // useEffect(() => {
-  //   if (isFirst.current) {
-  //     debugger
-  //     isFirst.current = false
-  //   }
-  // }, [])
+  const { isFirstDispatch, currentPage, filters } = useFirstRender()
 
   useEffect(() => {
-    dispatch(getVacancies())
-  }, [currentPage, filters, dispatch])
+    if (!isFirstDispatch.current) {
+      dispatch(getVacancies())
+    }
+  }, [currentPage, filters])
 
   useEffect(() => {
     return () => {
@@ -42,7 +30,7 @@ export const Vacancies = () => {
         dispatch(setTotal(null))
       }
     }
-  }, [dispatch, total])
+  }, [total])
 
   if (total === 0) {
     return <Navigate to={PATH.EMPTY} />

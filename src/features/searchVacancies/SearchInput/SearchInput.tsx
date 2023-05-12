@@ -9,6 +9,8 @@ import {
 import { selectIsLoading } from 'app/app.selectors'
 import styles from 'features/searchVacancies/SearchInput/SearchInput.module.scss'
 import classNames from 'classnames'
+import { useSearchParams } from 'react-router-dom'
+import { SEARCH_PARAMS } from 'common/enums/SEARCHPARAMS'
 
 interface PropsType {
   keyWord: string
@@ -18,9 +20,17 @@ interface PropsType {
 export const SearchInput: FC<PropsType> = ({ keyWord, setKeyWord }) => {
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(selectIsLoading)
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const searchByKeyWordHandler = () => {
-    dispatch(setSearchQueryParams({ keyword: keyWord }))
+    if (keyWord === '') {
+      searchParams.delete(SEARCH_PARAMS.KEYWORD)
+    } else {
+      searchParams.set(SEARCH_PARAMS.KEYWORD, keyWord)
+    }
+    searchParams.delete(SEARCH_PARAMS.PAGE)
+    setSearchParams(searchParams)
+    dispatch(setSearchQueryParams({ keyword: keyWord ? keyWord : null }))
     dispatch(changeCurrentPage(1))
   }
 
@@ -38,7 +48,7 @@ export const SearchInput: FC<PropsType> = ({ keyWord, setKeyWord }) => {
       data-elem='search-input'
       onKeyDown={pressEnter}
       styles={{ input: { height: '48px' } }}
-      value={keyWord}
+      value={keyWord ?? ''}
       onChange={changeTextHandler}
       size='md'
       icon={<Search size='1.1rem' strokeWidth={1.5} />}
