@@ -8,7 +8,11 @@ import {
   selectPaymentFrom,
   selectPaymentTo
 } from 'features/searchVacancies/searchVacancies.selectors'
-import { getVacancies, setSearchQueryParams } from 'features/searchVacancies/searchVacancies.slice'
+import {
+  getVacancies,
+  IFilters,
+  setSearchQueryParams
+} from 'features/searchVacancies/searchVacancies.slice'
 
 export const useSearch = () => {
   const dispatch = useAppDispatch()
@@ -39,10 +43,12 @@ export const useSearch = () => {
   }
 
   const setPage = (page: number) => {
-    const params: any = []
+    const params: Array<[string, string]> = []
+
     searchParams.forEach((value, key) => params.push([key, value]))
-    //@ts-ignore
-    const urlParams = params.reduce((acc, [key, value]) => {
+
+    const urlParams: Partial<IFilters> = params.reduce((acc, [key, value]) => {
+      // @ts-ignore
       acc[key] = value
       return acc
     }, {})
