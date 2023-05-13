@@ -54,9 +54,14 @@ export const useSearch = () => {
     }, {})
 
     delete urlParams.page
-    urlParams.payment_from = Number(urlParams.payment_from!)
-    urlParams.payment_to = Number(urlParams.payment_to!)
+    if (urlParams.payment_from) {
+      urlParams.payment_from = Number(urlParams.payment_from)
+    }
+    if (urlParams.payment_to) {
+      urlParams.payment_to = Number(urlParams.payment_to)
+    }
 
+    debugger
     dispatch(
       setSearchQueryParams({
         page: page - 1,
@@ -67,6 +72,8 @@ export const useSearch = () => {
         ...urlParams
       })
     )
+    //synchronization of url and redax
+
     setQueryParams(page, SEARCH_PARAMS.PAGE)
     dispatch(getVacancies())
   }
