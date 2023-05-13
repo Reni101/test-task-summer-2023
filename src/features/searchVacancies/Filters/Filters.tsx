@@ -26,9 +26,9 @@ export const Filters = () => {
   }
 
   const resetAllHandler = () => {
+    setSearchParams(undefined)
     dispatch(resetAllFilters())
     dispatch(getVacancies())
-    setSearchParams(undefined)
   }
 
   const inputStyles = {

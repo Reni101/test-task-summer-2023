@@ -61,7 +61,6 @@ export const useSearch = () => {
       urlParams.payment_to = Number(urlParams.payment_to)
     }
 
-    debugger
     dispatch(
       setSearchQueryParams({
         page: page - 1,
