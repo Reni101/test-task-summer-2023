@@ -54,8 +54,8 @@ export const useSearch = () => {
     }, {})
 
     delete urlParams.page
-    urlParams.payment_from = +urlParams.payment_from!
-    urlParams.payment_to = +urlParams.payment_to!
+    urlParams.payment_from = Number(urlParams.payment_from!)
+    urlParams.payment_to = Number(urlParams.payment_to!)
 
     dispatch(
       setSearchQueryParams({
