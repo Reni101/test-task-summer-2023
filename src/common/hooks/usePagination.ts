@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from 'react'
 import { IVacancy } from 'features/searchVacancies/searchVacancies.api'
-import { useAppSelector } from 'common/hooks/hooks'
+import { useAppSelector } from 'common/hooks/useAppHooks'
 import { selectFavoriteVacancies } from 'features/favorite/favorite.selectors'
 
 export const usePagination = (itemsPerPage: number = 4) => {

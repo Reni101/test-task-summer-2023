@@ -1,4 +1,4 @@
-import { useAppSelector } from 'common/hooks/hooks'
+import { useAppSelector } from 'common/hooks/useAppHooks'
 import { Pagination } from '@mantine/core'
 import { Filters } from 'features/searchVacancies/Filters/Filters'
 import { SearchInput } from 'features/searchVacancies/SearchInput/SearchInput'

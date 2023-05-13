@@ -1,7 +1,7 @@
 import { SEARCH_PARAMS } from 'common/enums/SEARCHPARAMS'
 import { useSearchParams } from 'react-router-dom'
 import { emptyInput, firstPage } from 'common/constant/constant'
-import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
+import { useAppDispatch, useAppSelector } from 'common/hooks/useAppHooks'
 import {
   selectCatalog,
   selectKeyWord,
@@ -43,17 +43,19 @@ export const useSearch = () => {
   }
 
   const setPage = (page: number) => {
-    const params: Array<[string, string]> = []
+    const paramsArray: Array<[string, string]> = []
 
-    searchParams.forEach((value, key) => params.push([key, value]))
+    searchParams.forEach((value, key) => paramsArray.push([key, value]))
 
-    const urlParams: Partial<IFilters> = params.reduce((acc, [key, value]) => {
+    const urlParams: Partial<IFilters> = paramsArray.reduce((acc, [key, value]) => {
       // @ts-ignore
       acc[key] = value
       return acc
     }, {})
 
     delete urlParams.page
+    urlParams.payment_from = +urlParams.payment_from!
+    urlParams.payment_to = +urlParams.payment_to!
 
     dispatch(
       setSearchQueryParams({

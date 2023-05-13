@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { SEARCH_PARAMS } from 'common/enums/SEARCHPARAMS'
 import { IFilters, setSearchQueryParams } from 'features/searchVacancies/searchVacancies.slice'
-import { useAppDispatch } from 'common/hooks/hooks'
+import { useAppDispatch } from 'common/hooks/useAppHooks'
 import { useSearchParams } from 'react-router-dom'
 
 export const useFirstDispatch = () => {

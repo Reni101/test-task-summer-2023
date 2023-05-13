@@ -1,6 +1,6 @@
 import { Button, NumberInput, Select } from '@mantine/core'
 import { KeyboardEvent, useEffect } from 'react'
-import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
+import { useAppDispatch, useAppSelector } from 'common/hooks/useAppHooks'
 import { getCatalogs, selectCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
 import {
   getVacancies,

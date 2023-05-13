@@ -1,4 +1,4 @@
-import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
+import { useAppDispatch, useAppSelector } from 'common/hooks/useAppHooks'
 import { VacancyItem } from 'common/components/VacancyItem/VacancyItem'
 import { selectTotal, selectVacancies } from 'features/searchVacancies/searchVacancies.selectors'
 import { Navigate } from 'react-router-dom'

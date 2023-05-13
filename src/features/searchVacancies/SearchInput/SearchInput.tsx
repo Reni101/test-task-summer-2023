@@ -1,6 +1,6 @@
 import { Button, Input } from '@mantine/core'
 import { Search } from 'tabler-icons-react'
-import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
+import { useAppDispatch, useAppSelector } from 'common/hooks/useAppHooks'
 import { ChangeEvent, KeyboardEvent } from 'react'
 import { setSearchQueryParams } from 'features/searchVacancies/searchVacancies.slice'
 import { selectIsLoading } from 'app/app.selectors'

@@ -1,4 +1,4 @@
-import { useAppSelector } from 'common/hooks/hooks'
+import { useAppSelector } from 'common/hooks/useAppHooks'
 import { NavLink } from 'react-router-dom'
 import { PATH } from 'common/enums/PATH'
 import { selectIsLoading } from 'app/app.selectors'

@@ -1,7 +1,7 @@
 import { FC, memo } from 'react'
 import { Star } from 'tabler-icons-react'
 import { IVacancy } from 'features/searchVacancies/searchVacancies.api'
-import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
+import { useAppDispatch, useAppSelector } from 'common/hooks/useAppHooks'
 import { toggleFavorite } from 'features/favorite/favorite.slice'
 import { ActionIcon } from '@mantine/core'
 import { selectIsLoading } from 'app/app.selectors'
