@@ -1,5 +1,5 @@
 import { Button, NumberInput, Select } from '@mantine/core'
-import { FC, KeyboardEvent, useEffect } from 'react'
+import { KeyboardEvent, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/hooks'
 import { getCatalogs, selectCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
 import {
@@ -8,36 +8,21 @@ import {
   setSearchQueryParams
 } from 'features/searchVacancies/searchVacancies.slice'
 import { ChevronDown, X } from 'tabler-icons-react'
-import {
-  selectCatalog,
-  selectPaymentFrom,
-  selectPaymentTo
-} from 'features/searchVacancies/searchVacancies.selectors'
 import { selectIsLoading } from 'app/app.selectors'
 import styles from 'features/searchVacancies/Filters/Filters.module.scss'
 import classNames from 'classnames'
-import { useQueryParams } from 'common/hooks/useQueryParams'
+import { useSearch } from 'common/hooks/useSearch'
 
-interface PropsType {
-  onSearch: () => void
-}
-export const Filters: FC<PropsType> = ({ onSearch }) => {
+export const Filters = () => {
   const dispatch = useAppDispatch()
   const isLoading = useAppSelector(selectIsLoading)
   const catalogs = useAppSelector(selectCatalogs)
 
-  const categoryState = useAppSelector(selectCatalog)
-  const payment_fromState = useAppSelector(selectPaymentFrom)
-  const payment_toState = useAppSelector(selectPaymentTo)
-
-  const { setSearchParams } = useQueryParams()
-
-  // const searchFilterHandler = () => {
-  //   onSearch()
-  // }
+  const { setSearch, setSearchParams, payment_fromState, payment_toState, categoryState } =
+    useSearch()
 
   const pressEnter = (e: KeyboardEvent<HTMLInputElement>) => {
-    e.key === 'Enter' && onSearch()
+    e.key === 'Enter' && setSearch()
   }
 
   const resetAllHandler = () => {
@@ -81,6 +66,7 @@ export const Filters: FC<PropsType> = ({ onSearch }) => {
         data-elem='industry-select'
         placeholder='Выберете отрасль'
         searchable
+        clearable
         styles={{
           rightSection: { pointerEvents: 'none' },
           input: { height: '42px', borderRadius: '8px', marginBottom: '20px' }
@@ -121,7 +107,7 @@ export const Filters: FC<PropsType> = ({ onSearch }) => {
       <Button
         data-elem='search-button'
         className={styles.buttonAccept}
-        onClick={onSearch}
+        onClick={setSearch}
         fullWidth={true}
       >
         Применить

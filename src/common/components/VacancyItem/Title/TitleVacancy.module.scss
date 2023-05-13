@@ -13,4 +13,7 @@
   pointer-events: none;
   color: $blackColor;
   @include currentVacancy(700, 28px);
+  @media screen and (max-width: 867px) {
+    @include currentVacancy(700, 22px);
+  }
 }
