@@ -1,0 +1,17 @@
+@import '../../../../../common/styles/variables';
+.rightSection {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.rightSection > svg {
+  color: $greyColor;
+  width: 14px;
+  height: 14px;
+  stroke-width: 3;
+  cursor: pointer;
+}
+.rightSection > svg:hover {
+  color: $blueColor;
+}
