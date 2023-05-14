@@ -24,7 +24,7 @@ export const SearchVacancies = () => {
   }
 
   useEffect(() => {
-    if (window.innerHeight < 768) {
+    if (window.innerWidth < 768) {
       window.scrollTo({ top: 490, behavior: 'smooth' })
     }
   }, [currentPage])
