@@ -12,6 +12,9 @@ const slice = createSlice({
   reducers: {
     setInitialized(state, action: PayloadAction<boolean>) {
       state.isInitialized = action.payload
+    },
+    clearError(state) {
+      state.error = null
     }
   },
   extraReducers: builder =>
@@ -42,7 +45,7 @@ const slice = createSlice({
       .addMatcher(
         action => action.type.endsWith('/rejected'),
         (state, action) => {
-          if (!!action.payload.response.error) {
+          if (!!action.payload.response?.data.error) {
             state.error = action.payload.response.data.error.message
           } else {
             state.error = action.payload.message
@@ -52,5 +55,5 @@ const slice = createSlice({
       )
 })
 
-export const { setInitialized } = slice.actions
+export const { setInitialized, clearError } = slice.actions
 export const appReducer = slice.reducer

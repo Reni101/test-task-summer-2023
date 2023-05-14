@@ -20,6 +20,9 @@
       button[data-active] {
         background-color: $blueColor;
       }
+      @media screen and(max-width: 773px) {
+        padding: 20px;
+      }
     }
   }
 

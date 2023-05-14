@@ -11,6 +11,7 @@ import { Empty } from 'features/empty/Empty'
 import { PATH } from 'common/enums/PATH'
 import { CurrentVacancy } from 'features/currentVacancy/CurrentVacancy'
 import { selectIsInitialized } from 'app/app.selectors'
+import { ErrorNotification } from 'common/components/ErrorNotification/ErrorNotification'
 
 export const App = () => {
   const dispatch = useAppDispatch()
@@ -35,6 +36,7 @@ export const App = () => {
           <Route path='*' element={<Navigate to={PATH.SEARCH_VACANCIES} />} />
         </Routes>
       </div>
+      <ErrorNotification />
     </>
   )
 }
