@@ -24,7 +24,7 @@ export const SearchVacancies = () => {
   }
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scrollTo({ top: 570, behavior: 'smooth' })
   }, [currentPage])
 
   return (

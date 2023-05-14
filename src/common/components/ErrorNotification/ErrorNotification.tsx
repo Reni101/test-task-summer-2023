@@ -15,10 +15,10 @@ export const ErrorNotification = () => {
         message: error,
         autoClose: 3000,
         title: 'Error',
-        color: 'red',
-        onClose: () => dispatch(clearError())
+        color: 'red'
       })
     }
+    dispatch(clearError())
   }, [error])
 
   return (

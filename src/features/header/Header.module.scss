@@ -1,3 +1,4 @@
+@import 'src/common/styles/variables';
 .container {
   position: relative;
   height: 80px;
@@ -31,7 +32,7 @@
 
   .active {
     font-weight: 500;
-    color: #5e96fc;
+    color: $blueColor;
   }
 }
 
