@@ -43,22 +43,19 @@ export const useSearch = () => {
   }
 
   const setPage = (page: number) => {
-    const paramsArray: Array<[string, string]> = []
+    const paramsUrl: Partial<IFilters> = {}
 
-    searchParams.forEach((value, key) => paramsArray.push([key, value]))
-
-    const urlParams: Partial<IFilters> = paramsArray.reduce((acc, [key, value]) => {
+    searchParams.forEach((value, key) => {
       // @ts-ignore
-      acc[key] = value
-      return acc
-    }, {})
+      paramsUrl[key] = value
+    })
 
-    delete urlParams.page
-    if (urlParams.payment_from) {
-      urlParams.payment_from = Number(urlParams.payment_from)
+    delete paramsUrl.page
+    if (paramsUrl.payment_from) {
+      paramsUrl.payment_from = Number(paramsUrl.payment_from)
     }
-    if (urlParams.payment_to) {
-      urlParams.payment_to = Number(urlParams.payment_to)
+    if (paramsUrl.payment_to) {
+      paramsUrl.payment_to = Number(paramsUrl.payment_to)
     }
 
     dispatch(
@@ -68,10 +65,10 @@ export const useSearch = () => {
         payment_from: null,
         payment_to: null,
         catalogues: null,
-        ...urlParams
+        ...paramsUrl
       })
     )
-    //synchronization of url and redax
+    //synchronization of url and redux
 
     setQueryParams(page, SEARCH_PARAMS.PAGE)
     dispatch(getVacancies())

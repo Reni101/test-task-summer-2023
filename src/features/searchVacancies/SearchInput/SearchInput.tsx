@@ -34,7 +34,13 @@ export const SearchInput = () => {
       icon={<Search size='1.1rem' strokeWidth={1.5} />}
       radius='md'
       rightSection={
-        <Button data-elem='search-button' onClick={setSearch} radius='md' size='xs'>
+        <Button
+          data-elem='search-button'
+          className={styles.searchButton}
+          onClick={setSearch}
+          radius='md'
+          size='xs'
+        >
           Поиск
         </Button>
       }

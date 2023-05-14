@@ -19,7 +19,7 @@
     margin-top: 20px;
     height: 40px;
     border-radius: 8px;
-    background-color: #5e96fc;
+    background-color: $blueColor;
   }
 
   @media screen and (max-width: 480px) {
@@ -42,7 +42,7 @@
     font-size: 14px;
     font-weight: 500;
     & :hover {
-      color: #5e96fc;
+      color: $blueColor;
     }
   }
 }

@@ -1,8 +1,10 @@
 @import 'src/common/styles/mixins';
+@import 'src/common/styles/variables';
+
 .container {
   margin-bottom: 16px;
-  button {
-    background-color: #5e96fc;
+  .searchButton {
+    background-color: $blueColor;
   }
 }
 .disabled {
