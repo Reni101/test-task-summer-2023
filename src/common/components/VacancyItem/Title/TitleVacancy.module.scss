@@ -17,3 +17,6 @@
     @include currentVacancy(700, 22px);
   }
 }
+.disabled {
+  @include disabled()
+}

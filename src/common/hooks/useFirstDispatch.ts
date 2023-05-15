@@ -5,10 +5,8 @@ import { useSearchParams } from 'react-router-dom'
 
 export const useFirstDispatch = () => {
   const dispatch = useAppDispatch()
-
-  const isFirstRender = useRef(true)
-
   const [searchParams] = useSearchParams()
+  const isFirstRender = useRef(true)
 
   useEffect(() => {
     if (isFirstRender.current) {

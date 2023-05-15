@@ -13,6 +13,10 @@
   line-height: 20px;
   margin-right: 7px;
   @include currentVacancy(600, 16px);
+  @media screen and (max-width: 375px){
+    display: flex;
+
+  }
 }
 
 .currencyCurrent {
