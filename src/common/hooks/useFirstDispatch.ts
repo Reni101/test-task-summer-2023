@@ -6,10 +6,10 @@ import { useSearchParams } from 'react-router-dom'
 export const useFirstDispatch = () => {
   const dispatch = useAppDispatch()
   const [searchParams] = useSearchParams()
-  const isFirstRender = useRef(true)
+  const isFirstDispatch = useRef(true)
 
   useEffect(() => {
-    if (isFirstRender.current) {
+    if (isFirstDispatch.current) {
       const paramsUrl: any = {} as Partial<IFilters>
       searchParams.forEach((value, key) => {
         paramsUrl[key] = value
@@ -21,9 +21,9 @@ export const useFirstDispatch = () => {
 
       dispatch(setSearchQueryParams(paramsUrl))
     }
-    isFirstRender.current = false
+    isFirstDispatch.current = false
   }, [])
 
-  return { isFirstRender }
+  return { isFirstDispatch }
 }
 // on the first render, dispatch from url to state without double requests
