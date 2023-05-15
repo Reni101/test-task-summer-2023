@@ -1,8 +1,8 @@
-import { instance } from 'common/api/instance'
+import { authInstance } from 'common/api/auth.instance'
 
 export const authApi = {
   authByPassword() {
-    return instance.get<AuthType>('oauth2/password', {
+    return authInstance.get<AuthType>('password', {
       params: {
         login: process.env.REACT_APP_LOGIN,
         password: process.env.REACT_APP_PASSWORD,
@@ -13,7 +13,7 @@ export const authApi = {
     })
   },
   refreshToken(token: string) {
-    return instance.get<AuthType>('oauth2/refresh_token', {
+    return authInstance.get<AuthType>('refresh_token', {
       params: {
         client_id: process.env.REACT_APP_CLIENT_ID,
         client_secret: process.env.REACT_APP_APP_ID,

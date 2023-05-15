@@ -1,15 +1,9 @@
 import { instance } from 'common/api/instance'
 import { IFilters } from 'features/searchVacancies/searchVacancies.slice'
-import { AuthType } from 'features/auth/auth.api'
 
 export const vacanciesApi = {
-  getVacancies(params: { count: number; page: number | null } & Partial<IFilters>, data: AuthType) {
-    return instance.get<IResponse>('vacancies', {
-      params,
-      headers: {
-        Authorization: `${data.token_type} ${data.access_token}`
-      }
-    })
+  getVacancies(params: { count: number; page: number | null } & Partial<IFilters>) {
+    return instance.get<IResponse>('vacancies', { params })
   }
 }
 export interface Positions {

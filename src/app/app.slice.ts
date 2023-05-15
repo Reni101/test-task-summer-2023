@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
 const slice = createSlice({
-  name: 'counter',
+  name: 'app',
   initialState: {
     status: 'idle' as RequestStatusType,
     error: null as string | null,

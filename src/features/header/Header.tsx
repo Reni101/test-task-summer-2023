@@ -21,7 +21,7 @@ export const Header = () => {
   }, [isLoading])
 
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       {isLoading && (
         <NavigationProgress
           stepInterval={5}
@@ -37,17 +37,18 @@ export const Header = () => {
         <img className={styles.text} src={Jobored} alt='alt' />
       </div>
 
-      <div className={styles.navigation}>
+      <nav className={styles.navigation}>
         <NavLink
           to={PATH.SEARCH_VACANCIES}
           className={({ isActive }) => (isActive ? styles.active : '')}
         >
           Поиск Вакансий
         </NavLink>
+
         <NavLink to={PATH.FAVORITE} className={({ isActive }) => (isActive ? styles.active : '')}>
           Избранное
         </NavLink>
-      </div>
-    </div>
+      </nav>
+    </header>
   )
 }

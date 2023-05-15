@@ -43,20 +43,15 @@ export const useSearch = () => {
   }
 
   const setPage = (page: number) => {
-    const paramsUrl: Partial<IFilters> = {}
+    const paramsUrl: any = {} as Partial<IFilters>
 
     searchParams.forEach((value, key) => {
-      // @ts-ignore
       paramsUrl[key] = value
     })
 
     delete paramsUrl.page
-    if (paramsUrl.payment_from) {
-      paramsUrl.payment_from = Number(paramsUrl.payment_from)
-    }
-    if (paramsUrl.payment_to) {
-      paramsUrl.payment_to = Number(paramsUrl.payment_to)
-    }
+    paramsUrl.payment_from && (paramsUrl.payment_from = +paramsUrl.payment_from)
+    paramsUrl.payment_to && (paramsUrl.payment_to = +paramsUrl.payment_to)
 
     dispatch(
       setSearchQueryParams({

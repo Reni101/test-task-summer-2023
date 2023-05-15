@@ -24,10 +24,11 @@ export const App = () => {
   if (!isInitialized) {
     return <Loader className={styles.loader} />
   }
+
   return (
     <>
       <Header />
-      <div className={styles.container}>
+      <main className={styles.container}>
         <Routes>
           <Route path={PATH.SEARCH_VACANCIES} element={<SearchVacancies />} />
           <Route path={PATH.FAVORITE} element={<Favorite />} />
@@ -35,7 +36,7 @@ export const App = () => {
           <Route path={PATH.EMPTY} element={<Empty />} />
           <Route path='*' element={<Navigate to={PATH.SEARCH_VACANCIES} />} />
         </Routes>
-      </div>
+      </main>
       <ErrorNotification />
     </>
   )
