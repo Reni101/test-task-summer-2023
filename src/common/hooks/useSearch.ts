@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { emptyInput, firstPage } from 'common/constant/constant'
 import { useAppDispatch, useAppSelector } from 'common/hooks/useAppHooks'
 import {
-  selectCatalog,
+  selectCategory,
   selectKeyWord,
   selectPaymentFrom,
   selectPaymentTo
@@ -18,7 +18,7 @@ export const useSearch = () => {
   const dispatch = useAppDispatch()
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const categoryState = useAppSelector(selectCatalog)
+  const categoryState = useAppSelector(selectCategory)
   const payment_fromState = useAppSelector(selectPaymentFrom)
   const payment_toState = useAppSelector(selectPaymentTo)
   const keywordState = useAppSelector(selectKeyWord)
