@@ -17,7 +17,7 @@ export const CurrentVacancy = () => {
 
   useEffect(() => {
     !!id && dispatch(getCurrentVacancy(id))
-  }, [dispatch, id])
+  }, [id])
 
   return (
     <div className={styles.container}>

@@ -23,7 +23,7 @@ export const CustomInputNumber = (props: NumberInputProps) => {
       rightSectionWidth={40}
       rightSection={
         <div className={styles.rightSection}>
-          <ChevronDown style={{ transform: 'rotate(180deg)' }} onClick={increment} />
+          <ChevronDown onClick={increment} />
           <ChevronDown onClick={decrement} />
         </div>
       }

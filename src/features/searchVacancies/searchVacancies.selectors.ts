@@ -3,7 +3,9 @@ import { createSelector } from '@reduxjs/toolkit'
 import { maxItemFromServer } from 'common/constant/constant'
 
 export const selectPaymentFrom = (state: RootState) => state.searchVacancies.filters.payment_from
+
 export const selectPaymentTo = (state: RootState) => state.searchVacancies.filters.payment_to
+
 export const selectCategory = (state: RootState) => state.searchVacancies.filters.catalogues
 
 export const selectKeyWord = (state: RootState) => state.searchVacancies.filters.keyword

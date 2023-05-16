@@ -9,16 +9,20 @@
 .rightSection {
   display: flex;
   flex-direction: column;
+
+  & > svg {
+    color: $greyColor;
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.5;
+    cursor: pointer;
+  }
+
+  & > :nth-child(1) {
+    transform: rotate(180deg);
+  }
 }
 
-.rightSection > svg {
-  color: $greyColor;
-  width: 14px;
-  height: 14px;
-  stroke-width: 3;
-  cursor: pointer;
-}
-
-.rightSection > svg:hover {
+.rightSection .rightSection > svg:hover {
   color: $blueColor;
 }

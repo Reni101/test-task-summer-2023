@@ -40,7 +40,7 @@ export const Description: FC<PropsType> = memo(
         </div>
 
         <div className={styles.location}>
-          <MapPin size={20} color={'#000000'} /> {town.title}
+          <MapPin size={20} /> {town.title}
         </div>
       </>
     )

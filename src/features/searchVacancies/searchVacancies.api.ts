@@ -6,6 +6,7 @@ export const vacanciesApi = {
     return instance.get<IResponse>('vacancies', { params })
   }
 }
+
 export interface Positions {
   id: number
   title: string
@@ -20,7 +21,6 @@ export interface Catalogues {
 }
 
 export interface IVacancy {
-  canEdit: boolean
   is_closed: boolean
   id: number
   id_client: number
@@ -36,9 +36,6 @@ export interface IVacancy {
   town: {
     id: number
     title: string
-    declension: string
-    hasMetro: boolean
-    genitive: string
   }
   firm_name: string
   vacancyRichText: string
