@@ -6,8 +6,9 @@
   align-items: center;
   flex-direction: column;
   padding-top: 40px;
-
-  @include mediaQueryMargin();
+  @media screen and (max-width: 912px) {
+    padding: 20px;
+  }
 }
 
 .pagination {

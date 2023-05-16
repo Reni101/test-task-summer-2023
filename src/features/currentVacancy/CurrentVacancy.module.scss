@@ -6,8 +6,9 @@
   flex-direction: column;
   min-height: calc(100vh - 80px);
   padding-top: 40px;
-
-  @include mediaQueryMargin();
+  @media screen and (max-width: 912px){
+    padding: 20px;
+  }
 }
 .descriptionContainer {
   max-width: 773px;

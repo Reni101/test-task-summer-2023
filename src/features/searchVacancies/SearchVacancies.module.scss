@@ -21,15 +21,14 @@
         background-color: $blueColor;
       }
       @media screen and(max-width: 768px) {
-        padding: 20px;
+        padding: 20px 0 10px 0;
       }
     }
   }
-
-  @include mediaQueryMargin();
-
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 912px) {
     flex-direction: column;
+    align-items: center;
+    padding: 20px;
   }
 }
 
