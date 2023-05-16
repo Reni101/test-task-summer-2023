@@ -18,6 +18,7 @@ export const CustomInputNumber = (props: NumberInputProps) => {
     <NumberInput
       {...props}
       handlersRef={handlers}
+      type='number'
       classNames={{ input: styles.inputContainer }}
       step={stepInput}
       rightSectionWidth={40}
