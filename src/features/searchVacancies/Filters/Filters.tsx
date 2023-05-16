@@ -23,9 +23,7 @@ export const Filters = () => {
   return (
     <div className={classNames(styles.container, { [styles.disabled]: isLoading })}>
       <FilterTitle />
-
       <SelectContainer />
-
       <InputsNumberContainer />
 
       <Button
