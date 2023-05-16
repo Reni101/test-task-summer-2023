@@ -1,4 +1,4 @@
-import { instance } from 'common/api/instance'
+import { instance } from 'common/instance/instance'
 
 export const catalogsApi = {
   getCatalogs() {

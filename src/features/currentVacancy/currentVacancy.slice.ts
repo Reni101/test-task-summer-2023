@@ -15,13 +15,17 @@ export const getCurrentVacancy = createAppAsyncThunk<IVacancy, string>(
   }
 )
 
+const initialState = {
+  vacancy: {} as IVacancy
+}
+
 const currentVacancySlice = createSlice({
   name: 'currentVacancySlice',
-  initialState: {} as IVacancy,
+  initialState,
   reducers: {},
   extraReducers: builder => {
     builder.addCase(getCurrentVacancy.fulfilled, (state, action) => {
-      return action.payload
+      state.vacancy = action.payload
     })
   }
 })

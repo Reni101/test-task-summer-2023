@@ -1,4 +1,4 @@
-import { instance } from 'common/api/instance'
+import { instance } from 'common/instance/instance'
 import { IVacancy } from 'features/searchVacancies/searchVacancies.api'
 
 export const currentVacanciesApi = {

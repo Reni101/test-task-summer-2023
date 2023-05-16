@@ -1,4 +1,4 @@
-import { instance } from 'common/api/instance'
+import { instance } from 'common/instance/instance'
 import { IFilters } from 'features/searchVacancies/searchVacancies.slice'
 
 export const vacanciesApi = {

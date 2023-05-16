@@ -1,4 +1,4 @@
-import { authInstance } from 'common/api/auth.instance'
+import { authInstance } from 'common/instance/auth.instance'
 
 export const authApi = {
   authByPassword() {
