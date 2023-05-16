@@ -37,6 +37,3 @@ export const persistor = persistStore(store)
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>
-
-// @ts-ignore
-window.store = store
