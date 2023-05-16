@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/test-task-summer-2023/static/css/main.f1d7e1d9.css",
-    "main.js": "/test-task-summer-2023/static/js/main.08655300.js",
+    "main.js": "/test-task-summer-2023/static/js/main.b13c553e.js",
     "static/js/787.b4b81923.chunk.js": "/test-task-summer-2023/static/js/787.b4b81923.chunk.js",
     "static/media/Frame.svg": "/test-task-summer-2023/static/media/Frame.e971983585ef9132b066d5ec6b8321e4.svg",
     "static/media/jobored.svg": "/test-task-summer-2023/static/media/jobored.4db178e8f0f4eb2d0ef267ff35bbf962.svg",
     "index.html": "/test-task-summer-2023/index.html",
     "static/media/union.svg": "/test-task-summer-2023/static/media/union.7e07a45d78062ef26fb8e6481d8c6e0c.svg",
     "main.f1d7e1d9.css.map": "/test-task-summer-2023/static/css/main.f1d7e1d9.css.map",
-    "main.08655300.js.map": "/test-task-summer-2023/static/js/main.08655300.js.map",
+    "main.b13c553e.js.map": "/test-task-summer-2023/static/js/main.b13c553e.js.map",
     "787.b4b81923.chunk.js.map": "/test-task-summer-2023/static/js/787.b4b81923.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f1d7e1d9.css",
-    "static/js/main.08655300.js"
+    "static/js/main.b13c553e.js"
   ]
 }
