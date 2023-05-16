@@ -42,6 +42,9 @@
   @media screen and (max-width: 867px) {
     @include weightSize(500, 16px);
   }
+  @media screen and (max-width: 395px) {
+    @include weightSize(500, 14px);
+  }
 }
 
 .location {
