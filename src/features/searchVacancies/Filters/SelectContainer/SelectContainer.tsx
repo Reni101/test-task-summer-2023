@@ -4,6 +4,7 @@ import { Select } from '@mantine/core'
 import { useAppDispatch, useAppSelector } from 'common/hooks/useAppHooks'
 import { selectCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
 import { selectCategory } from 'features/searchVacancies/searchVacancies.selectors'
+import styles from './SelectContainer.module.scss'
 
 export const SelectContainer = () => {
   const dispatch = useAppDispatch()
@@ -20,20 +21,20 @@ export const SelectContainer = () => {
   }
 
   return (
-    <Select
-      data-elem='industry-select'
-      placeholder='Выберете отрасль'
-      searchable
-      clearable
-      styles={{
-        rightSection: { pointerEvents: 'none' },
-        input: { height: '42px', borderRadius: '8px', marginBottom: '20px' }
-      }}
-      rightSection={<ChevronDown size={25} strokeWidth={1.5} color={'#acadb9'} />}
-      onChange={changeCategoryHandler}
-      rightSectionWidth={40}
-      value={categoryState}
-      data={dataForSelect}
-    />
+    <>
+      <div className={styles.title}>Отрасль</div>
+      <Select
+        data-elem='industry-select'
+        placeholder='Выберете отрасль'
+        searchable
+        clearable
+        classNames={{ input: styles.selectContainer, rightSection: styles.rightSection }}
+        rightSection={<ChevronDown size={25} strokeWidth={1.5} color={'#acadb9'} />}
+        onChange={changeCategoryHandler}
+        rightSectionWidth={40}
+        value={categoryState}
+        data={dataForSelect}
+      />
+    </>
   )
 }

@@ -8,13 +8,6 @@
   border-radius: 12px;
   padding: 20px;
 
-  .title {
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 19px;
-    margin-bottom: 8px;
-  }
-
   .buttonAccept {
     margin-top: 20px;
     height: 40px;
@@ -26,27 +19,7 @@
     min-width: 300px;
   }
 }
-.filterHead {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 32px;
 
-  .title {
-    font-weight: 700;
-    font-size: 20px;
-  }
-
-  button {
-    color: $greyColor;
-    font-size: 14px;
-    font-weight: 500;
-    & :hover {
-      color: $blueColor;
-    }
-  }
-}
 .disabled {
   @include disabled();
 }
-

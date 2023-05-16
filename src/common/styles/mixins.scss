@@ -9,7 +9,7 @@
   }
 }
 
-@mixin currentVacancy($fontWeight, $fontSize) {
+@mixin weightSize($fontWeight, $fontSize) {
   font-weight: $fontWeight;
   font-size: $fontSize;
 }

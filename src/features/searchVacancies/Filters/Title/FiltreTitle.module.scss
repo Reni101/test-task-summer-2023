@@ -1,0 +1,26 @@
+@import 'src/common/styles/variables';
+@import 'src/common/styles/mixins';
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+
+  .title {
+    @include weightSize(700, 20px);
+  }
+
+  button {
+    color: $greyColor;
+    @include weightSize(500, 14px);
+
+    svg {
+      stroke-width: 2.5;
+    }
+
+    & :hover {
+      color: $blueColor;
+    }
+  }
+}

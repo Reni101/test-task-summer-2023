@@ -6,15 +6,15 @@
   font-style: normal;
   line-height: 24px;
   color: $blueColor;
-  @include currentVacancy(600, 20px);
+  @include weightSize(600, 20px);
 }
 
 .titleCurrent {
   pointer-events: none;
   color: $blackColor;
-  @include currentVacancy(700, 28px);
+  @include weightSize(700, 28px);
   @media screen and (max-width: 867px) {
-    @include currentVacancy(700, 22px);
+    @include weightSize(700, 22px);
   }
 }
 .disabled {

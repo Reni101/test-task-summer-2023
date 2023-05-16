@@ -4,10 +4,6 @@ import { useRef } from 'react'
 import styles from 'features/searchVacancies/Filters/InputsNumberContainer/CustomInputNumber/CustomInput.module.scss'
 import { stepInput } from 'common/constant/constant'
 
-const inputStyles = {
-  input: { height: '42px', borderRadius: '8px', margin: ' 8px 0 8px;' }
-}
-
 export const CustomInputNumber = (props: NumberInputProps) => {
   const handlers = useRef<NumberInputHandlers>()
 
@@ -22,7 +18,7 @@ export const CustomInputNumber = (props: NumberInputProps) => {
     <NumberInput
       {...props}
       handlersRef={handlers}
-      styles={inputStyles}
+      classNames={{ input: styles.inputContainer }}
       step={stepInput}
       rightSectionWidth={40}
       rightSection={

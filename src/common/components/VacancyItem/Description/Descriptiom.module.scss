@@ -2,8 +2,6 @@
 
 .payment {
   margin: 12px 0;
-
-
 }
 .paymentCurrent {
   margin: 16px 0;
@@ -12,18 +10,18 @@
 .currency {
   line-height: 20px;
   margin-right: 7px;
-  @include currentVacancy(600, 16px);
-  @media screen and (max-width: 375px){
+  @include weightSize(600, 16px);
+  @media screen and (max-width: 375px) {
     display: flex;
-
+    margin-left: 5px;
   }
 }
 
 .currencyCurrent {
-  @include currentVacancy(700, 20px);
+  @include weightSize(700, 20px);
 
   @media screen and (max-width: 867px) {
-    @include currentVacancy(700, 16px);
+    @include weightSize(700, 16px);
   }
 }
 
@@ -42,7 +40,7 @@
   font-size: 20px;
 
   @media screen and (max-width: 867px) {
-    @include currentVacancy(500, 16px);
+    @include weightSize(500, 16px);
   }
 }
 

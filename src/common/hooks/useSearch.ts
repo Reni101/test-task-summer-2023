@@ -71,7 +71,6 @@ export const useSearch = () => {
 
   return {
     setSearch,
-    setSearchParams,
     setPage,
     keywordState,
     payment_fromState,

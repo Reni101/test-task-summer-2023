@@ -22,6 +22,7 @@ export const InputsNumberContainer = () => {
 
   return (
     <>
+      <div style={{ fontWeight: 700 }}>Оклад</div>
       <CustomInputNumber
         data-elem='salary-from-input'
         value={payment_fromState ?? ''}
