@@ -4,7 +4,12 @@
   height: 42px;
   border-radius: 8px;
   margin: 8px 0 8px;
+  &:hover {
+    border: 1px solid $blue500;
+  }
 }
+
+
 
 .rightSection {
   display: flex;

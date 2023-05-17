@@ -4,8 +4,12 @@
 .input {
   margin-bottom: 16px;
   height: 48px;
+  &:hover {
+    border: 1px solid $blue500;
+  }
 }
-.disabled {
+
+.input .disabled {
   @include disabled();
 }
 

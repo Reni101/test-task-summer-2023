@@ -6,14 +6,24 @@
   line-height: 19px;
 }
 
-.selectContainer {
+.selectInput {
   height: 42px;
   border-radius: 8px;
   margin: 8px auto 20px;
+  &:hover {
+    border: 1px solid $blue500;
+  }
 }
 
 .rightSection {
   pointer-events: none;
+}
+
+.open {
+  transform: rotate(180deg);
+  & > path {
+    stroke: $blue500;
+  }
 }
 
 .dropdown {
