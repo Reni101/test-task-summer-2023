@@ -15,6 +15,7 @@ export const Vacancies = () => {
   const dispatch = useAppDispatch()
   const vacancies = useAppSelector(selectVacancies)
   const total = useAppSelector(selectTotal)
+
   const { isFirstDispatch } = useFirstDispatch()
 
   useEffect(() => {
