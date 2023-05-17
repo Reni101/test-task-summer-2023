@@ -22,4 +22,8 @@ export const selectTotalPage = createSelector(selectTotal, pageCount, (total, pa
   )
 })
 
-export const selectCurrentPage = (state: RootState) => state.searchVacancies.filters.page
+export const currentPage = (state: RootState) => state.searchVacancies.filters.page
+
+export const selectPage = createSelector(currentPage, currentPage => {
+  return (currentPage ?? 0) + 1
+})

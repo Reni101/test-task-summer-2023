@@ -15,7 +15,7 @@ export const useFirstDispatch = () => {
         paramsUrl[key] = value
       })
 
-      paramsUrl.page && (paramsUrl.page = +paramsUrl.page - 1)
+      paramsUrl.page ? (paramsUrl.page = +paramsUrl.page - 1) : (paramsUrl.page = null)
       paramsUrl.payment_from && (paramsUrl.payment_from = +paramsUrl.payment_from)
       paramsUrl.payment_to && (paramsUrl.payment_to = +paramsUrl.payment_to)
 

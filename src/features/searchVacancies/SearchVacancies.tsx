@@ -3,10 +3,7 @@ import { Pagination } from '@mantine/core'
 import { Filters } from 'features/searchVacancies/Filters/Filters'
 import { SearchInput } from 'features/searchVacancies/SearchInput/SearchInput'
 import { Vacancies } from 'features/searchVacancies/Vacancies/Vacancies'
-import {
-  selectCurrentPage,
-  selectTotalPage
-} from 'features/searchVacancies/searchVacancies.selectors'
+import { selectPage, selectTotalPage } from 'features/searchVacancies/searchVacancies.selectors'
 import { selectIsLoading } from 'app/app.selectors'
 import styles from 'features/searchVacancies/SearchVacancies.module.scss'
 import classNames from 'classnames'
@@ -16,7 +13,7 @@ import { useSearch } from 'common/hooks/useSearch'
 export const SearchVacancies = () => {
   const isLoading = useAppSelector(selectIsLoading)
   const totalPage = useAppSelector(selectTotalPage)
-  const currentPage = useAppSelector(selectCurrentPage)
+  const currentPage = useAppSelector(selectPage)
   const { setPage } = useSearch()
 
   const setPageHandle = (page: number) => {
@@ -37,7 +34,7 @@ export const SearchVacancies = () => {
         <Vacancies />
         <Pagination
           className={classNames(styles.pagination, { [styles.disabled]: isLoading })}
-          value={(currentPage ?? 0) + 1}
+          value={currentPage}
           onChange={setPageHandle}
           total={totalPage}
         />
