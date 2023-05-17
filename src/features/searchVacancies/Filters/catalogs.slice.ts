@@ -3,7 +3,7 @@ import { createAppAsyncThunk } from 'common/utils/create-app-async-thunk'
 import { catalogsApi, CatalogType } from 'features/searchVacancies/Filters/catalogs.api'
 import { RootState } from 'app/store'
 
-export const getCatalogs = createAppAsyncThunk(
+export const getCatalogs = createAppAsyncThunk<CatalogType[], void>(
   'catalogs/getCatalogs',
   async (_, { rejectWithValue }) => {
     try {
