@@ -28,7 +28,12 @@ export const SelectContainer = () => {
         placeholder='Выберете отрасль'
         searchable
         clearable
-        classNames={{ input: styles.selectContainer, rightSection: styles.rightSection }}
+        classNames={{
+          input: styles.selectContainer,
+          rightSection: styles.rightSection,
+          dropdown: styles.dropdown,
+          item: styles.item
+        }}
         rightSection={<ArrowIcon width={'15px'} height={'8px'} />}
         onChange={changeCategoryHandler}
         rightSectionWidth={40}

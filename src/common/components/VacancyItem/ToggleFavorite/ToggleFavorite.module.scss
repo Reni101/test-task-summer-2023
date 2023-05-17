@@ -1,14 +1,14 @@
 @import 'src/common/styles/variables';
 @import 'src/common/styles/mixins';
 
-.star {
-  color: $greyColor;
+.star:hover > path {
+  stroke: $blue500;
 }
 
 .favorite {
-  color: $blueColor;
-  fill: $blueColor;
+  color: $blue500;
+  fill: $blue500;
   & > path {
-    stroke: $blueColor;
+    stroke: $blue500;
   }
 }

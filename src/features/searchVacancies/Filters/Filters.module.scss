@@ -12,7 +12,13 @@
     margin-top: 20px;
     height: 40px;
     border-radius: 8px;
-    background-color: $blueColor;
+    background-color: $blue500;
+  }
+  .buttonAccept:hover {
+    background-color: $blue400;
+  }
+  .buttonAccept:active {
+    background-color: $blue600;
   }
 
   @media screen and (max-width: 920px) {

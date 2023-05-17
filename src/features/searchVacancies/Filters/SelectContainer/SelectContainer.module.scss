@@ -1,12 +1,32 @@
+@import 'src/common/styles/variables';
+
 .title {
+  color: $blackColor;
   font-weight: 700;
   line-height: 19px;
 }
+
 .selectContainer {
   height: 42px;
   border-radius: 8px;
   margin: 8px auto 20px;
 }
+
 .rightSection {
   pointer-events: none;
+}
+
+.dropdown {
+  border-radius: 8px;
+}
+
+.item {
+  border-radius: 8px;
+  &:hover {
+    background-color: $blue400;
+  }
+}
+
+.item[data-selected] {
+  background-color: $blue500;
 }

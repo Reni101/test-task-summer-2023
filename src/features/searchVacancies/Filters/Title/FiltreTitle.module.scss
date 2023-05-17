@@ -8,14 +8,15 @@
   margin-bottom: 32px;
 
   .title {
+    color: $blackColor;
     @include weightSize(700, 20px);
   }
 
   button {
-    color: $greyColor;
+    color: $grey500;
     @include weightSize(500, 14px);
     & :hover {
-      color: $blueColor;
+      color: $blue400;
     }
   }
 }

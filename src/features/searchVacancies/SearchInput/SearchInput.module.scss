@@ -1,13 +1,20 @@
 @import 'src/common/styles/mixins';
 @import 'src/common/styles/variables';
 
-.container {
+.input {
   margin-bottom: 16px;
   height: 48px;
-  .searchButton {
-    background-color: $blueColor;
-  }
 }
 .disabled {
   @include disabled();
+}
+
+.searchButton {
+  background-color: $blue500;
+  &:hover {
+    background-color: $blue400;
+  }
+  &:active {
+    background-color: $blue600;
+  }
 }

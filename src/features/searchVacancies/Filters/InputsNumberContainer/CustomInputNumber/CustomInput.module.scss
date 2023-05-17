@@ -13,7 +13,7 @@
   & > svg {
     cursor: pointer;
     &:hover > path {
-      stroke: $blueColor;
+      stroke: $blue500;
     }
   }
 
@@ -23,5 +23,5 @@
 }
 
 .rightSection .rightSection > svg:hover {
-  color: $blueColor;
+  color: $blue500;
 }

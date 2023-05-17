@@ -18,7 +18,7 @@
       justify-content: center;
 
       button[data-active] {
-        background-color: $blueColor;
+        background-color: $blue500;
       }
       @media screen and(max-width: 768px) {
         padding: 20px 0 10px 0;

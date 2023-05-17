@@ -6,6 +6,7 @@ import { selectIsLoading } from 'app/app.selectors'
 import styles from 'features/searchVacancies/SearchInput/SearchInput.module.scss'
 import { useSearch } from 'common/hooks/useSearch'
 import { SearchIcon } from 'common/assets/icons/SearchIcon'
+import classNames from 'classnames'
 
 export const SearchInput = () => {
   const dispatch = useAppDispatch()
@@ -23,7 +24,8 @@ export const SearchInput = () => {
 
   return (
     <Input
-      classNames={{ input: styles.container, [styles.disabled]: isLoading }}
+      className={classNames({ [styles.disabled]: isLoading })}
+      classNames={{ input: styles.input }}
       data-elem='search-input'
       onKeyDown={pressEnter}
       value={keywordState ?? ''}
