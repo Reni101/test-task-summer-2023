@@ -8,7 +8,7 @@ import { PATH } from 'common/enums/PATH'
 import classNames from 'classnames'
 import { useAppSelector } from 'common/hooks/useAppHooks'
 import { selectIsLoading } from 'app/app.selectors'
-import { LinkHoc } from 'common/hok/LinkHoc'
+import { LinkHoc } from 'common/hoc/LinkHoc'
 
 interface PropsType {
   vacancy: IVacancy
