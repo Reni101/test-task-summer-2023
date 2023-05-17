@@ -16,7 +16,7 @@ instance.interceptors.request.use(request => {
     const state = JSON.parse(localStorage.getItem('persist:root')!)
     const authData = JSON.parse(state.auth) as AuthType
     request.headers.Authorization = `${authData.token_type} ${authData.access_token}`
-
+    debugger
     return request
   } catch {
     return request

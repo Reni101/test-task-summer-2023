@@ -36,7 +36,11 @@ const authSlice = createSlice({
   initialState: initState,
   reducers: {
     setAuthData(state, action: PayloadAction<AuthType>) {
-      state = action.payload
+      state.access_token = action.payload.access_token
+      state.ttl = action.payload.ttl
+      state.refresh_token = action.payload.refresh_token
+      state.token_type = action.payload.token_type
+      state.expires_in = action.payload.expires_in
     }
   }
 })
