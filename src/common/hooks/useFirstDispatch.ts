@@ -19,7 +19,15 @@ export const useFirstDispatch = () => {
       paramsUrl.payment_from && (paramsUrl.payment_from = +paramsUrl.payment_from)
       paramsUrl.payment_to && (paramsUrl.payment_to = +paramsUrl.payment_to)
 
-      dispatch(setSearchQueryParams(paramsUrl))
+      dispatch(
+        setSearchQueryParams({
+          keyword: null,
+          payment_from: null,
+          payment_to: null,
+          catalogues: null,
+          ...paramsUrl
+        })
+      )
     }
     isFirstDispatch.current = false
   }, [])
