@@ -1,8 +1,8 @@
 import { FC, memo } from 'react'
 import classNames from 'classnames'
 import { paymentResult } from 'common/utils/payment'
-import { MapPin } from 'tabler-icons-react'
 import styles from 'common/components/VacancyItem/Description/Descriptiom.module.scss'
+import { LocationIcon } from 'common/assets/icons/LocationIcon'
 
 interface PropsType {
   isCurrentVacancy: boolean
@@ -40,7 +40,7 @@ export const Description: FC<PropsType> = memo(
         </div>
 
         <div className={styles.location}>
-          <MapPin size={20} /> {town.title}
+          <LocationIcon /> {town.title}
         </div>
       </>
     )

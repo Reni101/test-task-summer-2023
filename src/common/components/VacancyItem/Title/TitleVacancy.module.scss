@@ -2,7 +2,6 @@
 @import 'src/common/styles/mixins';
 
 .title {
-  cursor: pointer;
   font-style: normal;
   line-height: 24px;
   color: $blueColor;
@@ -10,13 +9,11 @@
 }
 
 .titleCurrent {
-  pointer-events: none;
   color: $blackColor;
+  line-height: 34px;
   @include weightSize(700, 28px);
   @media screen and (max-width: 867px) {
-    @include weightSize(700, 22px);
+    line-height: 24px;
+    @include weightSize(700, 20px);
   }
-}
-.disabled {
-  @include disabled()
 }

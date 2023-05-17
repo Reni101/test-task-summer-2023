@@ -1,4 +1,5 @@
-@import 'src/common/styles/variables.scss';
+@import 'src/common/styles/variables';
+@import 'src/common/styles/mixins';
 
 .container {
   max-width: 773px;
@@ -11,4 +12,18 @@
   font-size: 16px;
   padding: 24px;
   margin-bottom: 16px;
+  &:hover {
+    cursor: pointer;
+    background-color: $bgHoverColor;
+  }
+}
+.currentContainer {
+  &:hover {
+    cursor: default;
+    background-color: $bgSecondColor;
+  }
+}
+
+.disabled {
+  @include disabled();
 }

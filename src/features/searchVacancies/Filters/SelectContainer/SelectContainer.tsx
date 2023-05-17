@@ -1,9 +1,9 @@
-import { ChevronDown } from 'tabler-icons-react'
 import { setSearchQueryParams } from 'features/searchVacancies/searchVacancies.slice'
 import { Select } from '@mantine/core'
 import { useAppDispatch, useAppSelector } from 'common/hooks/useAppHooks'
 import { selectCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
 import { selectCategory } from 'features/searchVacancies/searchVacancies.selectors'
+import { ArrowIcon } from 'common/assets/icons/ArrowIcon'
 import styles from './SelectContainer.module.scss'
 
 export const SelectContainer = () => {
@@ -29,7 +29,7 @@ export const SelectContainer = () => {
         searchable
         clearable
         classNames={{ input: styles.selectContainer, rightSection: styles.rightSection }}
-        rightSection={<ChevronDown size={25} strokeWidth={1.5} color={'#acadb9'} />}
+        rightSection={<ArrowIcon width={'15px'} height={'8px'} />}
         onChange={changeCategoryHandler}
         rightSectionWidth={40}
         value={categoryState}

@@ -9,13 +9,12 @@
 .rightSection {
   display: flex;
   flex-direction: column;
-
+  gap: 5px;
   & > svg {
-    color: $greyColor;
-    width: 14px;
-    height: 14px;
-    stroke-width: 2.5;
     cursor: pointer;
+    &:hover > path {
+      stroke: $blueColor;
+    }
   }
 
   & > :nth-child(1) {

@@ -1,12 +1,11 @@
 import { Button, Input } from '@mantine/core'
-import { Search } from 'tabler-icons-react'
 import { useAppDispatch, useAppSelector } from 'common/hooks/useAppHooks'
 import { ChangeEvent, KeyboardEvent } from 'react'
 import { setSearchQueryParams } from 'features/searchVacancies/searchVacancies.slice'
 import { selectIsLoading } from 'app/app.selectors'
 import styles from 'features/searchVacancies/SearchInput/SearchInput.module.scss'
-import classNames from 'classnames'
 import { useSearch } from 'common/hooks/useSearch'
+import { SearchIcon } from 'common/assets/icons/SearchIcon'
 
 export const SearchInput = () => {
   const dispatch = useAppDispatch()
@@ -24,14 +23,13 @@ export const SearchInput = () => {
 
   return (
     <Input
-      className={classNames(styles.container, { [styles.disabled]: isLoading })}
+      classNames={{ input: styles.container, [styles.disabled]: isLoading }}
       data-elem='search-input'
       onKeyDown={pressEnter}
-      styles={{ input: { height: '48px' } }}
       value={keywordState ?? ''}
       onChange={changeTextHandler}
       size='md'
-      icon={<Search size='1.1rem' strokeWidth={1.5} />}
+      icon={<SearchIcon />}
       radius='md'
       rightSection={
         <Button

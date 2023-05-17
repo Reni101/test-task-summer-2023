@@ -3,12 +3,12 @@
 
 .star {
   color: $greyColor;
-  fill: $bgSecondColor;
 }
+
 .favorite {
   color: $blueColor;
   fill: $blueColor;
-}
-.disabled {
-  @include disabled();
+  & > path {
+    stroke: $blueColor;
+  }
 }
