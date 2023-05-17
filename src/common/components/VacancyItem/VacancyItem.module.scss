@@ -4,7 +4,7 @@
 .container {
   max-width: 773px;
   width: 100%;
-  background-color: $bgSecondColor;
+  background-color: $bgWhite;
   display: flex;
   justify-content: space-between;
   gap: 10px;
@@ -14,13 +14,13 @@
   margin-bottom: 16px;
   &:hover {
     cursor: pointer;
-    background-color: $bgHoverColor;
+    background-color: $grey200;
   }
 }
 .currentContainer {
   &:hover {
     cursor: default;
-    background-color: $bgSecondColor;
+    background-color: $bgWhite;
   }
 }
 

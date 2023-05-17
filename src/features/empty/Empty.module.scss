@@ -1,3 +1,5 @@
+@import 'src/common/styles/variables';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -5,11 +7,12 @@
   justify-content: center;
   gap: 32px;
   padding-top: 10vh;
-
+  color: $blackColor;
   button {
     width: 164px;
     height: 42px;
-    background-color: #deecff;
+    background-color: $blue100;
     margin-bottom: 10px;
+    color: $blue600;
   }
 }

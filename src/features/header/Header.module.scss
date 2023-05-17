@@ -1,4 +1,5 @@
 @import 'src/common/styles/variables';
+
 .container {
   position: relative;
   height: 80px;
@@ -22,6 +23,7 @@
 }
 
 .navigation {
+  color: $blackColor;
   display: flex;
   justify-content: center;
   gap: 60px;
