@@ -39,13 +39,13 @@ export const SearchInput = () => {
           className={styles.searchButton}
           onClick={setSearch}
           radius='md'
-          size='xs'
+          size='sm'
         >
           Поиск
         </Button>
       }
       placeholder='Введите название вакансии'
-      rightSectionWidth={90}
+      rightSectionWidth={95}
     />
   )
 }
