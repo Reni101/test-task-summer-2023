@@ -6,8 +6,6 @@ import { Description } from 'common/components/VacancyItem/Description/Descripti
 import styles from 'common/components/VacancyItem/VacancyItem.module.scss'
 import { PATH } from 'common/enums/PATH'
 import classNames from 'classnames'
-import { useAppSelector } from 'common/hooks/useAppHooks'
-import { selectIsLoading } from 'app/app.selectors'
 import { LinkHoc } from 'common/hoc/LinkHoc'
 
 interface PropsType {
@@ -17,17 +15,13 @@ interface PropsType {
 
 export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) => {
   const { id, profession, ...restProps } = vacancy
-  const isLoading = useAppSelector(selectIsLoading)
 
   return (
     <LinkHoc
       href={!isCurrentVacancy ? `${PATH.CURRENT_VACANCY}${id}` : null}
       data-elem={`vacancy-${vacancy.id}`}
       vacancyId={vacancy.id}
-      className={classNames(styles.container, {
-        [styles.currentContainer]: isCurrentVacancy,
-        [styles.disabled]: isLoading
-      })}
+      className={classNames(styles.container, { [styles.currentContainer]: isCurrentVacancy })}
     >
       <div>
         <TitleVacancy profession={profession} isCurrentVacancy={isCurrentVacancy} />

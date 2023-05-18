@@ -1,16 +1,13 @@
 import { Button, Input } from '@mantine/core'
-import { useAppDispatch, useAppSelector } from 'common/hooks/useAppHooks'
+import { useAppDispatch } from 'common/hooks/useAppHooks'
 import { ChangeEvent, KeyboardEvent } from 'react'
 import { setSearchQueryParams } from 'features/searchVacancies/searchVacancies.slice'
-import { selectIsLoading } from 'app/app.selectors'
 import styles from 'features/searchVacancies/SearchInput/SearchInput.module.scss'
 import { useSearch } from 'common/hooks/useSearch'
 import { SearchIcon } from 'common/assets/icons/SearchIcon'
-import classNames from 'classnames'
 
 export const SearchInput = () => {
   const dispatch = useAppDispatch()
-  const isLoading = useAppSelector(selectIsLoading)
 
   const { setSearch, keywordState } = useSearch()
 
@@ -24,7 +21,6 @@ export const SearchInput = () => {
 
   return (
     <Input
-      className={classNames({ [styles.disabled]: isLoading })}
       classNames={{ input: styles.input }}
       data-elem='search-input'
       onKeyDown={pressEnter}

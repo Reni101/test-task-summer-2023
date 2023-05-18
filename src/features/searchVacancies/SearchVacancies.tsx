@@ -27,13 +27,13 @@ export const SearchVacancies = () => {
   }, [currentPage])
 
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, { [styles.disabled]: isLoading })}>
       <Filters />
       <div className={styles.searchContainer}>
         <SearchInput />
         <Vacancies />
         <Pagination
-          className={classNames(styles.pagination, { [styles.disabled]: isLoading })}
+          className={styles.pagination}
           value={currentPage}
           onChange={setPageHandle}
           total={totalPage}

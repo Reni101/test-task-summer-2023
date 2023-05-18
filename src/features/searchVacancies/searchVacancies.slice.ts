@@ -19,12 +19,10 @@ export interface IFilters {
 const initialState: IResponse & IFiltersAndPagination = {
   objects: [],
   total: null,
-
   count: 4,
   filters: {
     published: 1,
     no_agreement: null,
-
     keyword: null,
     payment_from: null,
     payment_to: null,

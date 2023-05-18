@@ -14,13 +14,20 @@ export const SelectContainer = () => {
 
   const [isOpenMenu, setIsOpenMenu] = useState(false)
 
+  const changeCategoryHandler = (value: string) => {
+    dispatch(setSearchQueryParams({ catalogues: value }))
+  }
+
   const dataForSelect = catalogs.map(catalog => ({
     value: catalog.key.toString(),
     label: catalog.title
   }))
 
-  const changeCategoryHandler = (value: string) => {
-    dispatch(setSearchQueryParams({ catalogues: value }))
+  const selectClass = {
+    input: styles.selectInput,
+    rightSection: styles.rightSection,
+    dropdown: styles.dropdown,
+    item: styles.item
   }
 
   return (
@@ -33,12 +40,7 @@ export const SelectContainer = () => {
         onDropdownClose={() => setIsOpenMenu(false)}
         searchable
         clearable
-        classNames={{
-          input: styles.selectInput,
-          rightSection: styles.rightSection,
-          dropdown: styles.dropdown,
-          item: styles.item
-        }}
+        classNames={selectClass}
         rightSection={
           <ArrowIcon
             className={isOpenMenu ? styles.open : undefined}

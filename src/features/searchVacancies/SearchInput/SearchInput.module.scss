@@ -9,10 +9,6 @@
   }
 }
 
-.input .disabled {
-  @include disabled();
-}
-
 .searchButton {
   background-color: $blue500;
   &:hover {
