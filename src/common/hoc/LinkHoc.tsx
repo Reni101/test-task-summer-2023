@@ -15,10 +15,6 @@ export const LinkHoc: FC<PropsType> = ({ children, href, className, vacancyId })
       </NavLink>
     )
   } else {
-    return (
-      <div data-elem={`vacancy-${vacancyId}`} className={className}>
-        {children}
-      </div>
-    )
+    return <div className={className}>{children}</div>
   }
 }
