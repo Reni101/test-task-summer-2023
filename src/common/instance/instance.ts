@@ -2,12 +2,19 @@ import axios from 'axios'
 import { AuthType } from 'features/auth/auth.api'
 import { persistor } from 'app/store'
 
+const headers = {
+  'x-secret-key': process.env.REACT_APP_SECRET_KEY,
+  'X-Api-App-Id': process.env.REACT_APP_APP_ID
+}
+
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
-  headers: {
-    'x-secret-key': process.env.REACT_APP_SECRET_KEY,
-    'X-Api-App-Id': process.env.REACT_APP_APP_ID
-  }
+  headers
+})
+
+export const authInstance = axios.create({
+  baseURL: `${process.env.REACT_APP_BASE_URL}oauth2/`,
+  headers
 })
 
 instance.interceptors.request.use(request => {
