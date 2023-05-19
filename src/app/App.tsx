@@ -32,7 +32,7 @@ export const App = () => {
         <Routes>
           <Route path={PATH.SEARCH_VACANCIES} element={<SearchVacancies />} />
           <Route path={PATH.FAVORITE} element={<Favorite />} />
-          <Route path={`${PATH.CURRENT_VACANCY}:id`} element={<CurrentVacancy />} />
+          <Route path={`${PATH.SEARCH_VACANCIES}/:id`} element={<CurrentVacancy />} />
           <Route path={PATH.EMPTY} element={<Empty />} />
           <Route path='*' element={<Navigate to={PATH.SEARCH_VACANCIES} />} />
         </Routes>

@@ -18,7 +18,7 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
 
   return (
     <LinkHoc
-      href={!isCurrentVacancy ? `${PATH.CURRENT_VACANCY}${id}` : null}
+      href={!isCurrentVacancy ? `${PATH.SEARCH_VACANCIES}/${id}` : null}
       data-elem={`vacancy-${vacancy.id}`}
       vacancyId={vacancy.id}
       className={classNames(styles.container, { [styles.currentContainer]: isCurrentVacancy })}
