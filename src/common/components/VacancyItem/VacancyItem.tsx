@@ -6,7 +6,7 @@ import { Description } from 'common/components/VacancyItem/Description/Descripti
 import styles from 'common/components/VacancyItem/VacancyItem.module.scss'
 import { PATH } from 'common/enums/PATH'
 import classNames from 'classnames'
-import { LinkHoc } from 'common/hoc/LinkHoc'
+import { LinkWrap } from 'common/hoc/LinkWrap'
 
 interface PropsType {
   vacancy: IVacancy
@@ -17,7 +17,7 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
   const { id, profession, ...restProps } = vacancy
 
   return (
-    <LinkHoc
+    <LinkWrap
       href={!isCurrentVacancy ? `${PATH.SEARCH_VACANCIES}/${id}` : null}
       data-elem={`vacancy-${vacancy.id}`}
       vacancyId={vacancy.id}
@@ -29,6 +29,6 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
       </div>
 
       <ToggleFavorite vacancy={vacancy} />
-    </LinkHoc>
+    </LinkWrap>
   )
 })

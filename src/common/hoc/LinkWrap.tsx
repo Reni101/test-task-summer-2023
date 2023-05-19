@@ -7,7 +7,7 @@ interface PropsType {
   vacancyId: number
 }
 
-export const LinkHoc: FC<PropsType> = ({ children, href, className, vacancyId }) => {
+export const LinkWrap: FC<PropsType> = ({ children, href, className, vacancyId }) => {
   if (href) {
     return (
       <NavLink data-elem={`vacancy-${vacancyId}`} className={className} to={href}>
