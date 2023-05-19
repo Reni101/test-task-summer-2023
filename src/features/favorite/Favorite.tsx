@@ -15,10 +15,9 @@ export const Favorite = () => {
 
   return (
     <div className={styles.container}>
-      {!!currentData.length &&
-        currentData.map(vacancy => {
-          return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
-        })}
+      {currentData?.map(vacancy => {
+        return <VacancyItem vacancy={vacancy} key={vacancy.id} isCurrentVacancy={false} />
+      })}
 
       <Pagination
         className={styles.pagination}

@@ -21,9 +21,7 @@ const slice = createSlice({
     builder
       .addMatcher(
         action => {
-          if (action.type.endsWith('authAndRefresh/pending')) {
-            return false
-          }
+          if (action.type.endsWith('authAndRefresh/pending')) return false
           return action.type.endsWith('/pending')
         },
         state => {
@@ -32,11 +30,8 @@ const slice = createSlice({
       )
       .addMatcher(
         action => {
-          if (action.type.endsWith('authAndRefresh/fulfilled')) {
-            return false
-          } else {
-            return action.type.endsWith('/fulfilled')
-          }
+          if (action.type.endsWith('authAndRefresh/fulfilled')) return false
+          return action.type.endsWith('/fulfilled')
         },
         state => {
           state.status = 'succeeded'
@@ -45,7 +40,7 @@ const slice = createSlice({
       .addMatcher(
         action => action.type.endsWith('/rejected'),
         (state, action) => {
-          if (!!action.payload.response?.data.error) {
+          if (action.payload.response?.data.error) {
             state.error = action.payload.response.data.error.message
           } else {
             state.error = action.payload.message
