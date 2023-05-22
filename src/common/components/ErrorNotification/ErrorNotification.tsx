@@ -21,9 +21,5 @@ export const ErrorNotification = () => {
     dispatch(clearError())
   }, [error])
 
-  return (
-    <>
-      <Notifications position='top-right' />
-    </>
-  )
+  return <Notifications position='top-right' />
 }
