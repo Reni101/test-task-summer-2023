@@ -19,7 +19,6 @@ export const VacancyItem: FC<PropsType> = memo(({ vacancy, isCurrentVacancy }) =
   return (
     <LinkWrap
       href={!isCurrentVacancy ? `${PATH.SEARCH_VACANCIES}/${id}` : null}
-      data-elem={`vacancy-${vacancy.id}`}
       vacancyId={vacancy.id}
       className={classNames(styles.container, { [styles.currentContainer]: isCurrentVacancy })}
     >
