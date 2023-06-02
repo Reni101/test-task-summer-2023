@@ -15,7 +15,7 @@ export const Filters = () => {
 
   useEffect(() => {
     dispatch(getCatalogs())
-  }, [dispatch])
+  }, [])
 
   return (
     <div className={styles.container}>

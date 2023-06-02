@@ -5,7 +5,6 @@ import { useGetParams } from 'common/hooks/useGetParams'
 
 export const useFirstDispatch = () => {
   const dispatch = useAppDispatch()
-
   const { paramsUrl, resetFilters } = useGetParams()
   const isFirstDispatch = useRef(true)
 

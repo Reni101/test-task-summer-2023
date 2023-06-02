@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import classNames from 'classnames'
 import styles from 'common/components/VacancyItem/Title/TitleVacancy.module.scss'
 
@@ -7,7 +7,7 @@ interface PropsType {
   isCurrentVacancy: boolean
 }
 
-export const TitleVacancy: FC<PropsType> = ({ profession, isCurrentVacancy }) => {
+export const TitleVacancy: FC<PropsType> = memo(({ profession, isCurrentVacancy }) => {
   return (
     <div
       className={classNames(styles.title, {
@@ -17,4 +17,4 @@ export const TitleVacancy: FC<PropsType> = ({ profession, isCurrentVacancy }) =>
       {profession}
     </div>
   )
-}
+})

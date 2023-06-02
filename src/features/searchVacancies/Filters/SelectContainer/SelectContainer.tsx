@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'common/hooks/useAppHooks'
 import { selectCatalogs } from 'features/searchVacancies/Filters/catalogs.slice'
 import { selectCategory } from 'features/searchVacancies/searchVacancies.selectors'
 import { ArrowIcon } from 'common/assets/icons/ArrowIcon'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import styles from './SelectContainer.module.scss'
 
 export const SelectContainer = () => {
@@ -18,10 +18,12 @@ export const SelectContainer = () => {
     dispatch(setSearchQueryParams({ catalogues: value }))
   }
 
-  const dataForSelect = catalogs.map(catalog => ({
-    value: catalog.key.toString(),
-    label: catalog.title
-  }))
+  const dataForSelect = useMemo(() => {
+    return catalogs.map(catalog => ({
+      value: catalog.key.toString(),
+      label: catalog.title
+    }))
+  }, [catalogs])
 
   const selectClass = {
     input: styles.selectInput,

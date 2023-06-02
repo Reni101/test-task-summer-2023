@@ -11,6 +11,7 @@ import { selectIsLoading } from 'app/app.selectors'
 export const CurrentVacancy = () => {
   const dispatch = useAppDispatch()
   const { id } = useParams()
+
   const vacancy = useAppSelector(selectCurrentVacancy)
   const cleanText = DOMPurify.sanitize(vacancy.vacancyRichText)
   const isLoading = useAppSelector(selectIsLoading)

@@ -21,6 +21,7 @@ export const ToggleFavorite: FC<PropsType> = memo(({ vacancy }) => {
 
   const toggleFavoriteHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
+
     dispatch(toggleFavorite(vacancy))
   }
 
