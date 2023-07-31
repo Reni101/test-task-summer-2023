@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { AuthType } from 'features/auth/auth.api'
+import { AuthType } from 'features/auth/authApi'
 import { persistor } from 'app/store'
 
 const headers = {

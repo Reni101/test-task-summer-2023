@@ -42,7 +42,6 @@ export const useSearch = () => {
 
   const setPage = (page: number) => {
     delete paramsUrl.page
-
     dispatch(setSearchQueryParams({ page: page - 1, ...resetFilters, ...paramsUrl }))
     //synchronization of url and redux
     setQueryParams(page, SEARCH_PARAMS.PAGE)

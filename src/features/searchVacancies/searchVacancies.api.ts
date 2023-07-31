@@ -1,8 +1,8 @@
 import { instance } from 'common/instance/instance'
 import { IFilters } from 'features/searchVacancies/searchVacancies.slice'
 
-export const vacanciesApi = {
-  getVacancies(params: { count: number; page: number | null } & Partial<IFilters>) {
+export class VacanciesApi {
+  static getVacancies(params: { count: number; page: number | null } & Partial<IFilters>) {
     return instance.get<IResponse>('vacancies', { params })
   }
 }

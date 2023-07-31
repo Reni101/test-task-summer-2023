@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { createAppAsyncThunk } from 'common/utils/create-app-async-thunk'
-import { catalogsApi, CatalogType } from 'features/searchVacancies/Filters/catalogs.api'
+import { CatalogsApi, CatalogType } from 'features/searchVacancies/Filters/catalogsApi'
 import { RootState } from 'app/store'
 
 export const getCatalogs = createAppAsyncThunk<CatalogType[], void>(
   'catalogs/getCatalogs',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await catalogsApi.getCatalogs()
+      const res = await CatalogsApi.getCatalogs()
       return res.data
     } catch (e) {
       return rejectWithValue(e)

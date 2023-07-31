@@ -1,7 +1,7 @@
 import { instance } from 'common/instance/instance'
 
-export const catalogsApi = {
-  getCatalogs() {
+export class CatalogsApi {
+  static getCatalogs() {
     return instance.get<CatalogType[]>('catalogues')
   }
 }

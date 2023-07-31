@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { createAppAsyncThunk } from 'common/utils/create-app-async-thunk'
-import { authApi, AuthType } from 'features/auth/auth.api'
+import { AuthApi, AuthType } from 'features/auth/authApi'
 import { setInitialized } from 'app/app.slice'
 
 export const authAndRefresh = createAppAsyncThunk(
@@ -9,10 +9,10 @@ export const authAndRefresh = createAppAsyncThunk(
     try {
       const accessData = getState().auth
       if (!accessData.access_token) {
-        const res = await authApi.authByPassword()
+        const res = await AuthApi.authByPassword()
         dispatch(setAuthData(res.data))
       } else if (accessData.ttl * 1000 < Date.now()) {
-        const res = await authApi.refreshToken(accessData.refresh_token)
+        const res = await AuthApi.refreshToken(accessData.refresh_token)
         dispatch(setAuthData(res.data))
       }
     } catch (e) {

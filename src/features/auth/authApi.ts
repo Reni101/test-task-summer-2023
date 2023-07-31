@@ -1,7 +1,7 @@
 import { authInstance } from 'common/instance/instance'
 
-export const authApi = {
-  authByPassword() {
+export class AuthApi {
+  static authByPassword() {
     return authInstance.get<AuthType>('password', {
       params: {
         login: process.env.REACT_APP_LOGIN,
@@ -11,8 +11,9 @@ export const authApi = {
         hr: process.env.REACT_APP_HR
       }
     })
-  },
-  refreshToken(token: string) {
+  }
+
+  static refreshToken(token: string) {
     return authInstance.get<AuthType>('refresh_token', {
       params: {
         client_id: process.env.REACT_APP_CLIENT_ID,

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { createAppAsyncThunk } from 'common/utils/create-app-async-thunk'
-import { IResponse, vacanciesApi } from 'features/searchVacancies/searchVacancies.api'
+import { IResponse, VacanciesApi } from 'features/searchVacancies/searchVacancies.api'
 
 export interface IFiltersAndPagination {
   count: number
@@ -43,7 +43,7 @@ export const getVacancies = createAppAsyncThunk<IResponse, void>(
       if (page === 0) page = null
       if (keyword === '') keyword = null
 
-      const res = await vacanciesApi.getVacancies({
+      const res = await VacanciesApi.getVacancies({
         count,
         page,
         payment_from,

@@ -1,8 +1,8 @@
 import { instance } from 'common/instance/instance'
 import { IVacancy } from 'features/searchVacancies/searchVacancies.api'
 
-export const currentVacanciesApi = {
-  getVacancy(id: string) {
+export class CurrentVacanciesApi {
+  static getVacancy(id: string) {
     return instance.get<IVacancy>(`/vacancies/${id}`)
   }
 }

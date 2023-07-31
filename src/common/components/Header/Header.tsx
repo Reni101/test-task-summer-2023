@@ -22,18 +22,16 @@ export const Header = () => {
 
   return (
     <header className={styles.container}>
-      {isLoading && (
-        <NavigationProgress
-          stepInterval={5}
-          transitionDuration={1000}
-          color='#5E96FC'
-          size={5}
-          exitTimeout={1000}
-        />
-      )}
+      <NavigationProgress
+        stepInterval={5}
+        transitionDuration={1000}
+        color='#5E96FC'
+        size={5}
+        exitTimeout={1000}
+      />
 
       <div className={styles.logo}>
-        <img src={logo} alt='alt' />
+        <img src={logo} alt='logo' />
         <img className={styles.text} src={Jobored} alt='alt' />
       </div>
 
